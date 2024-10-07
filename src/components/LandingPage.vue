@@ -163,7 +163,11 @@
     </b-container>
 
     <!-- Featured Products -->
-    <b-container id="products" class="my-4" style="padding-top: 75px; height: 650px">
+    <b-container
+      id="products"
+      class="my-4"
+      style="padding-top: 75px; height: 650px"
+    >
       <h2 class="text-center">Featured Products</h2>
       <b-row>
         <b-col md="3" sm="6" v-for="product in products" :key="product.id">
@@ -181,79 +185,80 @@
           </b-card>
         </b-col>
       </b-row>
-          <!-- Footer Section -->
-    <b-container no-body class="bg-dark text-light" >
-      <b-row>
-        <!-- Column 1: Company Info -->
-        <b-col md="3">
-          <h5 class="text-uppercase"><i class="fas fa-shopping-cart text-warning"></i> PrimeBazaar</h5>
-          <p>
-            Your go-to marketplace for Electronics, Fashion, and Home & Living
-            essentials. Bringing you top quality products at unbeatable prices.
-          </p>
-        </b-col>
+      <!-- Footer Section -->
+      <b-container no-body class="bg-dark text-light">
+        <b-row>
+          <!-- Column 1: Company Info -->
+          <b-col md="3">
+            <h5 class="text-uppercase">
+              <i class="fas fa-shopping-cart text-warning"></i> PrimeBazaar
+            </h5>
+            <p>
+              Your go-to marketplace for Electronics, Fashion, and Home & Living
+              essentials. Bringing you top quality products at unbeatable
+              prices.
+            </p>
+          </b-col>
 
-        <!-- Column 2: Quick Links -->
-        <b-col md="3">
-          <h5 class="text-uppercase">Quick Links</h5>
-          <ul class="list-unstyled">
-            <li><b-link href="/">Home</b-link></li>
-            <li><b-link href="#categories">Shop</b-link></li>
-            <li><b-link href="#">About Us</b-link></li>
-            <li><b-link href="#">Contact</b-link></li>
-          </ul>
-        </b-col>
+          <!-- Column 2: Quick Links -->
+          <b-col md="3">
+            <h5 class="text-uppercase">Quick Links</h5>
+            <ul class="list-unstyled">
+              <li><b-link href="/">Home</b-link></li>
+              <li><b-link href="#categories">Shop</b-link></li>
+              <li><b-link href="#">About Us</b-link></li>
+              <li><b-link href="#">Contact</b-link></li>
+            </ul>
+          </b-col>
 
-        <!-- Column 3: Customer Service -->
-        <b-col md="3">
-          <h5 class="text-uppercase">Customer Service</h5>
-          <ul class="list-unstyled">
-            <li><b-link href="#">FAQs</b-link></li>
-            <li><b-link href="#">Shipping & Returns</b-link></li>
-            <li><b-link href="#">Privacy Policy</b-link></li>
-            <li><b-link href="#">Terms & Conditions</b-link></li>
-          </ul>
-        </b-col>
+          <!-- Column 3: Customer Service -->
+          <b-col md="3">
+            <h5 class="text-uppercase">Customer Service</h5>
+            <ul class="list-unstyled">
+              <li><b-link href="#">FAQs</b-link></li>
+              <li><b-link href="#">Shipping & Returns</b-link></li>
+              <li><b-link href="#">Privacy Policy</b-link></li>
+              <li><b-link href="#">Terms & Conditions</b-link></li>
+            </ul>
+          </b-col>
 
-        <!-- Column 4: Newsletter Signup -->
-        <b-col md="3">
-          <h5 class="text-uppercase">Stay Connected</h5>
-          <p>Subscribe to our newsletter for the latest deals and updates.</p>
-          <b-form inline @submit.prevent="subscribe">
-            <b-form-input placeholder="Enter your email" v-model="email" />
-            <b-button variant="primary" type="submit">Subscribe</b-button>
-          </b-form>
-        </b-col>
-      </b-row>
+          <!-- Column 4: Newsletter Signup -->
+          <b-col md="3">
+            <h5 class="text-uppercase">Stay Connected</h5>
+            <p>Subscribe to our newsletter for the latest deals and updates.</p>
+            <b-form inline @submit.prevent="subscribe">
+              <b-form-input placeholder="Enter your email" v-model="email" />
+              <b-button variant="primary" type="submit">Subscribe</b-button>
+            </b-form>
+          </b-col>
+        </b-row>
 
-      <hr class="my-4" />
+        <hr class="my-4" />
 
-      <b-row>
-        <!-- Social Media Icons -->
-        <b-col md="6">
-          <b-button variant="outline-light" href="#" class="mr-2">
-            <i class="fab fa-facebook-f"></i>
-          </b-button>
-          <b-button variant="outline-light" href="#" class="mr-2">
-            <i class="fab fa-twitter"></i>
-          </b-button>
-          <b-button variant="outline-light" href="#" class="mr-2">
-            <i class="fab fa-instagram"></i>
-          </b-button>
-          <b-button variant="outline-light" href="#">
-            <i class="fab fa-linkedin"></i>
-          </b-button>
-        </b-col>
+        <b-row>
+          <!-- Social Media Icons -->
+          <b-col md="6">
+            <b-button variant="outline-light" href="#" class="mr-2">
+              <i class="fab fa-facebook-f"></i>
+            </b-button>
+            <b-button variant="outline-light" href="#" class="mr-2">
+              <i class="fab fa-twitter"></i>
+            </b-button>
+            <b-button variant="outline-light" href="#" class="mr-2">
+              <i class="fab fa-instagram"></i>
+            </b-button>
+            <b-button variant="outline-light" href="#">
+              <i class="fab fa-linkedin"></i>
+            </b-button>
+          </b-col>
 
-        <!-- Footer Credits -->
-        <b-col md="6" class="text-md-right">
-          <p>&copy; 2024 PrimeBazaar - All Rights Reserved</p>
-        </b-col>
-      </b-row>
+          <!-- Footer Credits -->
+          <b-col md="6" class="text-md-right">
+            <p>&copy; 2024 PrimeBazaar - All Rights Reserved</p>
+          </b-col>
+        </b-row>
+      </b-container>
     </b-container>
-    </b-container>
-
-
   </div>
 </template>
 
@@ -263,7 +268,7 @@ export default {
 
   data() {
     return {
-       email: '',
+      email: "",
       showModal: false,
       loginForm: {
         email: "",
