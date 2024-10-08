@@ -228,8 +228,7 @@
             <i class="fas fa-shopping-cart text-warning"></i> PrimeBazaar
           </h5>
           <p>
-            Your go-to marketplace for Electronics, Fashion, and Home & Living
-            essentials. Bringing you top-quality products at unbeatable prices.
+            Discover the Best in Electronics, Fashion, and Home Living at PrimeBazaar
           </p>
         </b-col>
 

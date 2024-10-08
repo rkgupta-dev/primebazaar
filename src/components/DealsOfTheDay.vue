@@ -1,15 +1,38 @@
 <template>
   <div class="deals-of-the-day">
+    <div>
+      <b-carousel
+        id="carousel-fade"
+        style="text-shadow: 0px 0px 2px #000"
+        fade
+        indicators
+        img-width="1024"
+        img-height="480"
+      >
+        <b-carousel-slide
+          caption="First Slide"
+          img-src="https://picsum.photos/1024/480/?image=10"
+        ></b-carousel-slide>
+        <b-carousel-slide
+          caption="Second Slide"
+          img-src="https://picsum.photos/1024/480/?image=12"
+        ></b-carousel-slide>
+        <b-carousel-slide
+          caption="Third Slide"
+          img-src="https://picsum.photos/1024/480/?image=22"
+        ></b-carousel-slide>
+      </b-carousel>
+    </div>
     <h1 class="text-center">Deals of the Day</h1>
 
     <!-- Countdown Timer -->
     <div class="text-center my-4">
       <b-card class="p-3">
         <h3>Time Remaining</h3>
-        <b-badge variant="success"
+        <b-button variant="success"
           >{{ countdownTimer.days }} Days {{ countdownTimer.hours }} Hours
           {{ countdownTimer.minutes }} Minutes
-          {{ countdownTimer.seconds }} Seconds</b-badge
+          {{ countdownTimer.seconds }} Seconds</b-button
         >
       </b-card>
     </div>
