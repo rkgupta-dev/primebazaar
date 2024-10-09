@@ -46,7 +46,7 @@
 
       <div class="text-center my-4">
         <h2 class="text-3xl font-bold mb-4">Deals of the Day</h2>
-        <b-button>
+        <b-badge pill>
           <h5>
             <b-icon icon="clock" class="mr-2"></b-icon>
             <span
@@ -55,7 +55,7 @@
               }}</span
             >
           </h5>
-        </b-button>
+        </b-badge>
       </div>
 
       <div class="row">
