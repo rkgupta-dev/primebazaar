@@ -2,13 +2,36 @@
   <div>
     <b-container>
       <!-- Hero Image Section -->
-      <div class="">
+      <!-- <div class="">
         <b-img
           :src="require('@/assets/deal1.png')"
           alt="Deals of the Day Hero"
           fluid
           class="w-100 h-300px md:h-400px mt-4 object-cover border border-dark rounded-lg"
         ></b-img>
+      </div> -->
+
+      <div>
+        <b-carousel
+          id="carousel-fade"
+          :interval="3000"
+          fade
+          indicators
+          class="my-4 border border-dark rounded-lg"
+        >
+          <b-carousel-slide
+            :img-src="require('@/assets/deal0.png')"
+          ></b-carousel-slide>
+          <b-carousel-slide
+            :img-src="require('@/assets/deal1.png')"
+          ></b-carousel-slide>
+          <b-carousel-slide
+            :img-src="require('@/assets/deal2.png')"
+          ></b-carousel-slide>
+          <b-carousel-slide
+            :img-src="require('@/assets/deal3.png')"
+          ></b-carousel-slide>
+        </b-carousel>
       </div>
 
       <b-card class="my-4">
