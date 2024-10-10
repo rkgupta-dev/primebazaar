@@ -1,8 +1,36 @@
 <template>
   <div>
-    <!-- <h3 class="text-3xl text-center my-4 font-bold mb-4">
-      – DEALS OF THE DAY –
-    </h3> -->
+    <b-navbar toggleable="lg" type="dark" variant="primary" class="mb-4">
+      <b-navbar-brand href="#">PrimeBazaar</b-navbar-brand>
+
+      <b-navbar-toggle target="navbar-nav" />
+
+      <b-collapse id="navbar-nav" is-nav>
+        <b-navbar-nav class="ml-auto">
+          <!-- Search input placed in the center -->
+          <b-form inline class="mx-auto">
+            <b-form-input
+              v-model="searchQuery"
+              type="text"
+              :placeholder="placeholders[currentPlaceholderIndex]"
+              class="mx-2 d-none d-sm-block"
+              size="sm"
+            ></b-form-input>
+            <b-button size="sm" class="d-none d-sm-block" variant="outline-light">Search</b-button>
+          </b-form>
+          <b-nav-item>
+            <b-button
+              variant="outline-light"
+              size="sm"
+              v-b-toggle.sidebar-right
+            >
+              <i class="fas fa-shopping-cart d-none d-md-inline"></i>
+              <span class="d-inline d-md-none">Shopping cart</span>
+            </b-button>
+          </b-nav-item>
+        </b-navbar-nav>
+      </b-collapse>
+    </b-navbar>
 
     <b-container>
       <!-- Carousel Section -->
@@ -31,7 +59,10 @@
       <b-card class="my-4">
         <div class="row">
           <div class="col-md-8">
-            <h1 class="display-5 font-weight-bold text-primary text-uppercase">
+            <h1
+              class="display-5 font-weight-bold text-primary mb-3"
+              style="font-family: 'Dancing Script', cursive"
+            >
               Incredible Deals Await!
             </h1>
             <p class="lead text-">
@@ -111,6 +142,44 @@
         </b-col>
       </b-row>
     </b-container>
+    <footer class="footer py-4" style="background-color: #343a40; color: white">
+      <div class="container text-center">
+        <p>&copy; 2024 PrimeBazaar - All Rights Reserved</p>
+        <div class="d-flex justify-content-center mb-3">
+          <b-button variant="link" class="text-white mr-3" href="#"
+            >About Us</b-button
+          >
+          <b-button variant="link" class="text-white mr-3" href="#"
+            >Privacy Policy</b-button
+          >
+          <b-button variant="link" class="text-white mr-3" href="#"
+            >Terms of Service</b-button
+          >
+        </div>
+        <div class="d-flex justify-content-center">
+          <b-icon
+            icon="facebook"
+            class="text-white mx-2"
+            style="font-size: 1.5rem"
+          ></b-icon>
+          <b-icon
+            icon="twitter"
+            class="text-white mx-2"
+            style="font-size: 1.5rem"
+          ></b-icon>
+          <b-icon
+            icon="instagram"
+            class="text-white mx-2"
+            style="font-size: 1.5rem"
+          ></b-icon>
+          <b-icon
+            icon="linkedin"
+            class="text-white mx-2"
+            style="font-size: 1.5rem"
+          ></b-icon>
+        </div>
+      </div>
+    </footer>
   </div>
 </template>
 
@@ -121,6 +190,15 @@ export default {
   components: { FlipCountdown },
   data() {
     return {
+      currentPlaceholderIndex: 0,
+      searchQuery: '',
+      placeholders: [
+        'Search products...',
+        'Search electronics...',
+        'Search fashion...',
+        'Search home & living...',
+      ],
+      
       deals: [
         {
           id: 1,
@@ -179,5 +257,15 @@ export default {
       ],
     };
   },
+  created() {
+    setInterval(() => {
+      this.currentPlaceholderIndex = (this.currentPlaceholderIndex + 1) % this.placeholders.length;
+    }, 3000);
+  },
 };
 </script>
+
+<style scoped>
+
+
+</style>

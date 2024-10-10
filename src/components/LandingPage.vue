@@ -12,10 +12,16 @@
           <b-navbar-nav class="ml-auto">
             <b-nav-item href="/">Home</b-nav-item>
             <b-nav-item href="#products">Products</b-nav-item>
-            <b-nav-item href="#categories">Categories</b-nav-item>
+            <!-- <b-nav-item href="#categories">Categories</b-nav-item> -->
+            <b-nav-item-dropdown href="#categories" text="Categories" right>
+              <b-dropdown-item href="#">Electronics</b-dropdown-item>
+              <b-dropdown-item href="#">Fashion</b-dropdown-item>
+              <b-dropdown-item href="#">Home & Living</b-dropdown-item>
+            </b-nav-item-dropdown>
+
             <b-nav-item to="/dealsoftheday">Deals</b-nav-item>
           </b-navbar-nav>
- 
+
           <!-- search on navbar -->
           <b-navbar-nav class="ml-auto">
             <b-nav-item class="d-none d-sm-block">
@@ -228,7 +234,8 @@
             <i class="fas fa-shopping-cart text-warning"></i> PrimeBazaar
           </h5>
           <p>
-            Discover the Best in Electronics, Fashion, and Home Living at PrimeBazaar
+            Discover the Best in Electronics, Fashion, and Home Living at
+            PrimeBazaar
           </p>
         </b-col>
 
@@ -377,7 +384,7 @@ export default {
         variant: "success",
         solid: true,
         toaster: "b-toaster-bottom-center",
-        autoHideDelay: 3000, 
+        autoHideDelay: 3000,
       });
     },
     showMaintenanceToast() {
@@ -386,7 +393,7 @@ export default {
         variant: "warning",
         solid: true,
         toaster: "b-toaster-bottom-center",
-        autoHideDelay: 3000, 
+        autoHideDelay: 3000,
       });
     },
     handleLogin() {
