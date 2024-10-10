@@ -27,7 +27,7 @@
             <b-nav-item class="d-none d-sm-block">
               <b-input-group size="sm">
                 <b-form-input
-                  placeholder="Search"
+                  :placeholder="placeholders[currentPlaceholderIndex]"
                   aria-label="Search"
                 ></b-form-input>
                 <b-input-group-append>
@@ -328,6 +328,14 @@ export default {
         email: "",
         password: "",
       },
+      currentPlaceholderIndex: 0,
+      searchQuery: "",
+      placeholders: [
+        "Search products...",
+        "Search electronics...",
+        "Search fashion...",
+        "Search home & living...",
+      ],
       categories: [
         {
           id: 1,
@@ -377,6 +385,12 @@ export default {
     };
   },
   computed: {},
+  created() {
+    setInterval(() => {
+      this.currentPlaceholderIndex =
+        (this.currentPlaceholderIndex + 1) % this.placeholders.length;
+    }, 3000);
+  },
   methods: {
     subscribe() {
       this.$bvToast.toast(`Thank you for subscribing with ${this.email}!`, {
