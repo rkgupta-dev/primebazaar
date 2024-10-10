@@ -1,6 +1,7 @@
 <template>
   <div>
     <b-container>
+      <h2 class="text-3xl text-center my-4 font-bold mb-4">– DEALS OF THE DAY –</h2>
       <!-- Hero Image Section -->
       <!-- <div class="">
         <b-img
