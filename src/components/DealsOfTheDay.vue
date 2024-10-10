@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h3 class="text-3xl text-center my-4 font-bold mb-4">
+    <!-- <h3 class="text-3xl text-center my-4 font-bold mb-4">
       – DEALS OF THE DAY –
-    </h3>
+    </h3> -->
 
     <b-container>
       <!-- Carousel Section -->
@@ -29,18 +29,33 @@
 
       <!-- Introduction Section -->
       <b-card class="my-4">
-        <div>
-          <h1>Incredible Deals Await!</h1>
-          <p>
-            Discover amazing discounts on top-rated products. Limited time
-            offers!
-          </p>
+        <div class="row">
+          <div class="col-md-8">
+            <h1 class="display-5 font-weight-bold text-primary text-uppercase">
+              Incredible Deals Await!
+            </h1>
+            <p class="lead text-">
+              Unlock unbeatable discounts on our best-selling, top-rated
+              products. Act fast, these offers won’t last long! Enjoy up to
+              <span class="text-danger font-weight-bold">50% off</span> on
+              selected items and bring home your favorites today!
+            </p>
+          </div>
+          <div class="col-md-4">
+            <b-img
+              :src="require('@/assets/hurry-up.png')"
+              style="width: 100%; height: auto"
+            >
+            </b-img>
+          </div>
         </div>
       </b-card>
 
       <!-- Countdown Section -->
       <div class="text-center my-4">
-        <h2 class="text-3xl font-bold mb-4">Deals of the Day Ends In</h2>
+        <h2 class="text-3xl font-bold bg-light rounded mb-4">
+          Deals of the Day Ends In
+        </h2>
         <flip-countdown
           deadline="2024-12-25 06:30:00"
           :showDays="false"
