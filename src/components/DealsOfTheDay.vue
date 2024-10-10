@@ -1,7 +1,9 @@
 <template>
   <div>
+    <h3 class="text-3xl text-center my-4 font-bold mb-4">
+      – DEALS OF THE DAY –
+    </h3>
     <b-container>
-      <h2 class="text-3xl text-center my-4 font-bold mb-4">– DEALS OF THE DAY –</h2>
       <!-- Hero Image Section -->
       <!-- <div class="">
         <b-img
@@ -46,24 +48,23 @@
       </b-card>
 
       <div class="text-center my-4">
-        <h2 class="text-3xl font-bold mb-4">Deals of the Day</h2>
-        <b-badge pill>
-          <h5>
-            <b-icon icon="clock" class="mr-2"></b-icon>
-            <span
-              >Ends in: {{ formatTime(hours) }}:{{ formatTime(minutes) }}:{{
-                formatTime(seconds)
-              }}</span
-            >
-          </h5>
-        </b-badge>
+        <h2 class="text-3xl font-bold mb-4">Deals of the Day Ends In</h2>
+        <flip-countdown
+          deadline="2024-12-25 06:30:00"
+          :showDays="false"
+        ></flip-countdown>
       </div>
-
-      <div class="row">
-        <div
+    </b-container>
+    <b-container>
+      <b-row>
+        <b-col
           v-for="deal in deals"
           :key="deal.id"
-          class="col-lg-4 col-md-6 mb-4"
+          cols="12"
+          sm="6"
+          md="6"
+          lg="3"
+          class="mb-4"
         >
           <b-card class="h-100 d-flex flex-column">
             <!-- Image with fixed width and height -->
@@ -75,19 +76,17 @@
               style="width: 100%; height: 200px; object-fit: cover"
             ></b-card-img>
 
-            <!-- Badge for discount -->
-
             <!-- Title of the deal -->
-            <b-card-title
-              >{{ deal.title }}
+            <b-card-title>
+              {{ deal.title }}
               <b-badge
                 variant="success"
                 class="position-absolute top-0 end-0 m-2"
                 style="font-size: 0.75rem"
               >
                 {{ deal.discount }}% OFF
-              </b-badge></b-card-title
-            >
+              </b-badge>
+            </b-card-title>
 
             <!-- Price information -->
             <div class="d-flex justify-content-between">
@@ -104,16 +103,18 @@
               >Add to Cart</b-button
             >
           </b-card>
-        </div>
-      </div>
+        </b-col>
+      </b-row>
     </b-container>
   </div>
 </template>
 
 <script>
 import { ref, computed, onMounted } from "vue";
+import FlipCountdown from "vue2-flip-countdown";
 
 export default {
+  components: { FlipCountdown },
   setup() {
     const timeLeft = ref(24 * 60 * 60); // 24 hours in seconds
 
