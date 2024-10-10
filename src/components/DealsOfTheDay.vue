@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-navbar toggleable="lg" type="dark" variant="primary" class="mb-4">
+    <b-navbar toggleable="lg" type="dark" variant="primary" class="mb-4 sticky-top">
       <b-navbar-brand href="#">PrimeBazaar</b-navbar-brand>
 
       <b-navbar-toggle target="navbar-nav" />
