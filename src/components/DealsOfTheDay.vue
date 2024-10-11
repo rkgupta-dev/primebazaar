@@ -5,7 +5,6 @@
       type="dark"
       variant="primary"
       class="mb-4 sticky-top"
-      
     >
       <b-navbar-brand href="#">PrimeBazaar</b-navbar-brand>
 
