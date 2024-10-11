@@ -4,6 +4,7 @@ import LandingPage from "./components/LandingPage.vue";
 import DealsOfTheDay from "./components/DealsOfTheDay.vue";
 import AboutPage from "./views/AboutPage.vue";
 import ContactPage from "./views/ContactPage.vue";
+import FaqPage from "./views/FaqPage.vue";
 
 Vue.use(Router);
 
@@ -29,6 +30,11 @@ export default new Router({
       path: "/contacts",
       name: "about",
       component: ContactPage,
+    },
+    {
+      path: "/faqs",
+      name: "faqs",
+      component: FaqPage,
     },
   ],
   scrollBehavior(to, from, savedPosition) {

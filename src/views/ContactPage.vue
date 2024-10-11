@@ -1,5 +1,5 @@
 <template>
-  <b-container class="mt-5">
+  <b-container class="my-4">
     <b-row>
       <b-col>
         <h1 class="text-center mb-4">Contact Us</h1>
