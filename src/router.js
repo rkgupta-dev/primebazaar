@@ -5,6 +5,7 @@ import DealsOfTheDay from "./components/DealsOfTheDay.vue";
 import AboutPage from "./views/AboutPage.vue";
 import ContactPage from "./views/ContactPage.vue";
 import FaqPage from "./views/FaqPage.vue";
+import ShippingReturns from "./views/ShippingReturns.vue";
 
 Vue.use(Router);
 
@@ -35,6 +36,11 @@ export default new Router({
       path: "/faqs",
       name: "faqs",
       component: FaqPage,
+    },
+    {
+      path: "/shipping-returns",
+      name: "shipping & returns",
+      component: ShippingReturns,
     },
   ],
   scrollBehavior(to, from, savedPosition) {

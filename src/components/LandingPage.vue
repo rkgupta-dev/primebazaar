@@ -255,7 +255,7 @@
           <h5 class="text-uppercase">Customer Service</h5>
           <ul class="list-unstyled">
             <li><b-link to="/faqs">FAQs</b-link></li>
-            <li><b-link href="#">Shipping & Returns</b-link></li>
+            <li><b-link to="/shipping-returns">Shipping & Returns</b-link></li>
             <li><b-link href="#">Privacy Policy</b-link></li>
             <li><b-link href="#">Terms & Conditions</b-link></li>
           </ul>
