@@ -21,7 +21,7 @@ export default new Router({
       component: DealsOfTheDay,
     },
     {
-      path: "/about-primebazarr",
+      path: "/about-us",
       name: "about",
       component: AboutPage,
     },
