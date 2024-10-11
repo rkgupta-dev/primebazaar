@@ -6,6 +6,7 @@ import AboutPage from "./views/AboutPage.vue";
 import ContactPage from "./views/ContactPage.vue";
 import FaqPage from "./views/FaqPage.vue";
 import ShippingReturns from "./views/ShippingReturns.vue";
+import PrivacyPolicy from "./views/Privacy-Policy.vue";
 
 Vue.use(Router);
 
@@ -41,6 +42,11 @@ export default new Router({
       path: "/shipping-returns",
       name: "shipping & returns",
       component: ShippingReturns,
+    },
+    {
+      path: "/privacy-policy",
+      name: "privacy & policy",
+      component: PrivacyPolicy,
     },
   ],
   scrollBehavior(to, from, savedPosition) {
