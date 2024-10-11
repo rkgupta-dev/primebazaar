@@ -1,9 +1,15 @@
 <template>
   <div>
-    <b-navbar toggleable="lg" type="dark" variant="primary" class="mb-4 sticky-top">
+    <b-navbar
+      toggleable="lg"
+      type="dark"
+      variant="primary"
+      class="mb-4 sticky-top"
+      
+    >
       <b-navbar-brand href="#">PrimeBazaar</b-navbar-brand>
 
-      <b-navbar-toggle target="navbar-nav"/>
+      <b-navbar-toggle target="navbar-nav" />
 
       <b-collapse id="navbar-nav" is-nav>
         <b-navbar-nav class="ml-auto">
@@ -16,7 +22,12 @@
               class="mx-2 d-none d-sm-block"
               size="sm"
             ></b-form-input>
-            <b-button size="sm" class="d-none d-sm-block" variant="outline-light">Search</b-button>
+            <b-button
+              size="sm"
+              class="d-none d-sm-block"
+              variant="outline-light"
+              >Search</b-button
+            >
           </b-form>
           <b-nav-item>
             <b-button
@@ -32,8 +43,8 @@
       </b-collapse>
     </b-navbar>
 
-        <!-- My Cart Sidebar -->
-        <b-sidebar id="sidebar-right" title="My Cart" right shadow>
+    <!-- My Cart Sidebar -->
+    <b-sidebar id="sidebar-right" title="My Cart" right shadow>
       <div class="px-3 py-2">
         <p>
           <strong>Your Cart Empty!</strong>
@@ -207,14 +218,14 @@ export default {
   data() {
     return {
       currentPlaceholderIndex: 0,
-      searchQuery: '',
+      searchQuery: "",
       placeholders: [
-        'Search products...',
-        'Search electronics...',
-        'Search fashion...',
-        'Search home & living...',
+        "Search products...",
+        "Search electronics...",
+        "Search fashion...",
+        "Search home & living...",
       ],
-      
+
       deals: [
         {
           id: 1,
@@ -275,13 +286,11 @@ export default {
   },
   created() {
     setInterval(() => {
-      this.currentPlaceholderIndex = (this.currentPlaceholderIndex + 1) % this.placeholders.length;
+      this.currentPlaceholderIndex =
+        (this.currentPlaceholderIndex + 1) % this.placeholders.length;
     }, 3000);
   },
 };
 </script>
 
-<style scoped>
-
-
-</style>
+<style scoped></style>
