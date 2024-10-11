@@ -3,7 +3,7 @@
     <b-navbar toggleable="lg" type="dark" variant="primary" class="mb-4 sticky-top">
       <b-navbar-brand href="#">PrimeBazaar</b-navbar-brand>
 
-      <b-navbar-toggle target="navbar-nav" />
+      <b-navbar-toggle target="navbar-nav"/>
 
       <b-collapse id="navbar-nav" is-nav>
         <b-navbar-nav class="ml-auto">
@@ -31,6 +31,22 @@
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
+
+        <!-- My Cart Sidebar -->
+        <b-sidebar id="sidebar-right" title="My Cart" right shadow>
+      <div class="px-3 py-2">
+        <p>
+          <strong>Your Cart Empty!</strong>
+          <br />
+          It's on Development Mode.
+        </p>
+        <b-img
+          src="https://picsum.photos/500/500/?image=54"
+          fluid
+          thumbnail
+        ></b-img>
+      </div>
+    </b-sidebar>
 
     <b-container>
       <!-- Carousel Section -->
