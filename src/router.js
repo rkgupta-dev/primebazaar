@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import LandingPage from './components/LandingPage.vue';
 import DealsOfTheDay from './components/DealsOfTheDay.vue';
 import AboutPage from './views/AboutPage.vue';
+import ContactUs from './views/ContactUs.vue';
 
 Vue.use(Router);
 
@@ -23,6 +24,11 @@ export default new Router({
       path: '/about-primebazarr',
       name: 'about',
       component: AboutPage,
+    },
+    {
+      path: '/contacts',
+      name: 'about',
+      component: ContactUs,
     },
   ],
   scrollBehavior(to, from, savedPosition) {
