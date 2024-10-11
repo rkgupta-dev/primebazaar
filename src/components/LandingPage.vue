@@ -257,7 +257,7 @@
             <li><b-link to="/faqs">FAQs</b-link></li>
             <li><b-link to="/shipping-returns">Shipping & Returns</b-link></li>
             <li><b-link to="/privacy-policy">Privacy Policy</b-link></li>
-            <li><b-link href="#">Terms & Conditions</b-link></li>
+            <li><b-link to="/terms&condition">Terms & Conditions</b-link></li>
           </ul>
         </b-col>
 

@@ -175,10 +175,10 @@
           <b-button variant="link" to="/about-us" class="text-white mr-3" href="#"
             >About Us</b-button
           >
-          <b-button variant="link" class="text-white mr-3" href="#"
+          <b-button variant="link" class="text-white mr-3" to="/privacy-policy"
             >Privacy Policy</b-button
           >
-          <b-button variant="link" class="text-white mr-3" href="#"
+          <b-button variant="link" class="text-white mr-3" to="/terms&condition"
             >Terms of Service</b-button
           >
         </div>

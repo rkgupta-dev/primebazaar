@@ -7,6 +7,7 @@ import ContactPage from "./views/ContactPage.vue";
 import FaqPage from "./views/FaqPage.vue";
 import ShippingReturns from "./views/ShippingReturns.vue";
 import PrivacyPolicy from "./views/Privacy-Policy.vue";
+import TermsCondition from "./views/TermsCondition.vue";
 
 Vue.use(Router);
 
@@ -47,6 +48,11 @@ export default new Router({
       path: "/privacy-policy",
       name: "privacy & policy",
       component: PrivacyPolicy,
+    },
+    {
+      path: "/terms&condition",
+      name: "terms & condition",
+      component: TermsCondition,
     },
   ],
   scrollBehavior(to, from, savedPosition) {
