@@ -11,6 +11,17 @@
       </b-col>
     </b-row>
 
+    <b-carousel
+      id="carousel-fade"
+      :interval="3000"
+      fade
+      class="my-4 border border-dark rounded-lg"
+    >
+      <b-carousel-slide
+        :img-src="require('@/assets/contact.png')"
+      ></b-carousel-slide>
+    </b-carousel>
+
     <!-- Contact Info Section -->
     <b-row class="mt-5">
       <b-col md="6" class="mb-4">
@@ -18,18 +29,28 @@
           <p>
             <strong>Phone:</strong> +1 (123) 456-7890 <br />
             <strong>Email:</strong> support@primebazaar.com <br />
-            <strong>Address:</strong> 123 Prime Street, City, Country
+            <strong>Address:</strong> 123 Hanumanagar Street, Bengaluru, India
           </p>
           <p>Follow us on social media for updates:</p>
-          <b-button variant="outline-primary" href="#"
+          <b-button size="sm" variant="outline-primary" href="#"
             ><i class="fab fa-facebook"></i> Facebook</b-button
           >
-          <b-button variant="outline-info" href="#" class="ml-2"
+          <b-button size="sm" variant="outline-info" href="#" class="ml-2"
             ><i class="fab fa-twitter"></i> Twitter</b-button
           >
-          <b-button variant="outline-danger" href="#" class="ml-2"
+          <b-button size="sm" variant="outline-danger" href="#" class="ml-2"
             ><i class="fab fa-instagram"></i> Instagram</b-button
           >
+          <p class="mt-4 text-muted">
+            At PrimeBazaar, we value your feedback and are always here to assist
+            you with any inquiries. Whether you have questions about our
+            products, need help with an order, or simply want to share your
+            experience, our customer service team is ready to help.
+            <br />
+            <br />
+            Feel free to get in touch, and we’ll respond as quickly as possible
+            to ensure your experience with us is seamless and enjoyable.
+          </p>
         </b-card>
       </b-col>
 
@@ -75,14 +96,14 @@
     </b-row>
 
     <!-- Map Section -->
-    <b-row class="my-5 text-center">
+    <b-row class="my-4 text-center">
       <b-col>
         <h3>Visit Us</h3>
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d497698.7749179518!2d77.30126246150182!3d12.954459536902316!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670c9b44e6d%3A0xf8dfc3e8517e4fe0!2sBengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1728632426786!5m2!1sen!2sin"
           width="100%"
           height="350"
-          style="border: 0"
+          class="border rounded"
           allowfullscreen=""
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
@@ -94,7 +115,7 @@
 
 <script>
 export default {
-  name: "ContactUsPage",
+  name: "ContactPage",
   data() {
     return {
       form: {
