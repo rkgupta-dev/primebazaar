@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import LandingPage from './components/LandingPage.vue';
 import DealsOfTheDay from './components/DealsOfTheDay.vue';
+import AboutPage from './views/AboutPage.vue';
 
 Vue.use(Router);
 
@@ -17,6 +18,11 @@ export default new Router({
       path: '/dealsoftheday',
       name: 'deals',
       component: DealsOfTheDay,
+    },
+    {
+      path: '/about-primebazarr',
+      name: 'about',
+      component: AboutPage,
     },
   ],
   scrollBehavior(to, from, savedPosition) {

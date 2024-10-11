@@ -172,7 +172,7 @@
       <div class="container text-center">
         <p>&copy; 2024 PrimeBazaar - All Rights Reserved</p>
         <div class="d-flex justify-content-center mb-3">
-          <b-button variant="link" class="text-white mr-3" href="#"
+          <b-button variant="link" to="/about-primebazarr" class="text-white mr-3" href="#"
             >About Us</b-button
           >
           <b-button variant="link" class="text-white mr-3" href="#"

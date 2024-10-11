@@ -245,7 +245,7 @@
           <ul class="list-unstyled">
             <li><b-link href="/">Home</b-link></li>
             <li><b-link href="#categories">Shop</b-link></li>
-            <li><b-link href="#">About Us</b-link></li>
+            <li><b-link to="/about-primebazarr">About Us</b-link></li>
             <li><b-link href="#">Contact</b-link></li>
           </ul>
         </b-col>
