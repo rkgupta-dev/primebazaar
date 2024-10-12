@@ -184,24 +184,28 @@ export default {
           price: 129999,
           description:
             "High-performance gaming laptop with 16GB RAM and 1TB SSD.",
+          img: "",
         },
         {
           name: "Bluetooth Speaker",
           price: 2999,
           description:
             "Portable Bluetooth speaker with deep bass and crystal-clear sound.",
+          img: "",
         },
         {
           name: "Smart Watch",
           price: 19999,
           description:
             "Water-resistant smartwatch with fitness tracking and call features.",
+          img: "",
         },
         {
           name: "Tablet 10 inch",
           price: 39999,
           description:
             "Versatile tablet with a sharp display and long battery life.",
+          img: "",
         },
       ],
       cart: [],
