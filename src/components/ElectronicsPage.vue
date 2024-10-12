@@ -43,7 +43,7 @@
             <b-card
               v-for="(cartItem, idx) in cart"
               :key="idx"
-              class="my-3 p-3 border shadow-sm"
+              class="my-3 border-secondary shadow-sm"
             >
               <!-- Row layout for Image and Details -->
               <div class="d-flex">
@@ -84,7 +84,7 @@
                       class="ml-2"
                       v-b-tooltip.hover.bottomleft="'Remove'"
                     >
-                      <b-icon icon="trash"></b-icon>
+                      Remove
                     </b-button>
                   </div>
                 </div>
