@@ -68,11 +68,19 @@
       </b-row>
 
       <!-- Electronics Items List -->
-      <b-row>
+      <b-row v-if="filteredItems.length === 0">
+        <b-col>
+          <h4>Oops! Nothing Found!</h4>
+          <p>Try searching for different keywords or check our categories!</p>
+        </b-col>
+      </b-row>
+      <b-row v-else>
         <b-col
           v-for="(item, index) in filteredItems"
           :key="index"
           md="3"
+          cols="6"
+          sm="6"
           class="my-2"
         >
           <b-card
@@ -81,7 +89,7 @@
             img-top
           >
             <b-card-text>
-              <p>
+              <p class="text-truncate">
                 <strong>{{ item.name }}</strong>
               </p>
               <p><strong>Price:</strong> ₹{{ item.price }}</p>
@@ -92,7 +100,7 @@
               @click="toggleCartItem(item)"
               size="sm"
             >
-              {{ isInCart(item) ? "Remove from Cart" : "Add to Cart" }}
+              {{ isInCart(item) ? "Remove" : "Add to Cart" }}
             </b-button>
           </b-card>
         </b-col>
