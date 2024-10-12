@@ -267,7 +267,7 @@ export default {
       this.$bvToast.toast(`${item.name} added to the cart!`, {
         title: "Item Added",
         variant: "success",
-        autoHideDelay: 3000, // Auto hide after 3 seconds
+        autoHideDelay: 2000, // Auto hide after 3 seconds
         solid: true,
         toaster: "b-toaster-bottom-center",
       });
@@ -283,7 +283,7 @@ export default {
       this.$bvToast.toast(`${item.name} removed from the cart!`, {
         title: "Item Removed",
         variant: "danger",
-        autoHideDelay: 3000, // Auto hide after 3 seconds
+        autoHideDelay: 2000, // Auto hide after 3 seconds
         solid: true,
         toaster: "b-toaster-bottom-center",
       });
