@@ -8,6 +8,7 @@ import FaqPage from "./views/FaqPage.vue";
 import ShippingReturns from "./views/ShippingReturns.vue";
 import PrivacyPolicy from "./views/Privacy-Policy.vue";
 import TermsCondition from "./views/TermsCondition.vue";
+import ElectronicsPage from "./components/ElectronicsPage.vue";
 
 Vue.use(Router);
 
@@ -23,6 +24,11 @@ export default new Router({
       path: "/dealsoftheday",
       name: "deals",
       component: DealsOfTheDay,
+    },
+    {
+      path: "/electronics",
+      name: "electronics",
+      component: ElectronicsPage,
     },
     {
       path: "/about-us",
