@@ -82,7 +82,6 @@
                       size="sm"
                       @click="removeFromCart(cartItem)"
                       class="ml-2"
-                      v-b-tooltip.hover.bottomleft="'Remove'"
                     >
                       Remove
                     </b-button>
