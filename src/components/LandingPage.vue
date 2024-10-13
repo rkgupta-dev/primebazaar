@@ -232,8 +232,8 @@
       <b-row>
         <!-- Column 1: Company Info -->
         <b-col md="3">
-          <h5 class="text-uppercase">
-            <i class="fas fa-shopping-cart text-warning"></i> PrimeBazaar
+          <h5 class="text-warning">
+            <i class="fas fa-shopping-cart text-warning"></i> PRIMEBAZAAR
           </h5>
           <p>
             Discover the Best in Electronics, Fashion, and Home Living at
