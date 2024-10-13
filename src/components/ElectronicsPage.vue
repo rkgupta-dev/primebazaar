@@ -262,6 +262,9 @@ export default {
       );
     },
   },
+  mounted() {
+    this.loadCartFromLocalStorage(); // Load the cart from localStorage when the component mounts
+  },
   methods: {
     isInCart(item) {
       return this.cart.some((cartItem) => cartItem.id === item.id);
@@ -309,9 +312,6 @@ export default {
         this.cart = JSON.parse(cartFromStorage);
       }
     },
-  },
-  mounted() {
-    this.loadCartFromLocalStorage(); // Load the cart from localStorage when the component mounts
   },
 };
 </script>
