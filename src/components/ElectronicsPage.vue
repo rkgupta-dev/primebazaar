@@ -355,7 +355,7 @@ export default {
     },
     removeFromCart(item) {
       const index = this.cart.findIndex(
-        (cartItem) => cartItem.name === item.name
+        (cartItem) => cartItem.id === item.id
       );
       if (index !== -1) {
         this.cart.splice(index, 1);
