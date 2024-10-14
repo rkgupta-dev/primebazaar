@@ -4,4 +4,5 @@ module.exports = defineConfig({
   publicPath: process.env.NODE_ENV === 'production'
     ? '/e-commerece_web/'
     : '/',
+    publicPath: '/'
 })
