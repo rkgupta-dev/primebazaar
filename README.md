@@ -1,4 +1,4 @@
-# e-commerece_web
+# primebazaar
 
 ## Project setup
 ```
