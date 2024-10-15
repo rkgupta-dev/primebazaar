@@ -53,7 +53,7 @@
               <b-button
                 variant="outline-primary"
                 size="sm"
-                v-b-toggle.sidebar-right
+                @click="$bvModal.show('bv-modal-example')"
               >
                 <i class="fas fa-shopping-cart d-none d-md-inline"></i>
                 <span class="d-inline d-md-none">Shopping cart</span>
@@ -65,20 +65,82 @@
     </b-navbar>
 
     <!-- My Cart Sidebar -->
-    <b-sidebar id="sidebar-right" title="My Cart" right shadow>
-      <div class="px-3 py-2">
-        <p>
-          <strong>Your Cart Empty!</strong>
-          <br />
-          It's on Development Mode.
+    <b-modal
+      id="bv-modal-example"
+      scrollable
+      hide-footer
+      title-class="font-weight-bold"
+    >
+      <template #modal-title>
+        My <code>Cart</code> | ({{ cart.length }}) Items
+      </template>
+      <!-- Cart Items List -->
+      <div>
+        <div v-if="cart.length">
+          <!-- Iterate through cart items -->
+          <b-card
+            v-for="(cartItem, idx) in cart"
+            :key="idx"
+            class="my-3 border-secondary shadow-sm"
+          >
+            <!-- Row layout for Image and Details -->
+            <div class="d-flex">
+              <!-- Product Image -->
+              <b-img
+                :src="cartItem.img"
+                alt="Product image"
+                fluid
+                class="cart-item-image mr-3"
+              ></b-img>
+
+              <!-- Product Details -->
+              <div class="cart-item-details">
+                <!-- Product Name -->
+                <h5 class="mb-2">{{ cartItem.name }}</h5>
+
+                <!-- Product Price -->
+                <h6 class="text-danger font-weight-bold">
+                  ₹{{ cartItem.price }}
+                </h6>
+
+                <!-- Quantity control -->
+                <div class="d-flex align-items-center my-2">
+                  <label class="mr-2">Qty:</label>
+                  <b-form-spinbutton
+                    :id="'sb-inline-' + idx"
+                    v-model="cartItem.quantity"
+                    inline
+                    min="1"
+                    max="100"
+                    size="sm"
+                    @change="updateCartQuantity(cartItem, cartItem.quantity)"
+                  ></b-form-spinbutton>
+
+                  <!-- Remove Button -->
+                  <b-button
+                    variant="outline-danger"
+                    size="sm"
+                    @click="removeFromCart(cartItem)"
+                    class="ml-1"
+                    v-b-tooltip.hover.bottomleft="'Remove'"
+                  >
+                  <b-icon icon="trash"></b-icon>
+                  </b-button>
+                </div>
+              </div>
+            </div>
+          </b-card>
+        </div>
+
+        <!-- No Items Message -->
+        <p v-else class="text-center text-muted mt-3">
+          Bhaiya please shopping kar ligiye na, garib company hai.
         </p>
-        <b-img
-          src="https://picsum.photos/500/500/?image=54"
-          fluid
-          thumbnail
-        ></b-img>
       </div>
-    </b-sidebar>
+
+      <!-- Checkout Button -->
+      <b-button class="mt-4" block @click="checkout">Check Out</b-button>
+    </b-modal>
 
     <!-- User Login or Register -->
     <b-modal v-model="showModal" title="User Account" hide-footer>
@@ -221,7 +283,9 @@
               {{ product.description }} <br />
               <strong>\${{ product.price }}</strong>
             </b-card-text>
-            <b-button variant="success">Add to Cart</b-button>
+            <b-button variant="success" @click="addToCart(product)"
+              >Add to Cart</b-button
+            >
           </b-card>
         </b-col>
       </b-row>
@@ -319,6 +383,7 @@ export default {
 
   data() {
     return {
+      cart: [],
       email: "",
       showModal: false,
       loginForm: {
@@ -394,6 +459,9 @@ export default {
         (this.currentPlaceholderIndex + 1) % this.placeholders.length;
     }, 3000);
   },
+  mounted() {
+    this.loadCartFromLocalStorage(); // Load the cart from localStorage when the component mounts
+  },
   methods: {
     subscribe() {
       this.$bvToast.toast(`Thank you for subscribing with ${this.email}!`, {
@@ -423,6 +491,65 @@ export default {
       console.log("Register form submitted:", this.registerForm);
       this.showModal = false;
     },
+    saveCartToLocalStorage() {
+      localStorage.setItem("cart", JSON.stringify(this.cart));
+    },
+    loadCartFromLocalStorage() {
+      const cartFromStorage = localStorage.getItem("cart");
+
+      // Ensure the parsed cart is an array
+      if (cartFromStorage && Array.isArray(JSON.parse(cartFromStorage))) {
+        this.cart = JSON.parse(cartFromStorage);
+      } else {
+        this.cart = []; // Default to an empty array if nothing is found or invalid data
+      }
+    },
+    removeFromCart(cartItem) {
+      // Filter out the item to be removed
+      this.cart = this.cart.filter((item) => item !== cartItem);
+
+      // Update localStorage after removal
+      localStorage.setItem("cart", JSON.stringify(this.cart));
+    },
+    addToCart(product) {
+      const existingProduct = this.cart.find((item) => item.id === product.id);
+
+      if (existingProduct) {
+        existingProduct.quantity += 1; // Increase quantity if the product is already in the cart
+      } else {
+        // Add new product to the cart
+        this.cart.push({
+          ...product,
+          quantity: 1, // Default quantity is 1 when adding a new product
+          img: "path/to/default/image.jpg", // Add a default image path, replace with actual if available
+        });
+      }
+
+      // Update localStorage
+      localStorage.setItem("cart", JSON.stringify(this.cart));
+      this.$bvToast.toast(`${product.name} added to the cart!`, {
+        title: "Item Added",
+        variant: "success",
+        autoHideDelay: 2000, // Auto hide after 2 seconds
+        solid: true,
+        toaster: "b-toaster-bottom-center",
+      });
+    },
+    updateCartQuantity(item, quantity) {
+      const cartItem = this.cart.find((cartItem) => cartItem.id === item.id);
+
+      if (cartItem && quantity > 0) {
+        cartItem.quantity = quantity; // Update the quantity
+        this.saveCartToLocalStorage();
+        this.$bvToast.toast(`${item.name} quantity updated!`, {
+          title: "Quantity Updated",
+          variant: "info",
+          autoHideDelay: 2000,
+          solid: true,
+          toaster: "b-toaster-bottom-center",
+        });
+      }
+    },
   },
 };
 </script>
@@ -436,5 +563,10 @@ export default {
 .navbar {
   background-color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.cart-item-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
 }
 </style>

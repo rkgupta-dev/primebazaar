@@ -31,7 +31,12 @@
     <!--Modal of Cart Section -->
     <div>
       <!-- Cart Modal -->
-      <b-modal id="bv-modal-example" hide-footer title-class="font-weight-bold">
+      <b-modal
+        id="bv-modal-example"
+        scrollable
+        hide-footer
+        title-class="font-weight-bold"
+      >
         <template #modal-title>
           My <code>Cart</code> | ({{ cart.length }}) Items
         </template>
@@ -75,15 +80,17 @@
                       min="1"
                       max="100"
                       size="sm"
+                      @change="updateCartQuantity(cartItem, cartItem.quantity)"
                     ></b-form-spinbutton>
                     <!-- Remove Button -->
                     <b-button
                       variant="outline-danger"
                       size="sm"
                       @click="removeFromCart(cartItem)"
-                      class="ml-2"
+                      class="ml-1"
+                      v-b-tooltip.hover.bottomleft="'Remove'"
                     >
-                      Remove
+                    <b-icon icon="trash"></b-icon>
                     </b-button>
                   </div>
                 </div>
@@ -352,11 +359,37 @@ export default {
         solid: true,
         toaster: "b-toaster-bottom-center",
       });
+
+      const existingProduct = this.cart.find((item) => item.id === item.id);
+
+      if (existingProduct) {
+        existingProduct.quantity += 1; // Increase quantity if the product is already in the cart
+      } else {
+        // Add new product to the cart
+        this.cart.push({
+          ...item,
+          quantity: 1, // Default quantity is 1 when adding a new product
+          img: "path/to/default/image.jpg", // Add a default image path, replace with actual if available
+        });
+      }
+    },
+    updateCartQuantity(item, quantity) {
+      const cartItem = this.cart.find((cartItem) => cartItem.id === item.id);
+
+      if (cartItem && quantity > 0) {
+        cartItem.quantity = quantity; // Update the quantity
+        this.saveCartToLocalStorage();
+        this.$bvToast.toast(`${item.name} quantity updated!`, {
+          title: "Quantity Updated",
+          variant: "info",
+          autoHideDelay: 2000,
+          solid: true,
+          toaster: "b-toaster-bottom-center",
+        });
+      }
     },
     removeFromCart(item) {
-      const index = this.cart.findIndex(
-        (cartItem) => cartItem.id === item.id
-      );
+      const index = this.cart.findIndex((cartItem) => cartItem.id === item.id);
       if (index !== -1) {
         this.cart.splice(index, 1);
         this.saveCartToLocalStorage();
