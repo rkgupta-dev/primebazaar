@@ -55,7 +55,7 @@
                 size="sm"
                 @click="$bvModal.show('bv-modal-example')"
               >
-                <i class="fas fa-shopping-cart d-none d-md-inline"></i>
+                <i class="fas fa-shopping-cart d-none d-md-inline"></i> ({{ cart.length }}) 
                 <span class="d-inline d-md-none">Shopping cart</span>
               </b-button>
             </b-nav-item>
