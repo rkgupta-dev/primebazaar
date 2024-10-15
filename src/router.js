@@ -9,6 +9,7 @@ import ShippingReturns from "./views/ShippingReturns.vue";
 import PrivacyPolicy from "./views/Privacy-Policy.vue";
 import TermsCondition from "./views/TermsCondition.vue";
 import ElectronicsPage from "./components/ElectronicsPage.vue";
+import CheckOut from "./components/CheckOut.vue";
 
 Vue.use(Router);
 
@@ -29,6 +30,11 @@ export default new Router({
       path: "/electronics",
       name: "electronics",
       component: ElectronicsPage,
+    },
+    {
+      path: "/checkout",
+      name: "checkout",
+      component: CheckOut,
     },
     {
       path: "/about-us",

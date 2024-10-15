@@ -105,7 +105,7 @@
         </div>
 
         <!-- Checkout Button -->
-        <b-button class="mt-4" block>Check Out</b-button>
+        <b-button class="mt-4" @click="checkoutFn()" block>Check Out</b-button>
       </b-modal>
     </div>
 
@@ -423,6 +423,9 @@ export default {
       if (cartFromStorage) {
         this.cart = JSON.parse(cartFromStorage);
       }
+    },
+    checkoutFn() {
+      this.$router.push("/checkout");
     },
   },
 };

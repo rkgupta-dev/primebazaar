@@ -139,7 +139,7 @@
       </div>
 
       <!-- Checkout Button -->
-      <b-button class="mt-4" block @click="checkout">Check Out</b-button>
+      <b-button class="mt-4" block @click="checkoutFn()">Check Out</b-button>
     </b-modal>
 
     <!-- User Login or Register -->
@@ -549,6 +549,9 @@ export default {
           toaster: "b-toaster-bottom-center",
         });
       }
+    },
+    checkoutFn() {
+      this.$router.push("/checkout");
     },
   },
 };
