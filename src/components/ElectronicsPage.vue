@@ -90,7 +90,7 @@
                       class="ml-1"
                       v-b-tooltip.hover.bottomleft="'Remove'"
                     >
-                    <b-icon icon="trash"></b-icon>
+                      <b-icon icon="trash"></b-icon>
                     </b-button>
                   </div>
                 </div>
@@ -360,25 +360,38 @@ export default {
         toaster: "b-toaster-bottom-center",
       });
 
-      const existingProduct = this.cart.find((item) => item.id === item.id);
+      const existingProduct = this.cart.find(
+        (cartItem) => cartItem.id === item.id
+      );
 
       if (existingProduct) {
-        existingProduct.quantity += 1; // Increase quantity if the product is already in the cart
+        existingProduct.quantity += 0; // Increase quantity if the product is already in the cart
       } else {
-        // Add new product to the cart
+        // Add new product to the cart with default quantity 1
         this.cart.push({
           ...item,
-          quantity: 1, // Default quantity is 1 when adding a new product
-          img: "path/to/default/image.jpg", // Add a default image path, replace with actual if available
+          quantity: 1,
+          img: item.img || "path/to/default/image.jpg", // Use item's img or default image
+        });
+        this.$bvToast.toast(`${item.name} added to the cart!`, {
+          title: "Item Added",
+          variant: "success",
+          autoHideDelay: 2000,
+          solid: true,
+          toaster: "b-toaster-bottom-center",
         });
       }
+
+      this.saveCartToLocalStorage();
     },
     updateCartQuantity(item, quantity) {
+      // Correct comparison: Find the cart item by comparing the ids
       const cartItem = this.cart.find((cartItem) => cartItem.id === item.id);
 
       if (cartItem && quantity > 0) {
         cartItem.quantity = quantity; // Update the quantity
-        this.saveCartToLocalStorage();
+        this.saveCartToLocalStorage(); // Save updated cart to localStorage
+
         this.$bvToast.toast(`${item.name} quantity updated!`, {
           title: "Quantity Updated",
           variant: "info",
