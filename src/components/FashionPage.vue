@@ -318,7 +318,7 @@ export default {
           id: "f10",
           quantity: 1,
           name: "Athletic Socks",
-          price: 199,
+          price: 99,
           discount: 10,
           rating: 4,
           description:
