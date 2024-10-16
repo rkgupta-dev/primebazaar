@@ -10,6 +10,7 @@ import PrivacyPolicy from "./views/Privacy-Policy.vue";
 import TermsCondition from "./views/TermsCondition.vue";
 import ElectronicsPage from "./components/ElectronicsPage.vue";
 import CheckOut from "./components/CheckOut.vue";
+import FashionPage from "./components/FashionPage.vue";
 
 Vue.use(Router);
 
@@ -30,6 +31,11 @@ export default new Router({
       path: "/electronics",
       name: "electronics",
       component: ElectronicsPage,
+    },
+    {
+      path: "/fashions",
+      name: "fashions",
+      component: FashionPage,
     },
     {
       path: "/checkout",
