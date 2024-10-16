@@ -55,7 +55,9 @@
                 size="sm"
                 @click="$bvModal.show('bv-modal-example')"
               >
-                <i class="fas fa-shopping-cart d-none d-md-inline"></i> ({{ cart.length }}) 
+                <i class="fas fa-shopping-cart d-none d-md-inline"></i> ({{
+                  cart.length
+                }})
                 <span class="d-inline d-md-none">Shopping cart</span>
               </b-button>
             </b-nav-item>
@@ -64,48 +66,61 @@
       </b-container>
     </b-navbar>
 
-    <!-- My Cart Sidebar -->
+    <!-- My Cart Modal -->
     <b-modal
       id="bv-modal-example"
       scrollable
       hide-footer
-      title-class="font-weight-bold"
+      title-class="font-weight-bold text-center"
+      class="custom-modal"
     >
+      <!-- Custom Modal Title -->
       <template #modal-title>
-        My <code>Cart</code> | ({{ cart.length }}) Items
+        <h4 class="text-dark mb-0">
+          My <code>Cart</code> | ({{ cart.length }}) Items
+        </h4>
       </template>
+
       <!-- Cart Items List -->
-      <div>
+      <div class="cart-items-list">
+        <!-- Display Cart Items if available -->
         <div v-if="cart.length">
           <!-- Iterate through cart items -->
           <b-card
             v-for="(cartItem, idx) in cart"
             :key="idx"
-            class="my-3 border-secondary shadow-sm"
+            class="my-3 shadow-sm rounded-lg cart-item-card border-dark"
           >
             <!-- Row layout for Image and Details -->
-            <div class="d-flex">
+            <div class="d-flex align-items-start">
               <!-- Product Image -->
               <b-img
                 :src="cartItem.img"
                 alt="Product image"
                 fluid
-                class="cart-item-image mr-3"
+                class="cart-item-image rounded"
               ></b-img>
 
               <!-- Product Details -->
-              <div class="cart-item-details">
+              <div class="cart-item-details ml-3">
                 <!-- Product Name -->
-                <h5 class="mb-2">{{ cartItem.name }}</h5>
+                <h5 class="mb-1 text-dark font-weight-bold">
+                  {{ cartItem.name }}
+                </h5>
 
-                <!-- Product Price -->
-                <h6 class="text-danger font-weight-bold">
-                  ₹{{ cartItem.price }}
-                </h6>
+                <!-- Product Price and Discount -->
+                <p class="mb-2">
+                  <span class="text-danger font-weight-bold h6"
+                    >₹{{ cartItem.price }}</span
+                  >
+                  <b-badge variant="success" class="ml-2"
+                    >{{ cartItem.discount }}% off</b-badge
+                  >
+                </p>
 
                 <!-- Quantity control -->
                 <div class="d-flex align-items-center my-2">
-                  <label class="mr-2">Qty:</label>
+                  <label class="mr-2 font-weight-bold">Qty:</label>
                   <b-form-spinbutton
                     :id="'sb-inline-' + idx"
                     v-model="cartItem.quantity"
@@ -113,6 +128,7 @@
                     min="1"
                     max="100"
                     size="sm"
+                    class="quantity-spinner"
                     @change="updateCartQuantity(cartItem, cartItem.quantity)"
                   ></b-form-spinbutton>
 
@@ -121,10 +137,10 @@
                     variant="outline-danger"
                     size="sm"
                     @click="removeFromCart(cartItem)"
-                    class="ml-1"
-                    v-b-tooltip.hover.bottomleft="'Remove'"
+                    class="ml-2 remove-btn"
+                    v-b-tooltip.hover.bottom="'Remove item'"
                   >
-                  <b-icon icon="trash"></b-icon>
+                    <b-icon icon="trash"></b-icon>
                   </b-button>
                 </div>
               </div>
@@ -133,13 +149,20 @@
         </div>
 
         <!-- No Items Message -->
-        <p v-else class="text-center text-muted mt-3">
+        <p v-else class="text-center text-muted mt-3 no-items-message">
           Bhaiya please shopping kar ligiye na, garib company hai.
         </p>
       </div>
 
       <!-- Checkout Button -->
-      <b-button class="mt-4" block @click="checkoutFn()">Check Out</b-button>
+      <b-button
+        variant="success"
+        class="mt-4 checkout-btn"
+        @click="checkoutFn()"
+        block
+      >
+        Check Out
+      </b-button>
     </b-modal>
 
     <!-- User Login or Register -->

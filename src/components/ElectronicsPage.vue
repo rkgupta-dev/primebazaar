@@ -35,44 +35,56 @@
         id="bv-modal-example"
         scrollable
         hide-footer
-        title-class="font-weight-bold"
+        title-class="font-weight-bold text-center"
+        class="custom-modal"
       >
+        <!-- Custom Modal Title -->
         <template #modal-title>
-          My <code>Cart</code> | ({{ cart.length }}) Items
+          <h4 class="text-dark mb-0">
+            My <code>Cart</code> | ({{ cart.length }}) Items
+          </h4>
         </template>
 
         <!-- Cart Items List -->
-        <div>
+        <div class="cart-items-list">
+          <!-- Display Cart Items if available -->
           <div v-if="cart.length">
             <!-- Iterate through cart items -->
             <b-card
               v-for="(cartItem, idx) in cart"
               :key="idx"
-              class="my-3 border-secondary shadow-sm"
+              class="my-3 shadow-sm rounded-lg cart-item-card border-dark"
             >
               <!-- Row layout for Image and Details -->
-              <div class="d-flex">
+              <div class="d-flex align-items-start">
                 <!-- Product Image -->
                 <b-img
                   :src="cartItem.img"
                   alt="Product image"
                   fluid
-                  class="cart-item-image mr-3"
+                  class="cart-item-image rounded"
                 ></b-img>
 
                 <!-- Product Details -->
-                <div class="cart-item-details">
+                <div class="cart-item-details ml-3">
                   <!-- Product Name -->
-                  <h5 class="mb-2">{{ cartItem.name }}</h5>
+                  <h5 class="mb-1 text-dark font-weight-bold">
+                    {{ cartItem.name }}
+                  </h5>
 
-                  <!-- Product Price -->
-                  <h6 class="text-danger font-weight-bold">
-                    ₹{{ cartItem.price }}
-                  </h6>
+                  <!-- Product Price and Discount -->
+                  <p class="mb-2">
+                    <span class="text-danger font-weight-bold h6"
+                      >₹{{ cartItem.price }}</span
+                    >
+                    <b-badge variant="success" class="ml-2"
+                      >{{ cartItem.discount }}% off</b-badge
+                    >
+                  </p>
 
                   <!-- Quantity control -->
                   <div class="d-flex align-items-center my-2">
-                    <label class="mr-2">Qty:</label>
+                    <label class="mr-2 font-weight-bold">Qty:</label>
                     <b-form-spinbutton
                       :id="'sb-inline-' + idx"
                       v-model="cartItem.quantity"
@@ -80,15 +92,17 @@
                       min="1"
                       max="100"
                       size="sm"
+                      class="quantity-spinner"
                       @change="updateCartQuantity(cartItem, cartItem.quantity)"
                     ></b-form-spinbutton>
+
                     <!-- Remove Button -->
                     <b-button
                       variant="outline-danger"
                       size="sm"
                       @click="removeFromCart(cartItem)"
-                      class="ml-1"
-                      v-b-tooltip.hover.bottomleft="'Remove'"
+                      class="ml-2 remove-btn"
+                      v-b-tooltip.hover.bottom="'Remove item'"
                     >
                       <b-icon icon="trash"></b-icon>
                     </b-button>
@@ -99,13 +113,20 @@
           </div>
 
           <!-- No Items Message -->
-          <p v-else class="text-center text-muted mt-3">
+          <p v-else class="text-center text-muted mt-3 no-items-message">
             Bhaiya please shopping kar ligiye na, garib company hai.
           </p>
         </div>
 
         <!-- Checkout Button -->
-        <b-button class="mt-4" @click="checkoutFn()" block>Check Out</b-button>
+        <b-button
+          variant="success"
+          class="mt-4 checkout-btn"
+          @click="checkoutFn()"
+          block
+        >
+          Check Out
+        </b-button>
       </b-modal>
     </div>
 
@@ -142,36 +163,43 @@
             :img-src="item.img"
             img-alt="Item image"
             img-top
-            class="custom-card"
+            class="custom-card shadow-sm"
           >
             <b-card-text>
-              <p class="text-truncate">
-                <strong>{{ item.name }}</strong>
+              <p class="text-truncate mb-1">
+                <strong class="text-dark">{{ item.name }}</strong>
               </p>
-              <p>
-                <strong>₹{{ item.price }}</strong>
-                <b-badge class="ml-2" variant="success">
-                  {{ item.discount }} % off</b-badge
-                >
+              <p class="d-flex align-items-center">
+                <strong class="text-primary h5">₹{{ item.price }}</strong>
+                <b-badge class="ml-2 py-1 px-2" variant="success" pill>
+                  {{ item.discount }}% off
+                </b-badge>
               </p>
-              <p class="text-truncate">{{ item.description }}</p>
+              <p class="text-muted text-truncate">{{ item.description }}</p>
 
-              <!-- rating of product -->
-              <div class="rating">
+              <!-- Rating of product -->
+              <div class="rating d-flex mb-2">
                 <span
-                  v-for="rating in item.rating"
-                  :key="rating"
-                  class="star text-warning"
-                  :class="{ filled: star <= item.rating }"
+                  v-for="star in 5"
+                  :key="star"
+                  class="star"
+                  :class="{
+                    'text-warning': star <= item.rating,
+                    'text-secondary': star > item.rating,
+                  }"
                 >
                   ★
                 </span>
+                <small class="ml-2 text-muted">{{ item.rating }} / 5</small>
               </div>
             </b-card-text>
+
             <b-button
-              :variant="isInCart(item) ? 'danger' : 'primary'"
+              :variant="isInCart(item) ? 'outline-danger' : 'outline-primary'"
               @click="toggleCartItem(item)"
               size="sm"
+              block
+              class=""
             >
               {{ isInCart(item) ? "Remove" : "Add to Cart" }}
             </b-button>
