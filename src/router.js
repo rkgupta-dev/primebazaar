@@ -11,6 +11,7 @@ import TermsCondition from "./views/TermsCondition.vue";
 import ElectronicsPage from "./components/ElectronicsPage.vue";
 import CheckOut from "./components/CheckOut.vue";
 import FashionPage from "./components/FashionPage.vue";
+import HomeLivingPage from "./components/HomeLivingPage.vue";
 
 Vue.use(Router);
 
@@ -36,6 +37,11 @@ export default new Router({
       path: "/fashions",
       name: "fashions",
       component: FashionPage,
+    },
+    {
+      path: "/home&living",
+      name: "home&living",
+      component: HomeLivingPage,
     },
     {
       path: "/checkout",

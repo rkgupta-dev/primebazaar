@@ -16,7 +16,7 @@
             <b-nav-item-dropdown href="#categories" text="Categories" right>
               <b-dropdown-item to="/electronics">Electronics</b-dropdown-item>
               <b-dropdown-item to="/fashions">Fashion</b-dropdown-item>
-              <b-dropdown-item href="#">Home & Living</b-dropdown-item>
+              <b-dropdown-item to="/home&living">Home & Living</b-dropdown-item>
             </b-nav-item-dropdown>
 
             <b-nav-item to="/dealsoftheday">Deals</b-nav-item>
@@ -456,6 +456,7 @@ export default {
           name: "Home & Living",
           description: "Essentials for your home",
           img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTglY1QOmC3t0sKC0zyMoITKaZ1qsPKknMu4w&s",
+          link: "/home&living",
         },
       ],
       products: [
