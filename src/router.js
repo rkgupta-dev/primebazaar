@@ -12,6 +12,7 @@ import ElectronicsPage from "./components/ElectronicsPage.vue";
 import CheckOut from "./components/CheckOut.vue";
 import FashionPage from "./components/FashionPage.vue";
 import HomeLivingPage from "./components/HomeLivingPage.vue";
+import AdminPage from "./components/AdminPage.vue";
 
 Vue.use(Router);
 
@@ -47,6 +48,11 @@ export default new Router({
       path: "/checkout",
       name: "checkout",
       component: CheckOut,
+    },
+    {
+      path: "/admin",
+      name: "admin",
+      component: AdminPage,
     },
     {
       path: "/about-us",
