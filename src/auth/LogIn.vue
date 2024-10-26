@@ -1,54 +1,30 @@
 <template>
-  <div
-    class="signup-container d-flex justify-content-center align-items-center"
-  >
+  <div class="login-container d-flex justify-content-center align-items-center">
     <b-card
-      title="Sign Up for PrimeBazaar"
+      title="Login to PrimeBazaar"
       bg-variant="light"
       border-variant="info"
       class="my-5 shadow-sm w-25"
     >
-      <b-form @submit.prevent="handleSubmit">
-        <!-- Name Input -->
-        <b-form-group label="Full Name" label-for="input-name" class="mt-4">
-          <b-form-input
-            id="input-name"
-            v-model="formData.name"
-            placeholder="Enter your name"
-            required
-          ></b-form-input>
-        </b-form-group>
-
-        <!-- Email Input -->
-        <b-form-group label="Email Address" label-for="input-email">
-          <b-form-input
-            id="input-email"
-            type="email"
-            v-model="formData.email"
-            placeholder="Enter your email"
-            required
-          ></b-form-input>
-        </b-form-group>
-
+      <b-form @submit.prevent="handleLogin">
         <!-- Phone Number Input -->
         <b-form-group label="Phone Number" label-for="input-phone">
           <b-form-input
             id="input-phone"
             type="tel"
-            v-model="formData.phone"
+            v-model="loginData.phone"
             placeholder="Enter your phone number"
             required
           ></b-form-input>
         </b-form-group>
 
-        <!-- Password Input -->
         <!-- Password Input with Icon Toggle -->
         <b-form-group label="Password" label-for="input-password">
           <div class="input-group">
             <b-form-input
               :type="passwordFieldType"
               id="input-password"
-              v-model="formData.password"
+              v-model="loginData.password"
               placeholder="Enter your password"
               required
             ></b-form-input>
@@ -71,12 +47,12 @@
         </b-form-group>
 
         <!-- Submit Button -->
-        <b-button type="submit" variant="primary" block>Sign Up</b-button>
+        <b-button type="submit" variant="primary" block>Login</b-button>
       </b-form>
 
-      <!-- Login Link -->
+      <!-- Sign Up Link -->
       <p class="mt-3 text-center">
-        Already have an account? <b-link to="/login">Log In</b-link>
+        Don't have an account? <b-link href="/signup">Sign Up</b-link>
       </p>
     </b-card>
   </div>
@@ -86,9 +62,7 @@
 export default {
   data() {
     return {
-      formData: {
-        name: "",
-        email: "",
+      loginData: {
         phone: "",
         password: "",
       },
@@ -96,10 +70,9 @@ export default {
     };
   },
   methods: {
-    handleSubmit() {
-      // Perform sign-up logic (API call, etc.)
-      alert("Sign-up successful!");
-      this.$router.push('/login');
+    handleLogin() {
+      // Perform login logic (API call, etc.)
+      alert("Login successful!");
     },
     togglePasswordVisibility() {
       this.passwordFieldType =
@@ -110,7 +83,7 @@ export default {
 </script>
 
 <style scoped>
-.signup-container {
+.login-container {
   min-height: 100vh;
   background-color: #f5f5f5;
 }

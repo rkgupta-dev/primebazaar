@@ -14,6 +14,7 @@ import FashionPage from "./components/FashionPage.vue";
 import HomeLivingPage from "./components/HomeLivingPage.vue";
 import AdminPage from "./components/AdminPage.vue";
 import SignUp from "./auth/SignUp.vue";
+import LogIn from "./auth/LogIn.vue";
 
 Vue.use(Router);
 
@@ -59,6 +60,11 @@ export default new Router({
       path: "/signup",
       name: "signup",
       component: SignUp,
+    },
+    {
+      path: "/login",
+      name: "login",
+      component: LogIn,
     },
     {
       path: "/about-us",
