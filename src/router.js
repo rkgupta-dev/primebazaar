@@ -13,6 +13,7 @@ import CheckOut from "./components/CheckOut.vue";
 import FashionPage from "./components/FashionPage.vue";
 import HomeLivingPage from "./components/HomeLivingPage.vue";
 import AdminPage from "./components/AdminPage.vue";
+import SignUp from "./auth/SignUp.vue";
 
 Vue.use(Router);
 
@@ -53,6 +54,11 @@ export default new Router({
       path: "/admin",
       name: "admin",
       component: AdminPage,
+    },
+    {
+      path: "/signup",
+      name: "signup",
+      component: SignUp,
     },
     {
       path: "/about-us",
