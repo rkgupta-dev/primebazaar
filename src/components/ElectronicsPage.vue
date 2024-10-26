@@ -14,11 +14,7 @@
           <!-- Right aligned nav items -->
           <b-navbar-nav class="ml-auto">
             <b-nav-item>
-              <b-button
-                variant="outline-light"
-                size="sm"
-                @click="$bvModal.show('bv-modal-example')"
-              >
+              <b-button variant="outline-light" size="sm" @click="$bvModal.show('bv-modal-example')">
                 <i class="fas fa-shopping-cart d-none d-md-inline"></i>
                 <span class=""> My Cart ({{ cart.length }})</span>
               </b-button>
@@ -31,13 +27,8 @@
     <!--Modal of Cart Section -->
     <div>
       <!-- Cart Modal -->
-      <b-modal
-        id="bv-modal-example"
-        scrollable
-        hide-footer
-        title-class="font-weight-bold text-center"
-        class="custom-modal"
-      >
+      <b-modal id="bv-modal-example" scrollable hide-footer title-class="font-weight-bold text-center"
+        class="custom-modal">
         <!-- Custom Modal Title -->
         <template #modal-title>
           <h4 class="text-dark mb-0">
@@ -50,20 +41,12 @@
           <!-- Display Cart Items if available -->
           <div v-if="cart.length">
             <!-- Iterate through cart items -->
-            <b-card
-              v-for="(cartItem, idx) in cart"
-              :key="idx"
-              class="my-3 shadow-sm rounded-lg cart-item-card border-dark"
-            >
+            <b-card v-for="(cartItem, idx) in cart" :key="idx"
+              class="my-3 shadow-sm rounded-lg cart-item-card border-dark">
               <!-- Row layout for Image and Details -->
               <div class="d-flex align-items-start">
                 <!-- Product Image -->
-                <b-img
-                  :src="cartItem.img"
-                  alt="Product image"
-                  fluid
-                  class="cart-item-image rounded"
-                ></b-img>
+                <b-img :src="cartItem.img" alt="Product image" fluid class="cart-item-image rounded"></b-img>
 
                 <!-- Product Details -->
                 <div class="cart-item-details ml-3">
@@ -74,36 +57,20 @@
 
                   <!-- Product Price and Discount -->
                   <p class="mb-2">
-                    <span class="text-danger font-weight-bold h6"
-                      >₹{{ cartItem.price }}</span
-                    >
-                    <b-badge variant="success" class="ml-2"
-                      >{{ cartItem.discount }}% off</b-badge
-                    >
+                    <span class="text-danger font-weight-bold h6">₹{{ cartItem.price }}</span>
+                    <b-badge variant="success" class="ml-2">{{ cartItem.discount }}% off</b-badge>
                   </p>
 
                   <!-- Quantity control -->
                   <div class="d-flex align-items-center my-2">
                     <label class="mr-2 font-weight-bold">Qty:</label>
-                    <b-form-spinbutton
-                      :id="'sb-inline-' + idx"
-                      v-model="cartItem.quantity"
-                      inline
-                      min="1"
-                      max="100"
-                      size="sm"
-                      class="quantity-spinner"
-                      @change="updateCartQuantity(cartItem, cartItem.quantity)"
-                    ></b-form-spinbutton>
+                    <b-form-spinbutton :id="'sb-inline-' + idx" v-model="cartItem.quantity" inline min="1" max="100"
+                      size="sm" class="quantity-spinner"
+                      @change="updateCartQuantity(cartItem, cartItem.quantity)"></b-form-spinbutton>
 
                     <!-- Remove Button -->
-                    <b-button
-                      variant="outline-danger"
-                      size="sm"
-                      @click="removeFromCart(cartItem)"
-                      class="ml-2 remove-btn"
-                      v-b-tooltip.hover.bottom="'Remove item'"
-                    >
+                    <b-button variant="outline-danger" size="sm" @click="removeFromCart(cartItem)"
+                      class="ml-2 remove-btn" v-b-tooltip.hover.bottom="'Remove item'">
                       <b-icon icon="trash"></b-icon>
                     </b-button>
                   </div>
@@ -119,12 +86,7 @@
         </div>
 
         <!-- Checkout Button -->
-        <b-button
-          variant="success"
-          class="mt-4 checkout-btn"
-          @click="checkoutFn()"
-          block
-        >
+        <b-button variant="success" class="mt-4 checkout-btn" @click="checkoutFn()" block>
           Check Out
         </b-button>
       </b-modal>
@@ -135,11 +97,7 @@
       <!-- Search Function -->
       <b-row>
         <b-col>
-          <b-form-input
-            v-model="searchQuery"
-            placeholder="Search for electronics..."
-            class="my-4"
-          />
+          <b-form-input v-model="searchQuery" placeholder="Search for electronics..." class="my-4" />
         </b-col>
       </b-row>
 
@@ -151,20 +109,8 @@
         </b-col>
       </b-row>
       <b-row v-else>
-        <b-col
-          v-for="(item, index) in filteredItems"
-          :key="index"
-          md="3"
-          cols="6"
-          sm="6"
-          class="my-2"
-        >
-          <b-card
-            :img-src="item.img"
-            img-alt="Item image"
-            img-top
-            class="custom-card shadow-sm"
-          >
+        <b-col v-for="(item, index) in filteredItems" :key="index" md="3" cols="6" sm="6" class="my-2">
+          <b-card :img-src="item.img" img-alt="Item image" img-top class="custom-card shadow-sm">
             <b-card-text>
               <p class="text-truncate mb-1">
                 <strong class="text-dark">{{ item.name }}</strong>
@@ -179,28 +125,18 @@
 
               <!-- Rating of product -->
               <div class="rating d-flex mb-2">
-                <span
-                  v-for="star in 5"
-                  :key="star"
-                  class="star"
-                  :class="{
-                    'text-warning': star <= item.rating,
-                    'text-secondary': star > item.rating,
-                  }"
-                >
+                <span v-for="star in 5" :key="star" class="star" :class="{
+                  'text-warning': star <= item.rating,
+                  'text-secondary': star > item.rating,
+                }">
                   ★
                 </span>
                 <small class="ml-2 text-muted">{{ item.rating }} / 5</small>
               </div>
             </b-card-text>
 
-            <b-button
-              :variant="isInCart(item) ? 'outline-danger' : 'outline-primary'"
-              @click="toggleCartItem(item)"
-              size="sm"
-              block
-              class=""
-            >
+            <b-button :variant="isInCart(item) ? 'outline-danger' : 'outline-primary'" @click="toggleCartItem(item)"
+              size="sm" block class="">
               {{ isInCart(item) ? "Remove" : "Add to Cart" }}
             </b-button>
           </b-card>
@@ -465,6 +401,7 @@ export default {
   height: 100px;
   margin-left: 40px;
 }
+
 .cart-item-image {
   width: 80px;
   height: 80px;
