@@ -175,10 +175,10 @@ export default {
       item: {
         category: "",
         name: "",
-        price: null, // Use null for number fields
-        discount: null, // Use null for number fields
+        price: null,
+        discount: null,
         description: "",
-        rating: null, // Use null for number fields
+        rating: null,
         img: "",
       },
       items: [],
@@ -196,31 +196,15 @@ export default {
   },
   methods: {
     addItem() {
-      // Validate form before adding item
-      if (!this.item.category || !this.item.name || !this.item.price) {
-        this.$bvToast.toast(`Please fill in all required fields.`, {
-          title: "Warning",
-          variant: "warning",
-          solid: true,
-          autoHideDelay: 3000,
-          toaster: "b-toaster-bottom-center",
-        });
-        return;
-      }
-
-      // Retrieve existing items from localStorage, or initialize with an empty array
       let items = JSON.parse(localStorage.getItem("items")) || [];
 
-      // Add the new item to the array
       items.push({ ...this.item });
 
-      // Save the updated array back to localStorage
       localStorage.setItem("items", JSON.stringify(items));
 
-      // Update local items array to re-render the added items in the UI
+      // Update local items array to show the added items in the page
       this.items = items;
 
-      // Show toast notification for success
       this.$bvToast.toast(
         `Added "${this.item.name}" with price ₹${this.item.price} successfully!`,
         {
@@ -231,19 +215,14 @@ export default {
           toaster: "b-toaster-bottom-center",
         }
       );
-
-      // Reset form after submission
       this.resetForm();
     },
     removeItem(index) {
-      const removedItem = this.items[index].name; // Capture item name for notification
-      // Remove item from the items array
+      const removedItem = this.items[index].name;
       this.items.splice(index, 1);
 
-      // Update localStorage with the new items array
       localStorage.setItem("items", JSON.stringify(this.items));
 
-      // Show toast notification for removal
       this.$bvToast.toast(`Removed "${removedItem}" successfully!`, {
         title: "Removed",
         variant: "danger",
@@ -253,7 +232,6 @@ export default {
       });
     },
     resetForm() {
-      // Reset form fields after submission
       this.item = {
         category: "",
         name: "",
