@@ -4,14 +4,14 @@
       title="Login to PrimeBazaar"
       bg-variant="light"
       border-variant="info"
-      class="my-5 shadow-sm w-25"
+      class="my-5 shadow-sm"
     >
       <b-form @submit.prevent="handleLogin">
         <!-- Phone Number Input -->
         <b-form-group label="Phone Number" label-for="input-phone">
           <b-form-input
             id="input-phone"
-            type="tel"
+            type="number"
             v-model="loginData.phone"
             placeholder="Enter your phone number"
             required

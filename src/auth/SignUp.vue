@@ -6,7 +6,7 @@
       title="Sign Up for PrimeBazaar"
       bg-variant="light"
       border-variant="info"
-      class="my-5 shadow-sm w-25"
+      class="my-5 shadow-sm "
     >
       <b-form @submit.prevent="handleSubmit">
         <!-- Name Input -->
@@ -34,14 +34,13 @@
         <b-form-group label="Phone Number" label-for="input-phone">
           <b-form-input
             id="input-phone"
-            type="tel"
+            type="number"
             v-model="formData.phone"
             placeholder="Enter your phone number"
             required
           ></b-form-input>
         </b-form-group>
 
-        <!-- Password Input -->
         <!-- Password Input with Icon Toggle -->
         <b-form-group label="Password" label-for="input-password">
           <div class="input-group">
@@ -83,7 +82,10 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
+
   data() {
     return {
       formData: {
@@ -95,23 +97,42 @@ export default {
       passwordFieldType: "password", // Initial type for password field
     };
   },
+  mounted() {
+    const user = localStorage.getItem('signupData');
+    if(user){
+      this.$router.push('/');
+    }
+    // Retrieve and parse data from local storage
+    const storedData = localStorage.getItem('signupData');
+    if (storedData) {
+      this.formData = JSON.parse(storedData); // Populate formData with stored data
+    }
+  },
   methods: {
-    handleSubmit() {
-      // Perform sign-up logic (API call, etc.)
-      alert("Sign-up successful!");
-      this.$router.push('/login');
+    async handleSubmit() {
+      try {
+        localStorage.setItem('signupData', JSON.stringify(this.formData));
+        const response = await axios.post("http://localhost:3000/users", this.formData);
+        console.log(response);
+        alert("Sign-up successful!");
+        this.$router.push('/');
+      } catch (error) {
+        console.error("Sign-up failed:", error);
+        alert("An error occurred during sign-up. Please try again.");
+      }
     },
     togglePasswordVisibility() {
-      this.passwordFieldType =
-        this.passwordFieldType === "password" ? "text" : "password";
+      this.passwordFieldType = this.passwordFieldType === "password" ? "text" : "password";
     },
   },
 };
 </script>
 
+
 <style scoped>
 .signup-container {
   min-height: 100vh;
   background-color: #f5f5f5;
+  padding: 1rem;
 }
 </style>

@@ -532,6 +532,10 @@ export default {
   },
   mounted() {
     this.loadCartFromLocalStorage(); // Load the cart from localStorage when the component mounts
+    const user = localStorage.getItem('signupData');
+    if(!user){
+      this.$router.push('/signup');
+    }
   },
   methods: {
     subscribe() {
