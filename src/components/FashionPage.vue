@@ -113,9 +113,19 @@
           </div>
 
           <!-- No Items Message -->
-          <p v-else class="text-center text-muted mt-3 no-items-message">
-            Bhaiya please shopping kar ligiye na, garib company hai.
-          </p>
+          <b-card v-else class="text-center py-5 shadow-sm border-light">
+            <b-icon
+              icon="cart"
+              variant="muted"
+              font-scale="2"
+              class="mb-3"
+            ></b-icon>
+            <h4 class="text-muted mb-2">Your cart is empty</h4>
+            <p class="text-muted">
+              Your shopping cart is empty! Start browsing and add some items you
+              love!
+            </p>
+          </b-card>
         </div>
 
         <!-- Checkout Button -->
@@ -124,6 +134,7 @@
           class="mt-4 checkout-btn"
           @click="checkoutFn()"
           block
+          :disabled="!cart.length"
         >
           Check Out
         </b-button>
@@ -267,8 +278,7 @@ export default {
           price: 799,
           discount: 25,
           rating: 5,
-          description:
-            "Flexible trouser designed for comfort.",
+          description: "Flexible trouser designed for comfort.",
           img: "data:image/jpeg;base64,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",
         },
         {

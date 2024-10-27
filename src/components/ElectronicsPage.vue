@@ -113,9 +113,19 @@
           </div>
 
           <!-- No Items Message -->
-          <p v-else class="text-center text-muted mt-3 no-items-message">
-            Bhaiya please shopping kar ligiye na, garib company hai.
-          </p>
+          <b-card v-else class="text-center py-5 shadow-sm border-light">
+            <b-icon
+              icon="cart"
+              variant="muted"
+              font-scale="2"
+              class="mb-3"
+            ></b-icon>
+            <h4 class="text-muted mb-2">Your cart is empty</h4>
+            <p class="text-muted">
+              Your shopping cart is empty! Start browsing and add some items you
+              love!
+            </p>
+          </b-card>
         </div>
 
         <!-- Checkout Button -->
@@ -124,6 +134,7 @@
           class="mt-4 checkout-btn"
           @click="checkoutFn()"
           block
+          :disabled="!cart.length"
         >
           Check Out
         </b-button>
@@ -215,7 +226,7 @@ export default {
   data() {
     return {
       searchQuery: "",
-      items: [  
+      items: [
         {
           id: "e1",
           quantity: 1,
