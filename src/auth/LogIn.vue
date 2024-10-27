@@ -11,7 +11,7 @@
         <b-form-group label="Phone Number" label-for="input-phone">
           <b-form-input
             id="input-phone"
-            type="number"
+            type="tel"
             v-model="loginData.phone"
             placeholder="Enter your phone number"
             required

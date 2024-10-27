@@ -192,7 +192,9 @@
         </div>
       </div>
       <div v-else>
-        <p>User data not available. Please log in.</p>
+        <p class="mt-3 text-center">
+          User data not available. Please <b-link to="/login">Log In.</b-link>
+        </p>
       </div>
     </b-modal>
 
@@ -486,10 +488,12 @@ export default {
   },
   mounted() {
     this.loadCartFromLocalStorage(); // Load the cart from localStorage when the component mounts
-    const user = localStorage.getItem("signupData");
-    if (!user) {
-      this.$router.push("/signup");
-    }
+
+    // below code don't need to login or logout then comment it
+    // const user = localStorage.getItem("signupData");
+    // if (!user) {
+    //   this.$router.push("/signup");
+    // }
   },
   methods: {
     subscribe() {
