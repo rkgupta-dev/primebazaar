@@ -10,7 +10,7 @@
 
     <!-- Main Content -->
     <b-container>
-      <b-card title="Add New Item" class="mb-4">
+      <b-card title="Add New Item" class="mb-4 shadow-sm">
         <b-form @submit.prevent="addItem">
           <b-row>
             <!-- Category Selection -->
