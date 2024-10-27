@@ -165,79 +165,32 @@
       </b-button>
     </b-modal>
 
-    <!-- User Login or Register -->
+    <!-- User Profile -->
     <b-modal v-model="showModal" title="User Account" hide-footer>
-      <b-tabs pills>
-        <!-- Login Tab -->
-        <b-tab title="Login" active>
-          <div class="p-3">
-            <b-form @submit.prevent="handleLogin">
-              <b-form-group label="Email" label-for="login-email">
-                <b-form-input
-                  id="login-email"
-                  type="email"
-                  v-model="loginForm.email"
-                  placeholder="Enter email"
-                  required
-                />
-              </b-form-group>
+      <div>
+        <!-- User Avatar -->
+        <b-avatar
+          src=""
+          alt="User Avatar"
+          rounded
+          size="lg"
+          class="mb-3"
+        ></b-avatar>
 
-              <b-form-group label="Password" label-for="login-password">
-                <b-form-input
-                  id="login-password"
-                  type="password"
-                  v-model="loginForm.password"
-                  placeholder="Enter password"
-                  required
-                />
-              </b-form-group>
+        <!-- User Name -->
+        <h5 class="mb-1">{{ userData.name }}</h5>
 
-              <b-button type="submit" variant="primary" block>Login</b-button>
-            </b-form>
-          </div>
-        </b-tab>
+        <!-- User Email -->
+        <p class="text-muted">{{ userData.email }}</p>
 
-        <!-- Register Tab -->
-        <b-tab title="Register">
-          <div class="p-3">
-            <b-form @submit.prevent="handleRegister">
-              <b-form-group label="Full Name" label-for="register-name">
-                <b-form-input
-                  id="register-name"
-                  type="text"
-                  v-model="registerForm.name"
-                  placeholder="Enter full name"
-                  required
-                />
-              </b-form-group>
+        <!-- User phone -->
+        <p class="text-muted">{{ userData.phone }}</p>
 
-              <b-form-group label="Email" label-for="register-email">
-                <b-form-input
-                  id="register-email"
-                  type="email"
-                  v-model="registerForm.email"
-                  placeholder="Enter email"
-                  required
-                />
-              </b-form-group>
-
-              <b-form-group label="Password" label-for="register-password">
-                <b-form-input
-                  id="register-password"
-                  type="password"
-                  v-model="registerForm.password"
-                  placeholder="Enter password"
-                  required
-                />
-              </b-form-group>
-
-              <b-button type="submit" variant="success" block
-                >Register</b-button
-              >
-            </b-form>
-          </div>
-        </b-tab>
-      </b-tabs>
+        <!-- Logout Button -->
+        <div class="text-center">
+          <b-button variant="danger" @click="logout">Logout</b-button>
+        </div>
+      </div>
     </b-modal>
 
     <!-- Home Section -->
@@ -419,15 +372,7 @@ export default {
       cart: [],
       email: "",
       showModal: false,
-      loginForm: {
-        email: "",
-        password: "",
-      },
-      registerForm: {
-        name: "",
-        email: "",
-        password: "",
-      },
+      userData: {},
       currentPlaceholderIndex: 0,
       searchQuery: "",
       placeholders: [
@@ -529,12 +474,17 @@ export default {
       this.currentPlaceholderIndex =
         (this.currentPlaceholderIndex + 1) % this.placeholders.length;
     }, 3000);
+
+    const userData = JSON.parse(localStorage.getItem("signupData"));
+    if (userData) {
+      this.userData = userData[0]; // assuming userData is an array
+    }
   },
   mounted() {
     this.loadCartFromLocalStorage(); // Load the cart from localStorage when the component mounts
-    const user = localStorage.getItem('signupData');
-    if(!user){
-      this.$router.push('/signup');
+    const user = localStorage.getItem("signupData");
+    if (!user) {
+      this.$router.push("/signup");
     }
   },
   methods: {
@@ -555,16 +505,6 @@ export default {
         toaster: "b-toaster-bottom-center",
         autoHideDelay: 3000,
       });
-    },
-    handleLogin() {
-      // Handle login logic here
-      console.log("Login form submitted:", this.loginForm);
-      this.showModal = false;
-    },
-    handleRegister() {
-      // Handle register logic here
-      console.log("Register form submitted:", this.registerForm);
-      this.showModal = false;
     },
     saveCartToLocalStorage() {
       localStorage.setItem("cart", JSON.stringify(this.cart));
@@ -628,6 +568,10 @@ export default {
     checkoutFn() {
       this.$router.push("/checkout");
     },
+    logout() {
+      localStorage.clear();
+      this.$router.push('/login');
+    }
   },
 };
 </script>

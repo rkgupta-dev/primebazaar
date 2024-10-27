@@ -59,6 +59,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   data() {
     return {
@@ -69,10 +70,34 @@ export default {
       passwordFieldType: "password", // Initial type for password field
     };
   },
+  mounted() {
+    const user = localStorage.getItem('signupData');
+    if(user){
+      this.$router.push('/');
+    }
+    // Retrieve and parse data from local storage
+    const storedData = localStorage.getItem('signupData');
+    if (storedData) {
+      this.formData = JSON.parse(storedData); // Populate formData with stored data
+    }
+  },
   methods: {
-    handleLogin() {
-      // Perform login logic (API call, etc.)
-      alert("Login successful!");
+    async handleLogin() {
+      try {
+        const response = await axios.get(
+          `http://localhost:3000/users?phone=${this.loginData.phone}&password=${this.loginData.password}`
+        );
+        if (response.status === 200 && response.data.length) {
+          localStorage.setItem("signupData", JSON.stringify(response.data));
+          this.$router.push("/");
+          alert("Login successful!");
+        } else {
+          alert("Invalid phone number or password.");
+        }
+      } catch (error) {
+        console.error("Login error:", error);
+        alert("An error occurred during login. Please try again.");
+      }
     },
     togglePasswordVisibility() {
       this.passwordFieldType =
