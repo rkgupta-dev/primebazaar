@@ -59,7 +59,8 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
+
 export default {
   data() {
     return {
@@ -71,14 +72,10 @@ export default {
     };
   },
   mounted() {
-    const user = localStorage.getItem('signupData');
-    if(user){
-      this.$router.push('/');
-    }
-    // Retrieve and parse data from local storage
-    const storedData = localStorage.getItem('signupData');
-    if (storedData) {
-      this.formData = JSON.parse(storedData); // Populate formData with stored data
+    // Check if the user is already logged in and redirect to home if so
+    const user = localStorage.getItem("signupData");
+    if (user) {
+      this.$router.push("/");
     }
   },
   methods: {
@@ -87,8 +84,15 @@ export default {
         const response = await axios.get(
           `http://localhost:3000/users?phone=${this.loginData.phone}&password=${this.loginData.password}`
         );
-        if (response.status === 200 && response.data.length) {
-          localStorage.setItem("signupData", JSON.stringify(response.data));
+
+        // Check if exactly one user is found with the provided credentials
+        if (response.status === 200 && response.data.length === 1) {
+          const userData = response.data[0]; // Retrieve the user data
+
+          // Store user data in localStorage
+          localStorage.setItem("signupData", JSON.stringify(userData));
+
+          // Redirect to home page
           this.$router.push("/");
           alert("Login successful!");
         } else {
