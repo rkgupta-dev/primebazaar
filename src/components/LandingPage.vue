@@ -167,7 +167,7 @@
 
     <!-- User Profile -->
     <b-modal v-model="showModal" title="User Account" hide-footer>
-      <div>
+      <div v-if="userData">
         <!-- User Avatar -->
         <b-avatar
           src=""
@@ -190,6 +190,9 @@
         <div class="text-center">
           <b-button variant="danger" @click="logout">Logout</b-button>
         </div>
+      </div>
+      <div v-else>
+        <p>User data not available. Please log in.</p>
       </div>
     </b-modal>
 
@@ -372,7 +375,7 @@ export default {
       cart: [],
       email: "",
       showModal: false,
-      userData: {},
+      userData: null,
       currentPlaceholderIndex: 0,
       searchQuery: "",
       placeholders: [
@@ -468,16 +471,17 @@ export default {
       ],
     };
   },
-  computed: {},
+
   created() {
     setInterval(() => {
       this.currentPlaceholderIndex =
         (this.currentPlaceholderIndex + 1) % this.placeholders.length;
     }, 3000);
 
-    const userData = JSON.parse(localStorage.getItem("signupData"));
-    if (userData) {
-      this.userData = userData[0]; // assuming userData is an array
+    const storedData = localStorage.getItem("signupData");
+    if (storedData) {
+      const parsedData = JSON.parse(storedData);
+      this.userData = Array.isArray(parsedData) ? parsedData[0] : parsedData;
     }
   },
   mounted() {
@@ -570,8 +574,8 @@ export default {
     },
     logout() {
       localStorage.clear();
-      this.$router.push('/login');
-    }
+      this.$router.push("/login");
+    },
   },
 };
 </script>
