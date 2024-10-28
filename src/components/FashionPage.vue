@@ -154,7 +154,16 @@
         </b-col>
       </b-row>
 
-      <!-- Electronics Items List -->
+      <div>
+        <b-tabs content-class="">
+          <b-tab title="All" active><p></p></b-tab>
+          <b-tab title="Men's"><p></p></b-tab>
+          <b-tab title="Women's"><p></p></b-tab>
+          <b-tab title="Kid's"><p></p></b-tab>
+        </b-tabs>
+      </div>
+
+      <!-- Fashions Items List -->
       <b-row v-if="filteredItems.length === 0">
         <b-col>
           <h4>Oops! Nothing Found!</h4>
