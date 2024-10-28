@@ -212,13 +212,26 @@
     <!-- Home Section -->
     <b-container class="my-4" fluid style="padding-top: 50px; height: 650px">
       <b-row>
-        <b-col md="6" class="d-flex justify-content-center">
+        <!-- <b-col md="6" class="d-flex justify-content-center">
           <b-img
             src="https://cdni.iconscout.com/illustration/premium/thumb/online-shopping-illustration-download-in-svg-png-gif-file-formats--add-to-cart-bag-money-transfer-and-e-payments-pack-business-illustrations-3748971.png?f=webp"
             alt="Web Developer"
             style="max-width: 90%; height: auto"
             class="hover-effect"
           />
+        </b-col> -->
+
+        <b-col md="6" class="d-flex justify-content-center">
+          <video
+            src="@/assets/SaleVideo.mp4"
+            autoplay
+            muted
+            loop
+            style="max-width: 100%; height: 100%"
+            class="show-controls-on-hover"
+          >
+            
+          </video>
         </b-col>
 
         <b-col md="6" class="d-flex align-items-center">
@@ -609,5 +622,16 @@ export default {
   width: 80px;
   height: 80px;
   object-fit: cover;
+}
+.show-controls-on-hover {
+  pointer-events: auto;
+}
+
+.show-controls-on-hover::-webkit-media-controls {
+  display: none !important;
+}
+
+.show-controls-on-hover:hover::-webkit-media-controls {
+  display: block !important;
 }
 </style>
