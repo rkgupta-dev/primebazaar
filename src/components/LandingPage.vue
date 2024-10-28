@@ -230,7 +230,6 @@
             style="max-width: 100%; height: 100%"
             class="show-controls-on-hover"
           >
-            
           </video>
         </b-col>
 
