@@ -156,76 +156,178 @@
 
       <div>
         <b-tabs content-class="">
-          <b-tab title="All" active><p></p></b-tab>
-          <b-tab title="Men's"><p></p></b-tab>
-          <b-tab title="Women's"><p></p></b-tab>
-          <b-tab title="Kid's"><p></p></b-tab>
+          <b-tab title="All" active>
+            <!-- Fashions Items List -->
+            <b-row v-if="filteredItems.length === 0">
+              <b-container
+                class="d-flex flex-column align-items-center justify-content-center my-5"
+              >
+                <b-col cols="12" md="8" lg="6" class="text-center">
+                  <!-- Icon and Heading -->
+                  <div class="mb-3">
+                    <b-icon
+                      icon="search"
+                      variant="secondary"
+                      font-scale="2"
+                    ></b-icon>
+                  </div>
+                  <h4 class="font-weight-bold">Oops! Nothing Found!</h4>
+                  <p class="text-muted">
+                    Try searching for different keywords or check our
+                    categories!
+                  </p>
+                </b-col>
+              </b-container>
+            </b-row>
+            <b-row v-else>
+              <b-col
+                v-for="(item, index) in filteredItems"
+                :key="index"
+                md="3"
+                cols="6"
+                sm="6"
+                class="my-2"
+              >
+                <b-card
+                  :img-src="item.img"
+                  img-alt="Item image"
+                  img-top
+                  class="custom-card shadow-sm"
+                >
+                  <b-card-text>
+                    <p class="text-truncate mb-1">
+                      <strong class="text-dark">{{ item.name }}</strong>
+                    </p>
+                    <p class="d-flex align-items-center">
+                      <strong class="text-primary h5">₹{{ item.price }}</strong>
+                      <b-badge class="ml-2 py-1 px-2" variant="success" pill>
+                        {{ item.discount }}% off
+                      </b-badge>
+                    </p>
+                    <p class="text-muted text-truncate">
+                      {{ item.description }}
+                    </p>
+
+                    <!-- Rating of product -->
+                    <div class="rating d-flex mb-2">
+                      <span
+                        v-for="star in 5"
+                        :key="star"
+                        class="star"
+                        :class="{
+                          'text-warning': star <= item.rating,
+                          'text-secondary': star > item.rating,
+                        }"
+                      >
+                        ★
+                      </span>
+                      <small class="ml-2 text-muted"
+                        >{{ item.rating }} / 5</small
+                      >
+                    </div>
+                  </b-card-text>
+
+                  <b-button
+                    :variant="
+                      isInCart(item) ? 'outline-danger' : 'outline-primary'
+                    "
+                    @click="toggleCartItem(item)"
+                    size="sm"
+                    block
+                    class=""
+                  >
+                    {{ isInCart(item) ? "Remove" : "Add to Cart" }}
+                  </b-button>
+                </b-card>
+              </b-col>
+            </b-row>
+          </b-tab>
+          <b-tab title="Men's">
+            <b-container
+              class="d-flex flex-column align-items-center justify-content-center my-4"
+            >
+              <!-- Icon and Heading -->
+              <div class="text-danger mb-2">
+                <b-icon
+                  icon="exclamation-circle"
+                  variant="danger"
+                  font-scale="2"
+                ></b-icon>
+              </div>
+              <h3 class="font-weight-bold text-center">Oops! Page Not Found</h3>
+              <p class="text-muted text-center">
+                We're sorry, but the page you were looking for doesn't exist.
+              </p>
+              <!-- Navigation Links -->
+              <p class="text-center mb-0">
+                <b-icon icon="house-fill" class="mr-1"></b-icon>
+                <b-link to="/" class="text-primary">Return to Homepage</b-link>
+                <br />
+                <b-icon icon="bag-fill" class="mr-1"></b-icon>
+                <b-link to="/dealsoftheday" class="text-info"
+                  >Check out our latest deals of the day</b-link
+                >
+              </p>
+            </b-container>
+          </b-tab>
+          <b-tab title="Women's"
+            ><b-container
+              class="d-flex flex-column align-items-center justify-content-center my-4"
+            >
+              <!-- Icon and Heading -->
+              <div class="text-danger mb-2">
+                <b-icon
+                  icon="exclamation-circle"
+                  variant="danger"
+                  font-scale="2"
+                ></b-icon>
+              </div>
+              <h3 class="font-weight-bold text-center">Oops! Page Not Found</h3>
+              <p class="text-muted text-center">
+                We're sorry, but the page you were looking for doesn't exist.
+              </p>
+              <!-- Navigation Links -->
+              <p class="text-center mb-0">
+                <b-icon icon="house-fill" class="mr-1"></b-icon>
+                <b-link to="/" class="text-primary">Return to Homepage</b-link>
+                <br />
+                <b-icon icon="bag-fill" class="mr-1"></b-icon>
+                <b-link to="/dealsoftheday" class="text-info"
+                  >Check out our latest deals of the day</b-link
+                >
+              </p>
+            </b-container></b-tab
+          >
+          <b-tab title="Kid's"
+            ><b-container
+              class="d-flex flex-column align-items-center justify-content-center my-4"
+            >
+              <!-- Icon and Heading -->
+              <div class="text-danger mb-2">
+                <b-icon
+                  icon="exclamation-circle"
+                  variant="danger"
+                  font-scale="2"
+                ></b-icon>
+              </div>
+              <h3 class="font-weight-bold text-center">Oops! Page Not Found</h3>
+              <p class="text-muted text-center">
+                We're sorry, but the page you were looking for doesn't exist.
+              </p>
+              <!-- Navigation Links -->
+              <p class="text-center mb-0">
+                <b-icon icon="house-fill" class="mr-1"></b-icon>
+                <b-link to="/" class="text-primary">Return to Homepage</b-link>
+                <br />
+                <b-icon icon="bag-fill" class="mr-1"></b-icon>
+                <b-link to="/dealsoftheday" class="text-info"
+                  >Check out our latest deals of the day</b-link
+                >
+              </p>
+            </b-container></b-tab
+          >
         </b-tabs>
       </div>
-
-      <!-- Fashions Items List -->
-      <b-row v-if="filteredItems.length === 0">
-        <b-col>
-          <h4>Oops! Nothing Found!</h4>
-          <p>Try searching for different keywords or check our categories!</p>
-        </b-col>
-      </b-row>
-      <b-row v-else>
-        <b-col
-          v-for="(item, index) in filteredItems"
-          :key="index"
-          md="3"
-          cols="6"
-          sm="6"
-          class="my-2"
-        >
-          <b-card
-            :img-src="item.img"
-            img-alt="Item image"
-            img-top
-            class="custom-card shadow-sm"
-          >
-            <b-card-text>
-              <p class="text-truncate mb-1">
-                <strong class="text-dark">{{ item.name }}</strong>
-              </p>
-              <p class="d-flex align-items-center">
-                <strong class="text-primary h5">₹{{ item.price }}</strong>
-                <b-badge class="ml-2 py-1 px-2" variant="success" pill>
-                  {{ item.discount }}% off
-                </b-badge>
-              </p>
-              <p class="text-muted text-truncate">{{ item.description }}</p>
-
-              <!-- Rating of product -->
-              <div class="rating d-flex mb-2">
-                <span
-                  v-for="star in 5"
-                  :key="star"
-                  class="star"
-                  :class="{
-                    'text-warning': star <= item.rating,
-                    'text-secondary': star > item.rating,
-                  }"
-                >
-                  ★
-                </span>
-                <small class="ml-2 text-muted">{{ item.rating }} / 5</small>
-              </div>
-            </b-card-text>
-
-            <b-button
-              :variant="isInCart(item) ? 'outline-danger' : 'outline-primary'"
-              @click="toggleCartItem(item)"
-              size="sm"
-              block
-              class=""
-            >
-              {{ isInCart(item) ? "Remove" : "Add to Cart" }}
-            </b-button>
-          </b-card>
-        </b-col>
-      </b-row>
     </b-container>
   </div>
 </template>
