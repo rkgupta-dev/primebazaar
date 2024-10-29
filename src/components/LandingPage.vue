@@ -179,33 +179,71 @@
     <!-- User Profile -->
     <b-modal v-model="showModal" title="User Account" hide-footer>
       <div v-if="userData">
-        <!-- User Avatar -->
-        <b-avatar
-          src=""
-          alt="User Avatar"
-          rounded
-          size="lg"
-          class="mb-3"
-        ></b-avatar>
+        <b-container class="text-center my-4">
+          <!-- User Avatar with Icon Fallback -->
+          <b-avatar src="" alt="User Avatar" rounded size="lg" class="mb-3">
+            <b-icon
+              icon="person-circle"
+              variant="light"
+              font-scale="3"
+            ></b-icon>
+          </b-avatar>
 
-        <!-- User Name -->
-        <h5 class="mb-1">{{ userData.name }}</h5>
+          <!-- User Name with Icon -->
+          <h5 class="mb-1 text-primary font-weight-bold">
+            <b-icon icon="person" variant="primary" class="mr-1"></b-icon>
+            {{ userData.name }}
+          </h5>
 
-        <!-- User Email -->
-        <p class="text-muted">{{ userData.email }}</p>
+          <!-- User Email with Icon -->
+          <p class="text-muted mb-1">
+            <b-icon
+              icon="envelope-fill"
+              variant="secondary"
+              class="mr-1"
+            ></b-icon>
+            {{ userData.email }}
+          </p>
 
-        <!-- User phone -->
-        <p class="text-muted">{{ userData.phone }}</p>
+          <!-- User Phone with Icon -->
+          <p class="text-muted mb-1">
+            <b-icon
+              icon="telephone-fill"
+              variant="secondary"
+              class="mr-1"
+            ></b-icon>
+            {{ userData.phone }}
+          </p>
 
-        <!-- Logout Button -->
-        <div class="text-center">
-          <b-button variant="danger" @click="logout">Logout</b-button>
-        </div>
+          <!-- Status Message -->
+          <p class="text-muted mb-3">
+            <b-icon icon="info-circle" variant="info" class="mr-1"></b-icon>
+            Welcome back! We missed you!
+          </p>
+
+          <!-- Logout Button -->
+          <b-button variant="danger" @click="logout" class="mt-3">
+            <b-icon icon="box-arrow-right" class="mr-1"></b-icon>
+            Logout
+          </b-button>
+        </b-container>
       </div>
       <div v-else>
-        <p class="mt-3 text-center">
-          User data not available. Please <b-link to="/login">Log In.</b-link>
-        </p>
+        <b-container class="text-center my-4">
+          <b-icon
+            icon="key-fill"
+            variant="secondary"
+            font-scale="2"
+            class="mb-2"
+          ></b-icon>
+          <p class="mt-2 text-muted">
+            Hello! Please
+            <b-link to="/login" class="text-primary font-weight-bold"
+              >Log In</b-link
+            >
+            to access your account.
+          </p>
+        </b-container>
       </div>
     </b-modal>
 
@@ -229,8 +267,7 @@
             loop
             style="max-width: 100%; height: 100%"
             class="show-controls-on-hover"
-          >
-          </video>
+          ></video>
         </b-col>
 
         <b-col md="6" class="d-flex align-items-center">
@@ -602,6 +639,7 @@ export default {
     logout() {
       localStorage.clear();
       this.$router.push("/login");
+      alert("You have logged out.");
     },
   },
 };

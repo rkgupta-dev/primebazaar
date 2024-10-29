@@ -156,10 +156,20 @@
 
       <!-- Electronics Items List -->
       <b-row v-if="filteredItems.length === 0">
-        <b-col>
-          <h4>Oops! Nothing Found!</h4>
-          <p>Try searching for different keywords or check our categories!</p>
-        </b-col>
+        <b-container
+          class="d-flex flex-column align-items-center justify-content-center my-5"
+        >
+          <b-col cols="12" md="8" lg="6" class="text-center">
+            <!-- Icon and Heading -->
+            <div class="mb-3">
+              <b-icon icon="search" variant="secondary" font-scale="2"></b-icon>
+            </div>
+            <h4 class="font-weight-bold">Oops! Nothing Found!</h4>
+            <p class="text-muted">
+              Try searching for different keywords or check our categories!
+            </p>
+          </b-col>
+        </b-container>
       </b-row>
       <b-row v-else>
         <b-col
