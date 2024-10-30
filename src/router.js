@@ -15,6 +15,7 @@ import HomeLivingPage from "./components/HomeLivingPage.vue";
 import AdminPage from "./components/AdminPage.vue";
 import SignUp from "./auth/SignUp.vue";
 import LogIn from "./auth/LogIn.vue";
+import PageNotFound from "./auth/error/PageNotFound.vue";
 
 Vue.use(Router);
 
@@ -96,6 +97,7 @@ export default new Router({
       name: "terms & condition",
       component: TermsCondition,
     },
+    { path: '*', component: PageNotFound }, // wildcard route for 404 page
   ],
   scrollBehavior(to, from, savedPosition) {
     // If there is a saved scroll position, return it (for navigating back)
