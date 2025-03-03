@@ -1,15 +1,18 @@
 <template>
   <div>
-    <b-navbar type="" toggleable="md" variant="light">
-      <b-container fluid>
+    <b-navbar variant="light">
+      <b-container
+        fluid
+        class="d-flex justify-content-between align-items-center"
+      >
         <b-navbar-nav class="d-none d-md-block">
           <b-nav-text>Free shipping on orders over ₹2000</b-nav-text>
         </b-navbar-nav>
 
-        <b-navbar-nav class="ml-auto small">
+        <b-navbar-nav class="ml-auto small d-flex">
           <b-nav-item href="/">Track Order</b-nav-item>
-          <b-nav-item to="contacts">Contact</b-nav-item>
-          <b-nav-item to="contact">Help</b-nav-item>
+          <b-nav-item href="/contacts">Contact</b-nav-item>
+          <b-nav-item href="/help">Help</b-nav-item>
         </b-navbar-nav>
       </b-container>
     </b-navbar>
@@ -27,7 +30,7 @@
             <b-nav-item href="/">Home</b-nav-item>
             <b-nav-item href="#new-arrival">New Arrivals</b-nav-item>
             <b-nav-item>Women</b-nav-item>
-            <b-nav-item>Men</b-nav-item>
+            <b-nav-item to="/mens-collection">Men</b-nav-item>
             <b-nav-item>Accessories</b-nav-item>
             <b-nav-item>Sale</b-nav-item>
             <b-nav-item href="#special-offer">Special Offers</b-nav-item>
@@ -70,11 +73,7 @@
             </b-nav-item>
 
             <b-nav-item>
-              <b-button
-                variant="outline-primary"
-                size="sm"
-                @click="$bvModal.show('bv-modal-example')"
-              >
+              <b-button variant="outline-primary" size="sm" to="/cart">
                 <i class="fas fa-shopping-cart"></i> Cart ({{ cart.length }})
               </b-button>
             </b-nav-item>
