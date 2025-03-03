@@ -16,6 +16,11 @@ import AdminPage from "./components/AdminPage.vue";
 import SignUp from "./auth/SignUp.vue";
 import LogIn from "./auth/LogIn.vue";
 import PageNotFound from "./auth/error/PageNotFound.vue";
+import BestSellerSection from "./views/BestSellerSection.vue";
+import UserProfile from "./components/UserProfile.vue";
+import ShopByCategory from "./views/ShopByCategory.vue";
+import NewArrival from "./views/NewArrival.vue";
+import SpecialOffer from "./views/SpecialOffer.vue";
 
 Vue.use(Router);
 
@@ -26,6 +31,31 @@ export default new Router({
       path: "/",
       name: "landing-page",
       component: LandingPage,
+    },
+    {
+      path: "/shop-by-category",
+      name: "shop-by-category",
+      component: ShopByCategory,
+    },
+    {
+      path: "/best-seller",
+      name: "best-seller",
+      component: BestSellerSection,
+    },
+    {
+      path: "/new-arrival",
+      name: "new-arrival",
+      component: NewArrival,
+    },
+    {
+      path: "/special-offer",
+      name: "special-offer",
+      component: SpecialOffer,
+    },
+    {
+      path: "/user",
+      name: "user",
+      component: UserProfile,
     },
     {
       path: "/dealsoftheday",
@@ -97,7 +127,7 @@ export default new Router({
       name: "terms & condition",
       component: TermsCondition,
     },
-    { path: '*', component: PageNotFound }, // wildcard route for 404 page
+    { path: "*", component: PageNotFound }, // wildcard route for 404 page
   ],
   scrollBehavior(to, from, savedPosition) {
     // If there is a saved scroll position, return it (for navigating back)

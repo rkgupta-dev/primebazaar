@@ -114,7 +114,7 @@
           Deals of the Day Ends In
         </h2>
         <flip-countdown
-          deadline="2024-12-25 06:30:00"
+          deadline="2030-12-25 06:30:00"
           :showDays="false"
         ></flip-countdown>
       </div>
@@ -172,7 +172,11 @@
       <div class="container text-center">
         <p>&copy; 2024 PrimeBazaar - All Rights Reserved</p>
         <div class="d-flex justify-content-center mb-3">
-          <b-button variant="link" to="/about-us" class="text-white mr-3" href="#"
+          <b-button
+            variant="link"
+            to="/about-us"
+            class="text-white mr-3"
+            href="#"
             >About Us</b-button
           >
           <b-button variant="link" class="text-white mr-3" to="/privacy-policy"
