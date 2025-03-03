@@ -1,20 +1,19 @@
 <template>
   <div>
-    <div>
-      <b-navbar type="" variant="light">
-        <b-container fluid>
-          <b-navbar-nav class="d-none d-md-block">
-            <b-nav-text>Free shipping on orders over ₹2000</b-nav-text>
-          </b-navbar-nav>
+    <b-navbar type="" toggleable="md" variant="light">
+      <b-container fluid>
+        <b-navbar-nav class="d-none d-md-block">
+          <b-nav-text>Free shipping on orders over ₹2000</b-nav-text>
+        </b-navbar-nav>
 
-          <b-navbar-nav class="ml-auto">
-            <b-nav-item href="/">Track Order</b-nav-item>
-            <b-nav-item to="contacts">Contact</b-nav-item>
-            <b-nav-item to="contact">Help</b-nav-item>
-          </b-navbar-nav>
-        </b-container>
-      </b-navbar>
-    </div>
+        <b-navbar-nav class="ml-auto small">
+          <b-nav-item href="/">Track Order</b-nav-item>
+          <b-nav-item to="contacts">Contact</b-nav-item>
+          <b-nav-item to="contact">Help</b-nav-item>
+        </b-navbar-nav>
+      </b-container>
+    </b-navbar>
+
     <hr class="m-0 p-0" />
     <b-navbar toggleable="md" variant="light" class="shadow-md sticky-top">
       <b-container fluid>
