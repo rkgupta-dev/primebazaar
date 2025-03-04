@@ -1,19 +1,21 @@
 <template>
   <div class="dashboard-container">
-    <b-container fluid>
+    <b-container fluid v-if="isLoggedIn">
       <b-row>
         <!-- Sidebar -->
         <b-col cols="12" md="3" lg="2" class="sidebar py-4">
           <div class="user-profile text-center mb-4">
             <b-avatar
               size="5rem"
-              src="/placeholder.svg?height=80&width=80"
+              :src="userData?.avatar || '/placeholder.svg'"
               alt="User Avatar"
             ></b-avatar>
-            <h5 class="mt-3 mb-0">John Doe</h5>
-            <small class="text-muted">john.doe@example.com</small>
+            <h5 class="mt-3 mb-0">{{ userData?.name || "Guest User" }}</h5>
+            <small class="text-muted">{{
+              userData?.email || "Not Logged In"
+            }}</small>
             <div class="mt-2">
-              <b-button variant="outline-primary" size="sm"
+              <b-button v-if="isLoggedIn" variant="outline-primary" size="sm"
                 >Edit Profile</b-button
               >
             </div>
@@ -33,12 +35,9 @@
               <i class="fas fa-map-marker-alt mr-2"></i> Addresses
             </b-nav-item>
             <b-nav-item>
-              <i class="fas fa-credit-card mr-2"></i> Payment Methods
-            </b-nav-item>
-            <b-nav-item>
               <i class="fas fa-cog mr-2"></i> Account Settings
             </b-nav-item>
-            <b-nav-item class="text-danger mt-4">
+            <b-nav-item class="text-danger mt-4" @click="logout">
               <i class="fas fa-sign-out-alt mr-2"></i> Logout
             </b-nav-item>
           </b-nav>
@@ -47,7 +46,7 @@
         <!-- Main Content -->
         <b-col cols="12" md="9" lg="10" class="main-content py-4">
           <!-- Stats Cards -->
-          <b-row>
+          <b-row v-if="isLoggedIn">
             <b-col cols="12" md="4" class="mb-4">
               <b-card class="h-100">
                 <div class="d-flex justify-content-between align-items-center">
@@ -179,6 +178,33 @@
         </b-col>
       </b-row>
     </b-container>
+    <b-container v-else>
+      <div class="d-flex justify-content-center my-4">
+        <b-alert
+          v-if="!isLoggedIn"
+          show
+          variant="warning"
+          class="p-4 rounded-lg w-50"
+        >
+          <div class="d-flex align-items-center justify-content-center">
+            <b-img
+              src="https://cdn-icons-png.flaticon.com/256/14889/14889980.png"
+              alt="Login Required"
+              fluid
+              width="100"
+              class="mr-3"
+            ></b-img>
+            <div>
+              <strong>You're not logged in!</strong>
+              <p class="mb-0">
+                Please <b-link to="/login">login</b-link> to access your
+                account.
+              </p>
+            </div>
+          </div>
+        </b-alert>
+      </div>
+    </b-container>
   </div>
 </template>
 
@@ -187,6 +213,8 @@ export default {
   name: "UserProfile",
   data() {
     return {
+      userData: null,
+      isLoggedIn: false,
       orderFields: [
         { key: "orderId", label: "Order ID" },
         { key: "date", label: "Date" },
@@ -232,6 +260,9 @@ export default {
       ],
     };
   },
+  mounted() {
+    this.checkLoginStatus();
+  },
   methods: {
     getStatusVariant(status) {
       const variants = {
@@ -242,15 +273,30 @@ export default {
       };
       return variants[status] || "secondary";
     },
+    checkLoginStatus() {
+      this.isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+      this.userData = this.isLoggedIn
+        ? JSON.parse(localStorage.getItem("userData"))
+        : null;
+    },
+    logout() {
+      localStorage.setItem("isLoggedIn", "false");
+      this.isLoggedIn = false; // Update reactive variable
+      this.userData = null;
+      this.$router.push("/login");
+      alert("You have logged out.");
+    },
   },
 };
 </script>
 
 <style scoped>
-.dashboard-container {
+/* .dashboard-container {
   min-height: 100vh;
   background-color: #f8f9fa;
-}
+  padding: 0%;
+  margin: 0%;
+} */
 
 .sidebar {
   background-color: white;
@@ -294,7 +340,6 @@ export default {
   color: #856404;
 }
 
-/* Responsive adjustments */
 @media (max-width: 767.98px) {
   .sidebar {
     min-height: auto;

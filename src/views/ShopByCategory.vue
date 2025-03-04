@@ -66,7 +66,7 @@ export default {
         {
           name: "Men's Collection",
           productCount: 200,
-          link: "/fashions",
+          link: "/mens-collection",
           image:
             "https://img.freepik.com/free-photo/group-male-friends-standing-against-blue-background_23-2148160232.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
         },

@@ -6,10 +6,9 @@
       title="Sign Up for PrimeBazaar"
       bg-variant="light"
       border-variant="info"
-      class="my-5 shadow-sm "
+      class="my-5 shadow-sm"
     >
       <b-form @submit.prevent="handleSubmit">
-        <!-- Name Input -->
         <b-form-group label="Full Name" label-for="input-name" class="mt-4">
           <b-form-input
             id="input-name"
@@ -19,7 +18,6 @@
           ></b-form-input>
         </b-form-group>
 
-        <!-- Email Input -->
         <b-form-group label="Email Address" label-for="input-email">
           <b-form-input
             id="input-email"
@@ -30,7 +28,6 @@
           ></b-form-input>
         </b-form-group>
 
-        <!-- Phone Number Input -->
         <b-form-group label="Phone Number" label-for="input-phone">
           <b-form-input
             id="input-phone"
@@ -41,7 +38,6 @@
           ></b-form-input>
         </b-form-group>
 
-        <!-- Password Input with Icon Toggle -->
         <b-form-group label="Password" label-for="input-password">
           <div class="input-group">
             <b-form-input
@@ -69,11 +65,9 @@
           </div>
         </b-form-group>
 
-        <!-- Submit Button -->
         <b-button type="submit" variant="primary" block>Sign Up</b-button>
       </b-form>
 
-      <!-- Login Link -->
       <p class="mt-3 text-center">
         Already have an account? <b-link to="/login">Log In</b-link>
       </p>
@@ -82,10 +76,7 @@
 </template>
 
 <script>
-import axios from 'axios';
-
 export default {
-
   data() {
     return {
       formData: {
@@ -94,40 +85,22 @@ export default {
         phone: "",
         password: "",
       },
-      passwordFieldType: "password", // Initial type for password field
+      passwordFieldType: "password",
     };
   },
-  mounted() {
-    const user = localStorage.getItem('signupData');
-    if(user){
-      this.$router.push('/');
-    }
-    // Retrieve and parse data from local storage
-    const storedData = localStorage.getItem('signupData');
-    if (storedData) {
-      this.formData = JSON.parse(storedData); // Populate formData with stored data
-    }
-  },
   methods: {
-    async handleSubmit() {
-      try {
-        localStorage.setItem('signupData', JSON.stringify(this.formData));
-        const response = await axios.post("http://localhost:3000/users", this.formData);
-        console.log(response);
-        alert("Sign-up successful!");
-        this.$router.push('/');
-      } catch (error) {
-        console.error("Sign-up failed:", error);
-        alert("An error occurred during sign-up. Please try again.");
-      }
+    handleSubmit() {
+      localStorage.setItem("userData", JSON.stringify(this.formData));
+      alert("Sign-up successful!");
+      this.$router.push("/login");
     },
     togglePasswordVisibility() {
-      this.passwordFieldType = this.passwordFieldType === "password" ? "text" : "password";
+      this.passwordFieldType =
+        this.passwordFieldType === "password" ? "text" : "password";
     },
   },
 };
 </script>
-
 
 <style scoped>
 .signup-container {

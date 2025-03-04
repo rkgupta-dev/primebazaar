@@ -73,7 +73,11 @@
             </b-nav-item>
 
             <b-nav-item>
-              <b-button variant="outline-primary" size="sm" to="/cart">
+              <b-button
+                variant="outline-primary"
+                size="sm"
+                :to="redirectToCart()"
+              >
                 <i class="fas fa-shopping-cart"></i> Cart ({{ cart.length }})
               </b-button>
             </b-nav-item>
@@ -194,7 +198,7 @@
 
     <!-- User Profile -->
     <b-modal v-model="showModal" title="User Account" hide-footer>
-      <div v-if="userData">
+      <div v-if="userData && isLoggedIn">
         <b-container class="text-center my-4">
           <!-- User Avatar with Icon Fallback -->
           <b-avatar src="" alt="User Avatar" rounded size="lg" class="mb-3">
@@ -205,13 +209,13 @@
             ></b-icon>
           </b-avatar>
 
-          <!-- User Name with Icon -->
+          <!-- User Name -->
           <h5 class="mb-1 text-primary font-weight-bold">
             <b-icon icon="person" variant="primary" class="mr-1"></b-icon>
             {{ userData.name }}
           </h5>
 
-          <!-- User Email with Icon -->
+          <!-- User Email -->
           <p class="text-muted mb-1">
             <b-icon
               icon="envelope-fill"
@@ -221,7 +225,7 @@
             {{ userData.email }}
           </p>
 
-          <!-- User Phone with Icon -->
+          <!-- User Phone -->
           <p class="text-muted mb-1">
             <b-icon
               icon="telephone-fill"
@@ -229,6 +233,26 @@
               class="mr-1"
             ></b-icon>
             {{ userData.phone }}
+          </p>
+
+          <!-- Additional User Details -->
+          <p class="text-muted mb-1" v-if="userData.address">
+            <b-icon icon="house-fill" variant="secondary" class="mr-1"></b-icon>
+            {{ userData.address }}
+          </p>
+
+          <p class="text-muted mb-1" v-if="userData.dob">
+            <b-icon icon="calendar" variant="secondary" class="mr-1"></b-icon>
+            {{ userData.dob }}
+          </p>
+
+          <p class="text-muted mb-1" v-if="userData.gender">
+            <b-icon
+              icon="gender-ambiguous"
+              variant="secondary"
+              class="mr-1"
+            ></b-icon>
+            {{ userData.gender }}
           </p>
 
           <!-- Status Message -->
@@ -244,6 +268,8 @@
           </b-button>
         </b-container>
       </div>
+
+      <!-- Show this when user is NOT logged in -->
       <div v-else>
         <b-container class="text-center my-4">
           <b-icon
@@ -483,10 +509,10 @@ export default {
 
   data() {
     return {
+      userData: JSON.parse(localStorage.getItem("userData")),
       cart: [],
       email: "",
       showModal: false,
-      userData: null,
       currentPlaceholderIndex: 0,
       searchQuery: "",
       placeholders: [
@@ -565,21 +591,13 @@ export default {
       this.currentPlaceholderIndex =
         (this.currentPlaceholderIndex + 1) % this.placeholders.length;
     }, 3000);
-
-    const storedData = localStorage.getItem("signupData");
-    if (storedData) {
-      const parsedData = JSON.parse(storedData);
-      this.userData = Array.isArray(parsedData) ? parsedData[0] : parsedData;
-    }
   },
   mounted() {
-    this.loadCartFromLocalStorage(); // Load the cart from localStorage when the component mounts
-
-    // below code don't need to login or logout then comment it
-    // const user = localStorage.getItem("signupData");
-    // if (!user) {
-    //   this.$router.push("/signup");
-    // }
+    this.loadCartFromLocalStorage();
+    this.isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+    if (this.isLoggedIn) {
+      this.userData = JSON.parse(localStorage.getItem("userData"));
+    }
   },
   methods: {
     subscribe() {
@@ -662,8 +680,14 @@ export default {
     checkoutFn() {
       this.$router.push("/checkout");
     },
+    redirectToCart() {
+      const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+      return isLoggedIn ? "/cart" : "/login";
+    },
     logout() {
-      localStorage.clear();
+      localStorage.setItem("isLoggedIn", "false");
+      this.isLoggedIn = false; // Update reactive variable
+      this.userData = null;
       this.$router.push("/login");
       alert("You have logged out.");
     },

@@ -7,7 +7,6 @@
       class="my-5 shadow-sm"
     >
       <b-form @submit.prevent="handleLogin">
-        <!-- Phone Number Input -->
         <b-form-group label="Phone Number" label-for="input-phone">
           <b-form-input
             id="input-phone"
@@ -18,7 +17,6 @@
           ></b-form-input>
         </b-form-group>
 
-        <!-- Password Input with Icon Toggle -->
         <b-form-group label="Password" label-for="input-password">
           <div class="input-group">
             <b-form-input
@@ -46,21 +44,17 @@
           </div>
         </b-form-group>
 
-        <!-- Submit Button -->
         <b-button type="submit" variant="primary" block>Login</b-button>
       </b-form>
 
-      <!-- Sign Up Link -->
       <p class="mt-3 text-center">
-        Don't have an account? <b-link href="/signup">Sign Up</b-link>
+        Don't have an account? <b-link to="/signup">Sign Up</b-link>
       </p>
     </b-card>
   </div>
 </template>
 
 <script>
-import axios from "axios";
-
 export default {
   data() {
     return {
@@ -68,39 +62,22 @@ export default {
         phone: "",
         password: "",
       },
-      passwordFieldType: "password", // Initial type for password field
+      passwordFieldType: "password",
     };
   },
-  mounted() {
-    // Check if the user is already logged in and redirect to home if so
-    const user = localStorage.getItem("signupData");
-    if (user) {
-      this.$router.push("/");
-    }
-  },
   methods: {
-    async handleLogin() {
-      try {
-        const response = await axios.get(
-          `http://localhost:3000/users?phone=${this.loginData.phone}&password=${this.loginData.password}`
-        );
-
-        // Check if exactly one user is found with the provided credentials
-        if (response.status === 200 && response.data.length === 1) {
-          const userData = response.data[0]; // Retrieve the user data
-
-          // Store user data in localStorage
-          localStorage.setItem("signupData", JSON.stringify(userData));
-
-          // Redirect to home page
-          this.$router.push("/");
-          alert("Login successful!");
-        } else {
-          alert("Invalid phone number or password.");
-        }
-      } catch (error) {
-        console.error("Login error:", error);
-        alert("An error occurred during login. Please try again.");
+    handleLogin() {
+      const storedUser = JSON.parse(localStorage.getItem("userData"));
+      if (
+        storedUser &&
+        storedUser.phone === this.loginData.phone &&
+        storedUser.password === this.loginData.password
+      ) {
+        localStorage.setItem("isLoggedIn", "true"); // ✅ Store login status
+        alert("Login successful!");
+        this.$router.push("/");
+      } else {
+        alert("Invalid phone number or password.");
       }
     },
     togglePasswordVisibility() {

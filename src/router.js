@@ -21,97 +21,64 @@ import UserProfile from "./components/UserProfile.vue";
 import ShopByCategory from "./views/ShopByCategory.vue";
 import NewArrival from "./views/NewArrival.vue";
 import SpecialOffer from "./views/SpecialOffer.vue";
+import MensCollection from "./components/MensCollection.vue";
+import CartPage from "./views/CartPage.vue";
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   mode: "history", // Use 'history' mode to remove the hash from URLs
   routes: [
-    {
-      path: "/",
-      name: "landing-page",
-      component: LandingPage,
-    },
+    { path: "/", name: "landing-page", component: LandingPage },
     {
       path: "/shop-by-category",
       name: "shop-by-category",
       component: ShopByCategory,
     },
+    { path: "/best-seller", name: "best-seller", component: BestSellerSection },
+    { path: "/new-arrival", name: "new-arrival", component: NewArrival },
+    { path: "/special-offer", name: "special-offer", component: SpecialOffer },
+    { path: "/dealsoftheday", name: "deals", component: DealsOfTheDay },
+    { path: "/electronics", name: "electronics", component: ElectronicsPage },
+    { path: "/fashions", name: "fashions", component: FashionPage },
     {
-      path: "/best-seller",
-      name: "best-seller",
-      component: BestSellerSection,
+      path: "/mens-collection",
+      name: "mens-collection",
+      component: MensCollection,
     },
-    {
-      path: "/new-arrival",
-      name: "new-arrival",
-      component: NewArrival,
-    },
-    {
-      path: "/special-offer",
-      name: "special-offer",
-      component: SpecialOffer,
-    },
+    { path: "/home&living", name: "home&living", component: HomeLivingPage },
+
+    // Protected Routes (Require Login)
     {
       path: "/user",
       name: "user",
       component: UserProfile,
-    },
-    {
-      path: "/dealsoftheday",
-      name: "deals",
-      component: DealsOfTheDay,
-    },
-    {
-      path: "/electronics",
-      name: "electronics",
-      component: ElectronicsPage,
-    },
-    {
-      path: "/fashions",
-      name: "fashions",
-      component: FashionPage,
-    },
-    {
-      path: "/home&living",
-      name: "home&living",
-      component: HomeLivingPage,
+      meta: { requiresAuth: true },
     },
     {
       path: "/checkout",
       name: "checkout",
       component: CheckOut,
+      meta: { requiresAuth: true },
+    },
+    {
+      path: "/cart",
+      name: "cart",
+      component: CartPage,
+      meta: { requiresAuth: true },
     },
     {
       path: "/admin",
       name: "admin",
       component: AdminPage,
+      meta: { requiresAuth: true },
     },
-    {
-      path: "/signup",
-      name: "signup",
-      component: SignUp,
-    },
-    {
-      path: "/login",
-      name: "login",
-      component: LogIn,
-    },
-    {
-      path: "/about-us",
-      name: "about",
-      component: AboutPage,
-    },
-    {
-      path: "/contacts",
-      name: "contact",
-      component: ContactPage,
-    },
-    {
-      path: "/faqs",
-      name: "faqs",
-      component: FaqPage,
-    },
+
+    { path: "/signup", name: "signup", component: SignUp },
+    { path: "/login", name: "login", component: LogIn },
+    { path: "/about-us", name: "about", component: AboutPage },
+    { path: "/contacts", name: "contact", component: ContactPage },
+    { path: "/faqs", name: "faqs", component: FaqPage },
     {
       path: "/shipping-returns",
       name: "shipping & returns",
@@ -127,15 +94,22 @@ export default new Router({
       name: "terms & condition",
       component: TermsCondition,
     },
-    { path: "*", component: PageNotFound }, // wildcard route for 404 page
+    { path: "*", component: PageNotFound }, // 404 Page
   ],
   scrollBehavior(to, from, savedPosition) {
-    // If there is a saved scroll position, return it (for navigating back)
-    if (savedPosition) {
-      return savedPosition;
-    } else {
-      // If not, scroll to the top
-      return { x: 0, y: 0 };
-    }
+    return savedPosition || { x: 0, y: 0 }; // Scroll to top on navigation
   },
 });
+
+// Global Navigation Guard
+router.beforeEach((to, from, next) => {
+  const user = localStorage.getItem("userData"); // Check if user is logged in
+  if (to.matched.some((record) => record.meta.requiresAuth) && !user) {
+    alert("You need to log in to access this page.");
+    next("/login"); // Redirect to login if not authenticated
+  } else {
+    next();
+  }
+});
+
+export default router;
