@@ -338,7 +338,7 @@
         <div class="bg-primary text-light">
           <div class="my-2">
             <b-icon-tag-fill class="mr-2"></b-icon-tag-fill>
-            Limited Time Offer: Get 20% OFF with code <strong>SUMMER30</strong>
+            Limited Time Offer: Get 20% OFF with code <strong>SUMMER20</strong>
             <a href="#categories" class="ml-2 text-light">Shop Now</a>
           </div>
         </div>

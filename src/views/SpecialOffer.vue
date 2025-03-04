@@ -94,7 +94,7 @@
           <p>30% off on new arrivals</p>
           <b-alert show class="mb-2" variant="warning">
             <div>
-              <span class="h6 text-dark">Use Code: SUMMER30</span> <br />
+              <span class="h6 text-dark">Use Code: SUMMER20</span> <br />
               <span class="small text-dark">Valid until August 31st</span>
             </div>
           </b-alert>
