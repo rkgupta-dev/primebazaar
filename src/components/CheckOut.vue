@@ -1,83 +1,152 @@
 <template>
-  <div class="checkout-container">
-    <h2 class="text-center mb-4">Checkout</h2>
-
-    <!-- Cart Items List -->
-    <div v-if="cart.length">
-      <b-card
-        v-for="(cartItem, idx) in cart"
-        :key="idx"
-        class="my-2 shadow-sm border-secondary"
-      >
-        <div class="d-flex align-items-center">
-          <!-- Image -->
-          <b-img
-            :src="cartItem.img"
-            alt="Product image"
-            fluid
-            class="cart-item-image rounded mr-4 border"
-            style="width: 100px; height: auto"
-          ></b-img>
-
-          <!-- Details -->
-          <div class="flex-grow-1">
-            <div class="d-flex justify-content-between align-items-center">
-              <h5 class="mb-2">{{ cartItem.name }}</h5>
-
-              <!-- Remove button -->
+  <div>
+    <b-container>
+      <h2 class="my-4">Checkout</h2>
+      <b-row>
+        <b-col md="8">
+          <!-- Address Add List -->
+          <b-card no-body class="p-2 shadow-sm border rounded-lg mb-2">
+            <h3 class="text-muted font-weight-bold">
               <b-button
-                variant="outline-danger"
-                size="sm"
-                @click="removeFromCart(cartItem)"
-                class="ml-2"
-                v-b-tooltip.hover.bottom="'Remove item'"
+                variant="link"
+                class="p-2 text-dark d-flex justify-content-between w-100 border-0"
+                @click="toggleAddressForm"
               >
-                <b-icon icon="trash"></b-icon>
+                <span>{{ savedAddress ? "Edit Address" : "Add Address" }}</span>
+                <b-icon
+                  :icon="isAddressOpen ? 'chevron-up' : 'chevron-down'"
+                ></b-icon>
               </b-button>
-            </div>
+            </h3>
+            <b-alert v-if="savedAddress" variant="info" show class="mb-2">
+              <strong>Deliver to:</strong> {{ userName }} - {{ savedAddress }}
+            </b-alert>
+            <b-collapse v-model="isAddressOpen" class="p-2">
+              <div class="my-2 text-h6">Delivery Address</div>
+              <b-row class="align-items-center">
+                <b-col md="8">
+                  <b-form-group class="mb-0">
+                    <b-form-input
+                      v-model="address"
+                      placeholder="Enter your full address"
+                      required
+                    ></b-form-input>
+                  </b-form-group>
+                </b-col>
+                <b-col md="4" class="text-right">
+                  <b-button variant="primary" @click="saveAddress"
+                    >Save Address</b-button
+                  >
+                </b-col>
+              </b-row>
+            </b-collapse>
+          </b-card>
 
-            <small class="text-muted">Qty: {{ cartItem.quantity }}</small>
-            <p class="mb-0 d-flex justify-content-between font-weight-bold">
-              <span class="text-primary"> Price: ₹{{ cartItem.price }} </span>
-              <span class="text-success">
-                Total: ₹{{ (cartItem.price * cartItem.quantity).toFixed(2) }}
-              </span>
-            </p>
+          <!-- Cart Items List -->
+          <div v-if="cart.length">
+            <b-card
+              v-for="(cartItem, idx) in cart"
+              :key="idx"
+              class="mb-2 shadow-sm border-secondary"
+            >
+              <div class="d-flex align-items-center">
+                <!-- Image -->
+                <b-img
+                  :src="cartItem.img"
+                  alt="Product image"
+                  fluid
+                  class="cart-item-image rounded mr-4 border"
+                  style="width: 100px; height: auto"
+                ></b-img>
+
+                <!-- Details -->
+                <div class="flex-grow-1">
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <h5 class="mb-2">{{ cartItem.name }}</h5>
+
+                    <!-- Remove button -->
+                    <!-- <b-button
+                      variant="outline-danger"
+                      size="sm"
+                      @click="removeFromCart(cartItem)"
+                      class="ml-2"
+                      v-b-tooltip.hover.bottom="'Remove item'"
+                    >
+                      <b-icon icon="trash"></b-icon>
+                    </b-button> -->
+                  </div>
+
+                  <small class="text-muted">Qty: {{ cartItem.quantity }}</small>
+                  <p
+                    class="mb-0 d-flex justify-content-between font-weight-bold"
+                  >
+                    <span class="text-primary">
+                      Price: ₹{{ cartItem.price }}
+                    </span>
+                    <span class="text-success">
+                      Total: ₹{{
+                        (cartItem.price * cartItem.quantity).toFixed(2)
+                      }}
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </b-card>
           </div>
-        </div>
-      </b-card>
 
-      <!-- Total Summary -->
-      <b-card class="text-right my-4 shadow-sm border-primary">
-        <h5 class="font-weight-bold">Total Items: {{ totalItems }}</h5>
-        <h5 class="font-weight-bold text-success">
-          Total Amount: ₹{{ totalAmount }}
-        </h5>
-        <h6 class="font-weight-bold text-danger">
-          You saved: ₹{{ totalSavings }}
-        </h6>
-      </b-card>
+          <!-- Empty Cart Message -->
+          <b-card v-else class="text-center py-5 shadow-sm border-light">
+            <b-icon
+              icon="cart"
+              variant="muted"
+              font-scale="2"
+              class="mb-3"
+            ></b-icon>
+            <h4 class="text-muted mb-2">Your cart is empty</h4>
+            <p class="text-muted">
+              Looks like you haven't added anything yet. Start shopping now!
+            </p>
+          </b-card>
+        </b-col>
+        <b-col md="4">
+          <div>
+            <!-- Total Summary -->
+            <b-card class="shadow-sm border-primary">
+              <div class="d-flex justify-content-between">
+                <h5 class="font-weight-bold">Total Items:</h5>
+                <h5 class="font-weight-bold">{{ totalItems }}</h5>
+              </div>
 
-      <!-- Checkout Button -->
-      <b-button
-        class="mt-4"
-        block
-        variant="success"
-        size="lg"
-        @click="sendWhatsApp"
-      >
-        Proceed to Payment
-      </b-button>
-    </div>
+              <div class="d-flex justify-content-between">
+                <h5 class="font-weight-bold text-success">Total Amount:</h5>
+                <h5 class="font-weight-bold text-success">
+                  ₹ {{ totalAmount }}
+                </h5>
+              </div>
 
-    <!-- Empty Cart Message -->
-    <b-card v-else class="text-center py-5 shadow-sm border-light">
-      <b-icon icon="cart" variant="muted" font-scale="2" class="mb-3"></b-icon>
-      <h4 class="text-muted mb-2">Your cart is empty</h4>
-      <p class="text-muted">
-        Looks like you haven't added anything yet. Start shopping now!
-      </p>
-    </b-card>
+              <div class="d-flex justify-content-between">
+                <h6 class="font-weight-bold text-danger">You saved:</h6>
+                <h6 class="font-weight-bold text-danger">
+                  ₹ {{ totalSavings }}
+                </h6>
+              </div>
+            </b-card>
+
+            <!-- Checkout Button -->
+            <b-button
+              class="mt-4"
+              block
+              variant="success"
+              @click="sendWhatsApp"
+            >
+              Proceed to Payment
+            </b-button>
+          </div>
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
@@ -89,7 +158,21 @@ export default {
       totalAmount: 0, // Extracted from URL
       totalItems: 0, // Extracted from URL
       totalSavings: 0, // Extracted from URL
+      address: "",
+      isAddressOpen: false,
+      savedAddress: "",
+      userName: "",
     };
+  },
+  mounted() {
+    this.loadCart(); // Load cart on mount
+
+    // Get checkout details from URL query params
+    this.totalAmount = parseFloat(this.$route.query.totalAmount) || 0;
+    this.totalItems = parseInt(this.$route.query.totalItems) || 0;
+    this.totalSavings = parseFloat(this.$route.query.totalSavings) || 0;
+
+    this.loadAddress(); // Load saved address on page load
   },
   methods: {
     sendWhatsApp() {
@@ -145,22 +228,66 @@ export default {
     saveCartToLocalStorage() {
       localStorage.setItem("cart", JSON.stringify(this.cart));
     },
-  },
-  mounted() {
-    this.loadCart(); // Load cart on mount
 
-    // Get checkout details from URL query params
-    this.totalAmount = parseFloat(this.$route.query.totalAmount) || 0;
-    this.totalItems = parseInt(this.$route.query.totalItems) || 0;
-    this.totalSavings = parseFloat(this.$route.query.totalSavings) || 0;
+    // Get address
+    toggleAddressForm() {
+      this.isAddressOpen = !this.isAddressOpen;
+    },
+    removeFocus() {
+      this.$nextTick(() => {
+        if (this.$refs.toggleButton) {
+          this.$refs.toggleButton.blur();
+        }
+      });
+    },
+    saveAddress() {
+      if (!this.address.trim()) {
+        this.$bvToast.toast("Please enter a valid address!", {
+          title: "Error",
+          variant: "danger",
+          solid: true,
+          autoHideDelay: 3000,
+        });
+        return;
+      }
+
+      // Get existing userData or initialize empty object
+      let userData = JSON.parse(localStorage.getItem("userData")) || {};
+
+      // Update or add the address field
+      userData.address = this.address;
+
+      // Save updated data back to localStorage
+      localStorage.setItem("userData", JSON.stringify(userData));
+
+      // Update savedAddress for display
+      this.loadAddress();
+
+      // Show success toast notification
+      this.$bvToast.toast("Address saved successfully!", {
+        title: "Success",
+        variant: "success",
+        solid: true,
+        autoHideDelay: 3000,
+      });
+
+      // Clear input field & close form
+      this.address = "";
+      this.isAddressOpen = false;
+    },
+
+    loadAddress() {
+      try {
+        // Fetch address from localStorage safely
+        let userData = JSON.parse(localStorage.getItem("userData") || "{}");
+        this.savedAddress = userData.address || "";
+        this.userName = userData.name || "";
+      } catch (error) {
+        console.error("Error loading address:", error);
+      }
+    },
   },
 };
 </script>
 
-<style scoped>
-.checkout-container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-}
-</style>
+<style scoped></style>

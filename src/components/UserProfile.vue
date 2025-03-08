@@ -14,10 +14,16 @@
             <small class="text-muted">{{
               userData?.email || "Not Logged In"
             }}</small>
+            <!-- Edit Profile Button -->
             <div class="mt-2">
-              <b-button v-if="isLoggedIn" variant="outline-primary" size="sm"
-                >Edit Profile</b-button
+              <b-button
+                v-if="isLoggedIn"
+                variant="outline-primary"
+                size="sm"
+                @click="showEditProfile"
               >
+                Edit Profile
+              </b-button>
             </div>
           </div>
 
@@ -205,6 +211,45 @@
         </b-alert>
       </div>
     </b-container>
+
+    <!-- Edit Profile Modal -->
+    <div>
+      <b-modal v-model="isProfileDialogOpen" title="Edit Profile" hide-footer>
+        <b-form @submit.prevent="saveProfile">
+          <b-form-group label="Name">
+            <b-form-input
+              v-model="profile.name"
+              placeholder="Enter your name"
+            ></b-form-input>
+          </b-form-group>
+
+          <b-form-group label="Email">
+            <b-form-input
+              v-model="profile.email"
+              type="email"
+              placeholder="Enter your email"
+            ></b-form-input>
+          </b-form-group>
+
+          <b-form-group label="Address">
+            <b-form-input
+              v-model="profile.address"
+              placeholder="Enter your address"
+            ></b-form-input>
+          </b-form-group>
+
+          <!-- Save & Close Buttons -->
+          <div class="d-flex justify-content-end">
+            <b-button variant="secondary" @click="isProfileDialogOpen = false"
+              >Cancel</b-button
+            >
+            <b-button variant="primary" class="ml-2" type="submit"
+              >Save Changes</b-button
+            >
+          </div>
+        </b-form>
+      </b-modal>
+    </div>
   </div>
 </template>
 
@@ -214,7 +259,13 @@ export default {
   data() {
     return {
       userData: null,
-      isLoggedIn: false,
+      isLoggedIn: true,
+      isProfileDialogOpen: false, // Controls dialog visibility
+      profile: {
+        name: "",
+        email: "",
+        address: "",
+      },
       orderFields: [
         { key: "orderId", label: "Order ID" },
         { key: "date", label: "Date" },
@@ -262,6 +313,7 @@ export default {
   },
   mounted() {
     this.checkLoginStatus();
+    this.loadProfile(); // Load profile on page load
   },
   methods: {
     getStatusVariant(status) {
@@ -285,6 +337,32 @@ export default {
       this.userData = null;
       this.$router.push("/login");
       alert("You have logged out.");
+    },
+
+    showEditProfile() {
+      this.loadProfile(); // Load profile before opening dialog
+      this.isProfileDialogOpen = true;
+    },
+    saveProfile() {
+      // Save profile data to localStorage
+      localStorage.setItem("userData", JSON.stringify(this.profile));
+
+      // Show success toast
+      this.$bvToast.toast("Profile updated successfully!", {
+        title: "Success",
+        variant: "success",
+        solid: true,
+        autoHideDelay: 3000,
+      });
+
+      // Close modal
+      this.isProfileDialogOpen = false;
+    },
+    loadProfile() {
+      let userData = JSON.parse(localStorage.getItem("userData")) || {};
+      this.profile.name = userData.name || "";
+      this.profile.email = userData.email || "";
+      this.profile.address = userData.address || "";
     },
   },
 };
