@@ -4,14 +4,13 @@
 
     <!-- Cart Items List -->
     <div v-if="cart.length">
-      <!-- Loop through cart items -->
       <b-card
         v-for="(cartItem, idx) in cart"
         :key="idx"
         class="my-2 shadow-sm border-secondary"
       >
         <div class="d-flex align-items-center">
-          <!-- Image section -->
+          <!-- Image -->
           <b-img
             :src="cartItem.img"
             alt="Product image"
@@ -20,18 +19,17 @@
             style="width: 100px; height: auto"
           ></b-img>
 
-          <!-- Details section -->
+          <!-- Details -->
           <div class="flex-grow-1">
             <div class="d-flex justify-content-between align-items-center">
-              <!-- Product name with truncation -->
-              <h5 class="mb-2 text">{{ cartItem.name }}</h5>
+              <h5 class="mb-2">{{ cartItem.name }}</h5>
 
-              <!-- Remove button with tooltip -->
+              <!-- Remove button -->
               <b-button
                 variant="outline-danger"
                 size="sm"
                 @click="removeFromCart(cartItem)"
-                class="ml-2 remove-btn"
+                class="ml-2"
                 v-b-tooltip.hover.bottom="'Remove item'"
               >
                 <b-icon icon="trash"></b-icon>
@@ -39,25 +37,25 @@
             </div>
 
             <small class="text-muted">Qty: {{ cartItem.quantity }}</small>
-            <div>
-              <p class="mb-0 d-flex justify-content-between font-weight-bold">
-                <span class="text-primary"> Price: ₹{{ cartItem.price }} </span>
-                <span class="text-success text-right">
-                  Total: ₹{{ calculateItemTotal(cartItem).toFixed(2) }}
-                </span>
-              </p>
-            </div>
+            <p class="mb-0 d-flex justify-content-between font-weight-bold">
+              <span class="text-primary"> Price: ₹{{ cartItem.price }} </span>
+              <span class="text-success">
+                Total: ₹{{ (cartItem.price * cartItem.quantity).toFixed(2) }}
+              </span>
+            </p>
           </div>
-
-          <!-- Total Price section -->
         </div>
       </b-card>
 
-      <!-- Total Amount -->
+      <!-- Total Summary -->
       <b-card class="text-right my-4 shadow-sm border-primary">
-        <h5 class="font-weight-bold">
-          Total Amount: ₹{{ totalAmount.toFixed(2) }}
+        <h5 class="font-weight-bold">Total Items: {{ totalItems }}</h5>
+        <h5 class="font-weight-bold text-success">
+          Total Amount: ₹{{ totalAmount }}
         </h5>
+        <h6 class="font-weight-bold text-danger">
+          You saved: ₹{{ totalSavings }}
+        </h6>
       </b-card>
 
       <!-- Checkout Button -->
@@ -72,13 +70,12 @@
       </b-button>
     </div>
 
-    <!-- No Items Message -->
+    <!-- Empty Cart Message -->
     <b-card v-else class="text-center py-5 shadow-sm border-light">
       <b-icon icon="cart" variant="muted" font-scale="2" class="mb-3"></b-icon>
       <h4 class="text-muted mb-2">Your cart is empty</h4>
       <p class="text-muted">
-        Looks like you haven't added anything yet. Start shopping to fill your
-        cart!
+        Looks like you haven't added anything yet. Start shopping now!
       </p>
     </b-card>
   </div>
@@ -88,31 +85,22 @@
 export default {
   data() {
     return {
-      cart: [], // Initialize an empty cart, load it from localStorage
+      cart: [], // Cart data from localStorage
+      totalAmount: 0, // Extracted from URL
+      totalItems: 0, // Extracted from URL
+      totalSavings: 0, // Extracted from URL
     };
-  },
-  computed: {
-    // Calculate total amount for the entire cart
-    totalAmount() {
-      return this.cart.reduce((total, item) => {
-        return total + this.calculateItemTotal(item);
-      }, 0);
-    },
   },
   methods: {
     sendWhatsApp() {
       const upiId = "krrohit6@ybl";
 
-      // Get total price from computed property
-      const totalPrice = this.totalPrice;
-
-      // Check if totalPrice is valid
-      if (totalPrice === 0) {
+      if (!this.totalAmount || this.totalAmount === 0) {
         alert("Your cart is empty. Please add items before proceeding.");
         return;
       }
 
-      // Create an order summary
+      // Order Summary
       let orderSummary = "Order Summary:\n";
       this.cart.forEach((item) => {
         orderSummary += `- ${item.name} (Qty: ${item.quantity}) - ₹${
@@ -120,17 +108,12 @@ export default {
         }\n`;
       });
 
-      // Create the message with order summary and payment details
-
-      const message = `🚨 Your order is ready for payment! 🚨\n\n Hey there! 👋\n\nThank you for shopping with us! Here’s a summary of your order:\n\n${orderSummary}\n\n💰 **Total Price:** ₹${this.totalAmount.toFixed(
-        2
-      )}\n\nTo complete your purchase, please tap the link below to pay via PhonePe:\n\n[Pay Now]\n(upi://pay?pa=${upiId}&pn=MyShop&am=${this.totalAmount.toFixed(
-        2
-      )})`;
+      // Message for WhatsApp
+      const message = `🚨 Your order is ready for payment! 🚨\n\nHey there! 👋\n\nThank you for shopping with us! Here’s a summary of your order:\n\n${orderSummary}\n\n🛍️ **Total Items:** ${this.totalItems}\n💰 **Total Price:** ₹${this.totalAmount}\n🎉 **You Saved:** ₹${this.totalSavings}\n\nTo complete your purchase, please tap the link below to pay via PhonePe:\n\n[Pay Now](upi://pay?pa=${upiId}&pn=MyShop&am=${this.totalAmount})`;
 
       const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
 
-      // Open WhatsApp with the message
+      // Open WhatsApp
       window.open(whatsappUrl, "_blank");
     },
 
@@ -139,9 +122,10 @@ export default {
       const cartFromStorage = localStorage.getItem("cart");
       if (cartFromStorage) {
         this.cart = JSON.parse(cartFromStorage);
-        console.log(cartFromStorage);
       }
     },
+
+    // Remove item from cart and update storage
     removeFromCart(item) {
       const index = this.cart.findIndex((cartItem) => cartItem.id === item.id);
       if (index !== -1) {
@@ -151,19 +135,24 @@ export default {
       this.$bvToast.toast(`${item.name} removed from the cart!`, {
         title: "Item Removed",
         variant: "danger",
-        autoHideDelay: 2000, // Auto hide after 2 seconds
+        autoHideDelay: 2000,
         solid: true,
         toaster: "b-toaster-bottom-center",
       });
     },
-    // Calculate the total price of a single item (without discount)
-    calculateItemTotal(item) {
-      return item.quantity * item.price;
+
+    // Save cart to localStorage
+    saveCartToLocalStorage() {
+      localStorage.setItem("cart", JSON.stringify(this.cart));
     },
-    // Proceed to checkout (you can replace this with actual payment processing)
   },
   mounted() {
-    this.loadCart(); // Load the cart when the component is mounted
+    this.loadCart(); // Load cart on mount
+
+    // Get checkout details from URL query params
+    this.totalAmount = parseFloat(this.$route.query.totalAmount) || 0;
+    this.totalItems = parseInt(this.$route.query.totalItems) || 0;
+    this.totalSavings = parseFloat(this.$route.query.totalSavings) || 0;
   },
 };
 </script>

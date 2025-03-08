@@ -352,7 +352,14 @@ export default {
       this.couponCode = "";
     },
     checkoutFn() {
-      this.$router.push("/checkout");
+      this.$router.push({
+        path: "/checkout",
+        query: {
+          totalAmount: this.totalAmount,
+          totalItems: this.totalItems,
+          totalSavings: this.totalSavings,
+        },
+      });
     },
   },
 };

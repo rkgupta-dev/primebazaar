@@ -50,7 +50,7 @@ const router = new Router({
 
     // Protected Routes (Require Login)
     {
-      path: "/user",
+      path: "/profile",
       name: "user",
       component: UserProfile,
       meta: { requiresAuth: true },
