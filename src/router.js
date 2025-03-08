@@ -27,7 +27,7 @@ import CartPage from "./views/CartPage.vue";
 Vue.use(Router);
 
 const router = new Router({
-  mode: "history", // Use 'history' mode to remove the hash from URLs
+  mode: "hash", // Use 'history' mode to remove the hash from URLs
   routes: [
     { path: "/", name: "landing-page", component: LandingPage },
     {
