@@ -50,9 +50,9 @@
               </b-button>
             </div>
 
-            <!-- Product Image -->
+            <!-- Product img -->
             <b-img
-              :src="product.image"
+              :src="product.img"
               fluid
               class="mb-3"
               :alt="product.name"
@@ -67,7 +67,9 @@
 
             <!-- Product Info -->
             <h5 class="mb-0">{{ product.name }}</h5>
-            <p class="text-muted small mb-2">{{ product.feature }}</p>
+            <p class="text-muted text-truncate small mb-2">
+              {{ product.description }}
+            </p>
 
             <!-- Product Price -->
             <div class="d-flex align-items-center justify-content-between">
@@ -81,7 +83,11 @@
               </div>
 
               <!-- Add to Cart Button -->
-              <b-button variant="primary" class="rounded-circle">
+              <b-button
+                variant="primary"
+                class="rounded-circle"
+                @click="addToCart(product)"
+              >
                 <i class="fas fa-plus"></i>
               </b-button>
             </div>
@@ -106,95 +112,114 @@ export default {
     return {
       activeCategory: "All",
       categories: ["All", "Women", "Men", "Accessories"],
+      cart: JSON.parse(localStorage.getItem("cart")) || [],
       products: [
         {
+          id: "bc1",
           name: "Classic Leather Jacket",
-          feature: "Premium Quality",
+          description:
+            "A stylish and durable leather jacket with a premium finish. Perfect for any occasion.",
           price: 1999.99,
           originalPrice: 2499.99,
+          discount: 20, // (20% off)
           reviews: 125,
-          image:
-            "https://img.freepik.com/free-photo/confident-serious-handsome-man-wears-black-leather-jacket-gray-t-shirt-stylish-eyewear-looks-directly-into-camera-isolated-people-style-concept_176420-13362.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
+          img: "https://img.freepik.com/free-photo/confident-serious-handsome-man-wears-black-leather-jacket-gray-t-shirt-stylish-eyewear-looks-directly-into-camera-isolated-people-style-concept_176420-13362.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
           category: "Men",
         },
         {
+          id: "bc2",
           name: "Formal Office Shoes",
-          feature: "Genuine Leather",
+          description:
+            "Elegant and comfortable formal shoes made from genuine leather for office wear.",
           price: 899.99,
           originalPrice: 1299.99,
+          discount: 31, // (31% off)
           reviews: 200,
-          image:
-            "https://img.freepik.com/free-photo/new-background-classic-man-black_1203-6540.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
+          img: "https://img.freepik.com/free-photo/new-background-classic-man-black_1203-6540.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
           category: "Men",
         },
         {
+          id: "bc3",
           name: "Slim Fit Jeans",
-          feature: "Stretchable Fabric",
+          description:
+            "Comfortable and stylish slim-fit jeans with stretchable fabric for a perfect fit.",
           price: 599.99,
           originalPrice: 799.99,
+          discount: 25, // (25% off)
           reviews: 180,
-          image:
-            "https://img.freepik.com/free-photo/jeans_1203-8093.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
+          img: "https://img.freepik.com/free-photo/jeans_1203-8093.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
           category: "Men",
         },
         {
+          id: "bc4",
           name: "Designer Sunglasses",
-          feature: "UV Protection",
+          description:
+            "Stylish sunglasses with UV protection, perfect for outdoor activities and daily wear.",
           price: 699.99,
           originalPrice: null,
+          discount: 0, // No discount
           reviews: 218,
-          image:
-            "https://img.freepik.com/free-photo/portrait-beautiful-woman-wearing-many-sun-glasses-white-high-quality-photo_2831-10670.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
+          img: "https://img.freepik.com/free-photo/portrait-beautiful-woman-wearing-many-sun-glasses-white-high-quality-photo_2831-10670.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
           category: "Women",
         },
         {
+          id: "bc5",
           name: "Floral Maxi Dress",
-          feature: "Cotton & Flowy",
+          description:
+            "A beautiful and flowy floral maxi dress made from soft cotton fabric.",
           price: 779.99,
           originalPrice: 999.99,
+          discount: 22, // (22% off)
           reviews: 250,
-          image:
-            "https://img.freepik.com/free-photo/outdoor-portrait-woman-yellow-summer-dress-posing-bridge-happy-cheerful-mood-enjoying-sunny-summer-days_343596-6125.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
+          img: "https://img.freepik.com/free-photo/outdoor-portrait-woman-yellow-summer-dress-posing-bridge-happy-cheerful-mood-enjoying-sunny-summer-days_343596-6125.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
           category: "Women",
         },
         {
+          id: "bc6",
           name: "Luxury Handbag",
-          feature: "Premium Leather",
+          description:
+            "A premium leather handbag with a sleek and elegant design, perfect for any outfit.",
           price: 2499.99,
           originalPrice: 2999.99,
+          discount: 17, // (17% off)
           reviews: 150,
-          image:
-            "https://img.freepik.com/free-photo/bag-hanging-from-furniture-item-indoors_23-2151073514.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
+          img: "https://img.freepik.com/free-photo/bag-hanging-from-furniture-item-indoors_23-2151073514.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
           category: "Women",
         },
         {
+          id: "bc7",
           name: "Wireless Headphones",
-          feature: "Noise Canceling",
+          description:
+            "High-quality noise-canceling wireless headphones with long battery life and clear sound.",
           price: 1599.99,
           originalPrice: null,
+          discount: 0, // No discount
           reviews: 98,
-          image:
-            "https://img.freepik.com/free-photo/headphones-with-minimalist-monochrome-background_23-2150763315.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
+          img: "https://img.freepik.com/free-photo/headphones-with-minimalist-monochrome-background_23-2150763315.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
           category: "Accessories",
         },
         {
+          id: "bc8",
           name: "Smart Watch Pro",
-          feature: "Fitness Tracker",
+          description:
+            "A feature-packed smartwatch with fitness tracking, heart rate monitoring, and notifications.",
           price: 2999.99,
           originalPrice: 3499.99,
+          discount: 14, // (14% off)
           reviews: 176,
-          image:
-            "https://img.freepik.com/free-photo/smartwatch-screen-digital-device_53876-97321.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
+          img: "https://img.freepik.com/free-photo/smartwatch-screen-digital-device_53876-97321.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
           category: "Accessories",
         },
         {
+          id: "bc9",
           name: "Leather Wallet",
-          feature: "Slim & Durable",
+          description:
+            "A sleek and durable leather wallet with multiple compartments for cards and cash.",
           price: 499.99,
           originalPrice: 699.99,
+          discount: 29, // (29% off)
           reviews: 220,
-          image:
-            "https://img.freepik.com/free-photo/leather-wallet-isolated-white_1232-1814.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
+          img: "https://img.freepik.com/free-photo/leather-wallet-isolated-white_1232-1814.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
           category: "Accessories",
         },
       ],
@@ -206,6 +231,37 @@ export default {
       return this.products.filter(
         (product) => product.category === this.activeCategory
       );
+    },
+  },
+  methods: {
+    addToCart(product) {
+      const existingProduct = this.cart.find((item) => item.id === product.id);
+
+      if (existingProduct) {
+        existingProduct.quantity += 1;
+      } else {
+        this.cart.push({
+          ...product,
+          price: Number(product.price), // Ensure price is a number
+          originalPrice: product.originalPrice
+            ? Number(product.originalPrice)
+            : null,
+          discount: product.discount ? Number(product.discount) : 0,
+          quantity: 1,
+        });
+      }
+
+      // Save updated cart to localStorage
+      localStorage.setItem("cart", JSON.stringify(this.cart));
+
+      // Show toast notification
+      this.$bvToast.toast(`${product.name} added to the cart!`, {
+        title: "Item Added",
+        variant: "success",
+        autoHideDelay: 2000,
+        solid: true,
+        toaster: "b-toaster-bottom-center",
+      });
     },
   },
 };
