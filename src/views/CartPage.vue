@@ -187,10 +187,7 @@
               </b-row>
 
               <b-row class="mb-3">
-                <b-col
-                  >Protect Promise Fee
-                  <b-icon icon="info-circle" class="ml-1"></b-icon
-                ></b-col>
+                <b-col>Protect Promise Fee ></b-col>
                 <b-col class="text-right">₹{{ protectionFee }}</b-col>
               </b-row>
 

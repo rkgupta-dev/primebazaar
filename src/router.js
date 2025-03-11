@@ -23,11 +23,12 @@ import NewArrival from "./views/NewArrival.vue";
 import SpecialOffer from "./views/SpecialOffer.vue";
 import MensCollection from "./components/MensCollection.vue";
 import CartPage from "./views/CartPage.vue";
+import WomenCollection from "./components/WomenCollection.vue";
 
 Vue.use(Router);
 
 const router = new Router({
-  mode: "hash", // Use 'history' mode to remove the hash from URLs
+  mode: "hash", // Use 'history' mode to remove the hash from URLs and 'hash'
   routes: [
     { path: "/", name: "landing-page", component: LandingPage },
     {
@@ -45,6 +46,11 @@ const router = new Router({
       path: "/mens-collection",
       name: "mens-collection",
       component: MensCollection,
+    },
+    {
+      path: "/womens-collection",
+      name: "womens-collection",
+      component: WomenCollection,
     },
     { path: "/home&living", name: "home&living", component: HomeLivingPage },
 

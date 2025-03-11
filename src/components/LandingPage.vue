@@ -29,7 +29,7 @@
           <b-navbar-nav class="ml-auto">
             <b-nav-item href="/">Home</b-nav-item>
             <b-nav-item href="#new-arrival">New Arrivals</b-nav-item>
-            <b-nav-item>Women</b-nav-item>
+            <b-nav-item to="/womens-collection">Women</b-nav-item>
             <b-nav-item to="/mens-collection">Men</b-nav-item>
             <b-nav-item>Accessories</b-nav-item>
             <b-nav-item>Sale</b-nav-item>
@@ -167,7 +167,7 @@
     </b-container>
 
     <!-- Featured Products -->
-    <b-container id="products" class="my-4" style="padding-top: 75px">
+    <!-- <b-container id="products" class="my-4" style="padding-top: 75px">
       <h2 class="text-center">Featured Products</h2>
       <div class="overflow-auto">
         <div class="d-flex flex-row flex-nowrap">
@@ -197,7 +197,7 @@
           </b-col>
         </div>
       </div>
-    </b-container>
+    </b-container> -->
 
     <!-- Footer Section -->
     <b-container fluid class="bg-dark text-light pt-4">

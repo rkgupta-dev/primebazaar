@@ -141,11 +141,11 @@
     <b-container class="my-4">
       <!-- Search Function -->
       <b-row class="my-4">
-        <b-col md="8" sm="6"><h3>Men's Collections</h3></b-col>
+        <b-col md="8" sm="6"><h3>Women's Collections</h3></b-col>
         <b-col md="4" sm="6">
           <b-form-input
             v-model="searchQuery"
-            placeholder="Search for men's fashions..."
+            placeholder="Search for women's fashions..."
           />
         </b-col>
       </b-row>
@@ -257,135 +257,114 @@ export default {
     return {
       searchQuery: "",
       items: [
+        // Women's Fashion Collection
         {
-          id: "m1",
+          id: "w1",
           quantity: 1,
-          name: "Trackpants",
-          price: 399,
-          discount: 30,
-          rating: 5,
-          description:
-            "Soft, loose pants that you wear for doing sports or exercise, or as informal clothing.",
-          img: "https://img.freepik.com/free-photo/handsome-sporty-man-stretching-park-by-river_1303-21901.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
-        },
-        {
-          id: "m2",
-          quantity: 1,
-          name: "Running Shorts",
-          price: 499,
+          name: "Cotton Kurti",
+          price: 899,
           discount: 20,
           rating: 5,
           description:
-            "Lightweight shorts designed for running and outdoor activities.",
-          img: "https://images.pexels.com/photos/5037354/pexels-photo-5037354.jpeg?auto=compress&cs=tinysrgb&w=600",
+            "Elegant and comfortable cotton kurti, perfect for daily wear.",
+          img: "https://img.freepik.com/free-photo/young-woman-beautiful-red-dress_1303-17508.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
         },
         {
-          id: "m3",
+          id: "w2",
           quantity: 1,
-          name: "Sports T-Shirt",
-          price: 899,
+          name: "Anarkali Suit",
+          price: 1499,
           discount: 15,
-          rating: 4,
+          rating: 5,
           description:
-            "Breathable and moisture-wicking t-shirt ideal for workouts and outdoor activities.",
-          img: "https://images.pexels.com/photos/6180453/pexels-photo-6180453.jpeg?auto=compress&cs=tinysrgb&w=600",
+            "Flared Anarkali suit with beautiful embroidery, ideal for festive occasions.",
+          img: "https://img.freepik.com/free-photo/young-indian-woman-wearing-sari_23-2149400872.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
         },
         {
-          id: "m4",
+          id: "w3",
           quantity: 1,
-          name: "Gym Hoodie",
-          price: 1099,
+          name: "Chiffon Saree",
+          price: 1999,
           discount: 10,
           rating: 4,
-          description:
-            "Comfortable hoodie for warming up or relaxing post-workout.",
-          img: "https://images.pexels.com/photos/7992156/pexels-photo-7992156.jpeg?auto=compress&cs=tinysrgb&w=600",
+          description: "Lightweight chiffon saree with delicate floral prints.",
+          img: "https://img.freepik.com/free-photo/young-indian-woman-wearing-sari_23-2149400848.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
         },
         {
-          id: "m5",
+          id: "w4",
           quantity: 1,
-          name: "Trouser",
-          price: 799,
-          discount: 25,
-          rating: 5,
-          description: "Flexible trouser designed for comfort.",
-          img: "https://img.freepik.com/free-photo/collection-beige-tone-colored-pants_23-2150773426.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
-        },
-        {
-          id: "m6",
-          quantity: 1,
-          name: "Jeans",
+          name: "Palazzo Set",
           price: 1299,
           discount: 20,
-          rating: 4,
-          description:
-            "High-performance jeans that provide support and improve circulation.",
-          img: "https://img.freepik.com/free-photo/stack-clothes-white-background-closeup_93675-132644.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
-        },
-        {
-          id: "m7",
-          quantity: 1,
-          name: "Fitness Tank Top",
-          price: 599,
-          discount: 15,
-          rating: 3,
-          description:
-            "Lightweight tank top perfect for high-intensity workouts.",
-          img: "https://img.freepik.com/free-photo/athletic-man-practicing-sport-outdoor_23-2148196820.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
-        },
-        {
-          id: "m8",
-          quantity: 1,
-          name: "Sweatpants",
-          price: 899,
-          discount: 10,
-          rating: 4,
-          description: "Cozy sweatpants for lounging or casual outings.",
-          img: "https://img.freepik.com/free-photo/model-wearing-peachy-color-clothing_23-2151428082.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
-        },
-        {
-          id: "m9",
-          quantity: 1,
-          name: "Base Layer Top",
-          price: 699,
-          discount: 25,
-          rating: 4,
-          description:
-            "Moisture-wicking base layer top for cold-weather workouts.",
-          img: "https://img.freepik.com/free-photo/teenage-boy-rash-guard-shorts-swimwear-fashion-shoot-rear-view_53876-111193.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
-        },
-        {
-          id: "m10",
-          quantity: 1,
-          name: "Athletic Socks",
-          price: 99,
-          discount: 10,
-          rating: 4,
-          description:
-            "Comfortable and breathable socks designed for sports and activities.",
-          img: "https://img.freepik.com/free-photo/close-up-mal-training-trail_23-2148482742.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
-        },
-        {
-          id: "m11",
-          quantity: 1,
-          name: "Windbreaker Jacket",
-          price: 1599,
-          discount: 15,
-          rating: 4,
-          description:
-            "Lightweight and packable jacket for protection against wind and light rain.",
-          img: "https://img.freepik.com/free-photo/still-life-rendering-jackets-display_23-2149745039.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
-        },
-        {
-          id: "m12",
-          quantity: 1,
-          name: "Polo Shirt",
-          price: 799,
-          discount: 20,
           rating: 5,
           description:
-            "Stylish polo shirt suitable for casual or semi-formal occasions.",
-          img: "https://img.freepik.com/free-photo/young-courier-wearing-blue-uniform-blue-cap-doing-happy-honor_141793-33778.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
+            "Trendy palazzo and kurti set, great for casual or office wear.",
+          img: "https://img.freepik.com/free-photo/seductive-stylish-woman-bohemian-summer-clothes-posing-tropical-luxury-resort-vacation-concept_273443-3135.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
+        },
+        {
+          id: "w5",
+          quantity: 1,
+          name: "Lehenga Choli",
+          price: 3999,
+          discount: 25,
+          rating: 5,
+          description:
+            "Beautifully embroidered lehenga choli for weddings and parties.",
+          img: "https://img.freepik.com/free-photo/beautiful-young-woman-wearing-sari_23-2149503036.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
+        },
+        {
+          id: "w6",
+          quantity: 1,
+          name: "Indo-Western Dress",
+          price: 2499,
+          discount: 15,
+          rating: 4,
+          description:
+            "Fusion of traditional and modern styles, perfect for any event.",
+          img: "https://img.freepik.com/free-photo/young-female-model-sleeping-underwear_1303-19121.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
+        },
+        {
+          id: "w7",
+          quantity: 1,
+          name: "Silk Dupatta",
+          price: 599,
+          discount: 10,
+          rating: 4,
+          description:
+            "Soft silk dupatta with intricate patterns, great for styling.",
+          img: "https://img.freepik.com/free-photo/woman-holding-buta-shape-jewelry-pin_114579-11457.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
+        },
+        {
+          id: "w8",
+          quantity: 1,
+          name: "Straight Cut Salwar Suit",
+          price: 1599,
+          discount: 20,
+          rating: 4,
+          description: "Classic straight cut salwar suit for a timeless look.",
+          img: "https://img.freepik.com/free-photo/young-woman-beautiful-yellow-dress_1303-17533.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
+        },
+        {
+          id: "w9",
+          quantity: 1,
+          name: "Printed Maxi Dress",
+          price: 1199,
+          discount: 15,
+          rating: 5,
+          description:
+            "Flowy and elegant printed maxi dress for a comfortable yet stylish outfit.",
+          img: "https://img.freepik.com/free-photo/stylish-beautiful-woman-red-hat-posing-blue_285396-4980.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
+        },
+        {
+          id: "w10",
+          quantity: 1,
+          name: "Designer Blouse",
+          price: 999,
+          discount: 10,
+          rating: 4,
+          description:
+            "Trendy designer blouse to pair with sarees and lehengas.",
+          img: "https://img.freepik.com/free-photo/beautiful-young-woman-wearing-sari_23-2149502963.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
         },
       ],
 
