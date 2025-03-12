@@ -11,8 +11,8 @@
 
         <b-navbar-nav class="ml-auto small d-flex">
           <b-nav-item href="/">Track Order</b-nav-item>
-          <b-nav-item href="/contacts">Contact</b-nav-item>
-          <b-nav-item href="/help">Help</b-nav-item>
+          <b-nav-item to="/contacts">Contact</b-nav-item>
+          <b-nav-item to="/shipping-returns">Help</b-nav-item>
         </b-navbar-nav>
       </b-container>
     </b-navbar>
