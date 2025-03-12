@@ -59,7 +59,7 @@ export default {
         {
           name: "Women's Fashion",
           productCount: 200,
-          link: "/fashions",
+          link: "/womens-collection",
           image:
             "https://img.freepik.com/free-photo/happy-lady-stylish-skirt-boater-posing-pink-wall_197531-23653.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
         },

@@ -10,7 +10,6 @@ import PrivacyPolicy from "./views/Privacy-Policy.vue";
 import TermsCondition from "./views/TermsCondition.vue";
 import ElectronicsPage from "./components/ElectronicsPage.vue";
 import CheckOut from "./components/CheckOut.vue";
-import FashionPage from "./components/FashionPage.vue";
 import HomeLivingPage from "./components/HomeLivingPage.vue";
 import AdminPage from "./components/AdminPage.vue";
 import SignUp from "./auth/SignUp.vue";
@@ -25,11 +24,12 @@ import MensCollection from "./components/MensCollection.vue";
 import CartPage from "./views/CartPage.vue";
 import WomenCollection from "./components/WomenCollection.vue";
 import AccessoriesCollection from "./components/AccessoriesCollection.vue";
+import FootwearCollection from "./components/FootwearCollection.vue";
 
 Vue.use(Router);
 
 const router = new Router({
-  mode: "hash", // Use 'history' mode to remove the hash from URLs and 'hash'
+  mode: "history", // Use 'history' mode to remove the hash from URLs and 'hash'
   routes: [
     { path: "/", name: "landing-page", component: LandingPage },
     {
@@ -42,7 +42,6 @@ const router = new Router({
     { path: "/special-offer", name: "special-offer", component: SpecialOffer },
     { path: "/dealsoftheday", name: "deals", component: DealsOfTheDay },
     { path: "/electronics", name: "electronics", component: ElectronicsPage },
-    { path: "/fashions", name: "fashions", component: FashionPage },
     {
       path: "/mens-collection",
       name: "mens-collection",
@@ -57,6 +56,11 @@ const router = new Router({
       path: "/accessories",
       name: "accessories",
       component: AccessoriesCollection,
+    },
+    {
+      path: "/footwear",
+      name: "footwear",
+      component: FootwearCollection,
     },
     { path: "/home&living", name: "home&living", component: HomeLivingPage },
 

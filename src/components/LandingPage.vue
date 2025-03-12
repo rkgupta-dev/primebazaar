@@ -1,14 +1,27 @@
 <template>
   <div>
-    <b-navbar variant="light">
+    <b-navbar toggleable="md" variant="light" class="d-none d-md-block">
       <b-container
         fluid
         class="d-flex justify-content-between align-items-center"
       >
-        <b-navbar-nav class="d-none d-md-block">
+        <b-navbar-nav>
           <b-nav-text>Free shipping on orders over ₹2000</b-nav-text>
         </b-navbar-nav>
 
+        <b-navbar-nav class="ml-auto small d-flex">
+          <b-nav-item href="/">Track Order</b-nav-item>
+          <b-nav-item href="/contacts">Contact</b-nav-item>
+          <b-nav-item href="/help">Help</b-nav-item>
+        </b-navbar-nav>
+      </b-container>
+    </b-navbar>
+
+    <b-navbar variant="light" class="d-lg-none">
+      <b-container
+        fluid
+        class="d-flex justify-content-between align-items-center"
+      >
         <b-navbar-nav class="ml-auto small d-flex">
           <b-nav-item href="/">Track Order</b-nav-item>
           <b-nav-item href="/contacts">Contact</b-nav-item>
@@ -31,7 +44,7 @@
             <b-nav-item href="#new-arrival">New Arrivals</b-nav-item>
             <b-nav-item to="/womens-collection">Women</b-nav-item>
             <b-nav-item to="/mens-collection">Men</b-nav-item>
-            <b-nav-item>Accessories</b-nav-item>
+            <b-nav-item to="/accessories">Accessories</b-nav-item>
             <b-nav-item>Sale</b-nav-item>
             <b-nav-item href="#special-offer">Special Offers</b-nav-item>
             <!-- <b-nav-item href="#products">Products</b-nav-item> -->
@@ -85,16 +98,16 @@
     <!-- Home Section -->
     <b-container
       fluid
-      style="padding-top: 50px; height: 700px; background-color: #131010"
+      style="padding-top: 50px; height: 700px; background-color: #0b192c"
     >
       <b-row>
         <b-col md="6" class="d-flex justify-content-center">
           <b-img
-            src="https://cdni.iconscout.com/illustration/premium/thumb/online-shopping-illustration-download-in-svg-png-gif-file-formats--add-to-cart-bag-money-transfer-and-e-payments-pack-business-illustrations-3748971.png?f=webp"
-            alt="Web Developer"
+            :src="require('@/assets/shopping.png')"
+            alt="PrimeBazzar"
             style="max-width: 90%; height: auto"
             class="hover-effect"
-          />
+          ></b-img>
         </b-col>
 
         <!-- <b-col md="6" class="d-flex justify-content-center">

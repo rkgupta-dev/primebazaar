@@ -240,7 +240,7 @@
                     :icon="isInCart(item) ? 'cart-dash' : 'cart-plus'"
                     class="mr-1"
                   ></b-icon>
-                  {{ isInCart(item) ? "Remove from Cart" : "Add to Cart" }}
+                  {{ isInCart(item) ? "Remove" : "Add to Cart" }}
                 </b-button>
               </b-card-body>
             </b-card>
