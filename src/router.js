@@ -24,6 +24,7 @@ import SpecialOffer from "./views/SpecialOffer.vue";
 import MensCollection from "./components/MensCollection.vue";
 import CartPage from "./views/CartPage.vue";
 import WomenCollection from "./components/WomenCollection.vue";
+import AccessoriesCollection from "./components/AccessoriesCollection.vue";
 
 Vue.use(Router);
 
@@ -51,6 +52,11 @@ const router = new Router({
       path: "/womens-collection",
       name: "womens-collection",
       component: WomenCollection,
+    },
+    {
+      path: "/accessories",
+      name: "accessories",
+      component: AccessoriesCollection,
     },
     { path: "/home&living", name: "home&living", component: HomeLivingPage },
 

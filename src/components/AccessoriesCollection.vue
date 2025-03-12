@@ -141,11 +141,11 @@
     <b-container class="my-4">
       <!-- Search Function -->
       <b-row class="my-4">
-        <b-col md="8" sm="6"><h3>Women's Collections</h3></b-col>
+        <b-col md="8" sm="6"><h3>Accessories</h3></b-col>
         <b-col md="4" sm="6">
           <b-form-input
             v-model="searchQuery"
-            placeholder="Search for women's fashions..."
+            placeholder="Search for accessories..."
           />
         </b-col>
       </b-row>
@@ -257,114 +257,106 @@ export default {
     return {
       searchQuery: "",
       items: [
-        // Women's Fashion Collection
         {
-          id: "w1",
+          id: "a1",
           quantity: 1,
-          name: "Cotton Kurti",
-          price: 899,
-          discount: 20,
-          rating: 5,
-          description:
-            "Elegant and comfortable cotton kurti, perfect for daily wear.",
-          img: "https://img.freepik.com/free-photo/young-woman-beautiful-red-dress_1303-17508.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
-        },
-        {
-          id: "w2",
-          quantity: 1,
-          name: "Anarkali Suit",
-          price: 1499,
+          name: "Sunglasses",
+          price: 699,
           discount: 15,
           rating: 5,
           description:
-            "Flared Anarkali suit with beautiful embroidery, ideal for festive occasions.",
-          img: "https://img.freepik.com/free-photo/young-indian-woman-wearing-sari_23-2149400872.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
+            "Stylish UV-protected sunglasses for outdoor activities.",
+          img: "https://img.freepik.com/free-photo/sunglasses_1203-7884.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
         },
         {
-          id: "w3",
+          id: "a2",
           quantity: 1,
-          name: "Chiffon Saree",
-          price: 1999,
+          name: "Leather Wallet",
+          price: 999,
+          discount: 20,
+          rating: 5,
+          description: "Premium leather wallet with multiple compartments.",
+          img: "https://img.freepik.com/free-photo/brown-isolated-leather-pocket-with-white-background_1258-47.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
+        },
+        {
+          id: "a3",
+          quantity: 1,
+          name: "Backpack",
+          price: 1499,
           discount: 10,
           rating: 4,
-          description: "Lightweight chiffon saree with delicate floral prints.",
-          img: "https://img.freepik.com/free-photo/young-indian-woman-wearing-sari_23-2149400848.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
+          description: "Spacious and durable backpack for daily use.",
+          img: "https://img.freepik.com/free-photo/view-3d-school-backpack_23-2151103644.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
         },
         {
-          id: "w4",
+          id: "a4",
           quantity: 1,
-          name: "Palazzo Set",
-          price: 1299,
-          discount: 20,
-          rating: 5,
-          description:
-            "Trendy palazzo and kurti set, great for casual or office wear.",
-          img: "https://img.freepik.com/free-photo/seductive-stylish-woman-bohemian-summer-clothes-posing-tropical-luxury-resort-vacation-concept_273443-3135.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
-        },
-        {
-          id: "w5",
-          quantity: 1,
-          name: "Lehenga Choli",
-          price: 3999,
-          discount: 25,
-          rating: 5,
-          description:
-            "Beautifully embroidered lehenga choli for weddings and parties.",
-          img: "https://img.freepik.com/free-photo/beautiful-young-woman-wearing-sari_23-2149503036.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
-        },
-        {
-          id: "w6",
-          quantity: 1,
-          name: "Indo-Western Dress",
-          price: 2499,
+          name: "Baseball Cap",
+          price: 399,
           discount: 15,
           rating: 4,
-          description:
-            "Fusion of traditional and modern styles, perfect for any event.",
-          img: "https://img.freepik.com/free-photo/young-female-model-sleeping-underwear_1303-19121.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
+          description: "Adjustable cap with a sporty look.",
+          img: "https://img.freepik.com/free-photo/set-two-trucker-hats-with-mesh-back_23-2149410050.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
         },
         {
-          id: "w7",
+          id: "a5",
           quantity: 1,
-          name: "Silk Dupatta",
+          name: "Wristwatch",
+          price: 2499,
+          discount: 25,
+          rating: 5,
+          description: "Elegant wristwatch with a stainless steel strap.",
+          img: "https://img.freepik.com/free-photo/smartwatch-screen-digital-device_53876-97321.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
+        },
+        {
+          id: "a6",
+          quantity: 1,
+          name: "Earbuds",
+          price: 1999,
+          discount: 20,
+          rating: 4,
+          description: "Wireless earbuds with noise cancellation.",
+          img: "https://img.freepik.com/free-photo/wireless-earbuds-with-neon-cyberpunk-style-lighting_23-2151074246.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
+        },
+        {
+          id: "a7",
+          quantity: 1,
+          name: "Handbag",
+          price: 2299,
+          discount: 15,
+          rating: 5,
+          description: "Chic handbag with ample space for essentials.",
+          img: "https://img.freepik.com/free-photo/purse-background-handle-fashionable-fashion_1203-6492.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
+        },
+        {
+          id: "a8",
+          quantity: 1,
+          name: "Belt",
           price: 599,
           discount: 10,
           rating: 4,
-          description:
-            "Soft silk dupatta with intricate patterns, great for styling.",
-          img: "https://img.freepik.com/free-photo/woman-holding-buta-shape-jewelry-pin_114579-11457.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
+          description: "Classic leather belt with a sleek buckle.",
+          img: "https://img.freepik.com/free-photo/cinturon-con-fondo-blanco_1187-1576.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
         },
         {
-          id: "w8",
+          id: "a9",
           quantity: 1,
-          name: "Straight Cut Salwar Suit",
-          price: 1599,
+          name: "Scarf",
+          price: 499,
           discount: 20,
           rating: 4,
-          description: "Classic straight cut salwar suit for a timeless look.",
-          img: "https://img.freepik.com/free-photo/young-woman-beautiful-yellow-dress_1303-17533.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
+          description: "Soft and cozy scarf to elevate any outfit.",
+          img: "https://img.freepik.com/free-photo/beautiful-scarf_1203-7762.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
         },
         {
-          id: "w9",
+          id: "a10",
           quantity: 1,
-          name: "Printed Maxi Dress",
-          price: 1199,
+          name: "Travel Pouch",
+          price: 899,
           discount: 15,
-          rating: 5,
-          description:
-            "Flowy and elegant printed maxi dress for a comfortable yet stylish outfit.",
-          img: "https://img.freepik.com/free-photo/stylish-beautiful-woman-red-hat-posing-blue_285396-4980.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
-        },
-        {
-          id: "w10",
-          quantity: 1,
-          name: "Designer Blouse",
-          price: 999,
-          discount: 10,
           rating: 4,
-          description:
-            "Trendy designer blouse to pair with sarees and lehengas.",
-          img: "https://img.freepik.com/free-photo/beautiful-young-woman-wearing-sari_23-2149502963.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
+          description: "Compact travel pouch to keep essentials organized.",
+          img: "https://img.freepik.com/free-photo/toilet-bag-baggage-arrangement_23-2149879593.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
         },
       ],
 

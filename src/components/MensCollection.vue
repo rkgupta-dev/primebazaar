@@ -499,15 +499,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.custom-card img {
-  width: 100px;
-  height: 100px;
-  margin-left: 40px;
-}
-.cart-item-image {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-}
-</style>
+<style scoped></style>

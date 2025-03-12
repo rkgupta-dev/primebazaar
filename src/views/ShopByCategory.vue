@@ -70,10 +70,11 @@ export default {
           image:
             "https://img.freepik.com/free-photo/group-male-friends-standing-against-blue-background_23-2148160232.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
         },
+        // link: "/electronics",
         {
           name: "Accessories",
           productCount: 200,
-          link: "/electronics",
+          link: "/accessories",
           image:
             "https://img.freepik.com/free-photo/workplace-business-modern-male-accessories-laptop-white_155003-3941.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_hybrid",
         },
