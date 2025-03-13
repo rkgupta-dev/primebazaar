@@ -8,9 +8,7 @@ import FaqPage from "./views/FaqPage.vue";
 import ShippingReturns from "./views/ShippingReturns.vue";
 import PrivacyPolicy from "./views/Privacy-Policy.vue";
 import TermsCondition from "./views/TermsCondition.vue";
-import ElectronicsPage from "./components/ElectronicsPage.vue";
 import CheckOut from "./components/CheckOut.vue";
-import HomeLivingPage from "./components/HomeLivingPage.vue";
 import AdminPage from "./components/AdminPage.vue";
 import SignUp from "./auth/SignUp.vue";
 import LogIn from "./auth/LogIn.vue";
@@ -20,11 +18,13 @@ import UserProfile from "./components/UserProfile.vue";
 import ShopByCategory from "./views/ShopByCategory.vue";
 import NewArrival from "./views/NewArrival.vue";
 import SpecialOffer from "./views/SpecialOffer.vue";
-import MensCollection from "./components/MensCollection.vue";
+import MensCollection from "./views/collections/MensCollection.vue";
 import CartPage from "./views/CartPage.vue";
-import WomenCollection from "./components/WomenCollection.vue";
-import AccessoriesCollection from "./components/AccessoriesCollection.vue";
-import FootwearCollection from "./components/FootwearCollection.vue";
+import WomenCollection from "./views/collections/WomenCollection.vue";
+import AccessoriesCollection from "./views/collections/AccessoriesCollection.vue";
+import FootwearCollection from "./views/collections/FootwearCollection.vue";
+import ViewAllCategory from "./views/ViewAllCategory.vue";
+import HomeAndKitchen from "./views/collections/HomeAndKitchen.vue";
 
 Vue.use(Router);
 
@@ -41,7 +41,6 @@ const router = new Router({
     { path: "/new-arrival", name: "new-arrival", component: NewArrival },
     { path: "/special-offer", name: "special-offer", component: SpecialOffer },
     { path: "/dealsoftheday", name: "deals", component: DealsOfTheDay },
-    { path: "/electronics", name: "electronics", component: ElectronicsPage },
     {
       path: "/mens-collection",
       name: "mens-collection",
@@ -62,7 +61,16 @@ const router = new Router({
       name: "footwear",
       component: FootwearCollection,
     },
-    { path: "/home&living", name: "home&living", component: HomeLivingPage },
+    {
+      path: "/home-&-kitchen",
+      name: "home-&-kitchen",
+      component: HomeAndKitchen,
+    },
+    {
+      path: "/all-categories",
+      name: "all-categories",
+      component: ViewAllCategory,
+    },
 
     // Protected Routes (Require Login)
     {

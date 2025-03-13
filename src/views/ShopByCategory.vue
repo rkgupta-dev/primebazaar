@@ -42,7 +42,11 @@
     <!-- View All Button -->
     <b-row class="justify-content-center mt-5">
       <b-col cols="auto">
-        <b-button variant="primary" class="px-4 rounded-pill shadow-lg">
+        <b-button
+          to="/all-categories"
+          variant="primary"
+          class="px-4 rounded-pill shadow-lg"
+        >
           View All Categories <i class="fas fa-arrow-right ml-2"></i>
         </b-button>
       </b-col>
