@@ -266,7 +266,7 @@ export default {
           rating: 5,
           description:
             "Premium non-stick cookware set for hassle-free cooking and easy cleanup.",
-          img: "https://img.freepik.com/free-photo/non-stick-cookware-set-isolated-white_93675-130824.jpg",
+          img: "https://img.freepik.com/free-photo/grayscale-overhead-shot-metal-pot-frying-pan-lid_181624-19530.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_authors_boost",
         },
         {
           id: "hk2",
@@ -277,7 +277,7 @@ export default {
           rating: 4,
           description:
             "Fast-boiling electric kettle with auto shut-off feature.",
-          img: "https://img.freepik.com/free-photo/electric-kettle-isolated-white-background_93675-130823.jpg",
+          img: "https://img.freepik.com/free-photo/kettle-cup-wall-background_1339-7169.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_authors_boost",
         },
         {
           id: "hk3",
@@ -287,7 +287,7 @@ export default {
           discount: 25,
           rating: 5,
           description: "Elegant dinner set perfect for family gatherings.",
-          img: "https://img.freepik.com/free-photo/white-ceramic-dinner-set-isolated_93675-130822.jpg",
+          img: "https://img.freepik.com/free-photo/top-view-dining-tables-without-food_23-2150157775.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_authors_boost",
         },
         {
           id: "hk4",
@@ -297,7 +297,7 @@ export default {
           discount: 10,
           rating: 4,
           description: "Compact microwave oven with multiple cooking modes.",
-          img: "https://img.freepik.com/free-photo/microwave-oven-isolated-white-background_93675-130821.jpg",
+          img: "https://img.freepik.com/free-photo/small-oven-white-background_1232-1348.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_authors_boost",
         },
         {
           id: "hk5",
@@ -307,7 +307,7 @@ export default {
           discount: 20,
           rating: 5,
           description: "Set of airtight storage containers to keep food fresh.",
-          img: "https://img.freepik.com/free-photo/plastic-food-containers-set-isolated_93675-130820.jpg",
+          img: "https://img.freepik.com/free-photo/png-jelly-candy-isolated-white-background_185193-164925.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_authors_boost",
         },
         {
           id: "hk6",
@@ -317,7 +317,7 @@ export default {
           discount: 15,
           rating: 4,
           description: "High-speed blender for smoothies, soups, and sauces.",
-          img: "https://img.freepik.com/free-photo/electric-blender-isolated-white-background_93675-130819.jpg",
+          img: "https://img.freepik.com/free-photo/brown-retro-electronic-blender-device_23-2151002847.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_authors_boost",
         },
         {
           id: "hk7",
@@ -328,7 +328,7 @@ export default {
           rating: 5,
           description:
             "Stylish cutlery set to complement your dining experience.",
-          img: "https://img.freepik.com/free-photo/stainless-steel-cutlery-set_93675-130818.jpg",
+          img: "https://img.freepik.com/free-photo/top-view-black-plates-with-golden-spoons-knife-fork-dark-background-color-food-dinner-kitchen-restaurant-cutlery_179666-19701.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_authors_boost",
         },
         {
           id: "hk8",
@@ -338,7 +338,7 @@ export default {
           discount: 20,
           rating: 4,
           description: "Durable pressure cooker for quick and healthy meals.",
-          img: "https://img.freepik.com/free-photo/pressure-cooker-isolated-white-background_93675-130817.jpg",
+          img: "https://image.shutterstock.com/image-photo/high-pressure-aluminum-cooking-pot-260nw-2425872803.jpg",
         },
         {
           id: "hk9",
@@ -348,7 +348,7 @@ export default {
           discount: 15,
           rating: 5,
           description: "Minimalist wall clock to enhance your home decor.",
-          img: "https://img.freepik.com/free-photo/minimalist-wall-clock-isolated_93675-130816.jpg",
+          img: "https://img.freepik.com/free-photo/flat-lay-wall-clock-still-life_23-2150417218.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_authors_boost",
         },
         {
           id: "hk10",
@@ -358,7 +358,7 @@ export default {
           discount: 10,
           rating: 4,
           description: "Modern table lamp for ambient lighting.",
-          img: "https://img.freepik.com/free-photo/modern-table-lamp-isolated-white-background_93675-130815.jpg",
+          img: "https://img.freepik.com/free-photo/books-lamp_23-2147617638.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_authors_boost",
         },
         {
           id: "hk11",
@@ -369,7 +369,7 @@ export default {
           rating: 5,
           description:
             "Durable wooden chopping board perfect for slicing and dicing.",
-          img: "https://img.freepik.com/free-photo/wooden-chopping-board-isolated_93675-130814.jpg",
+          img: "https://img.freepik.com/free-photo/top-view-vegetables-as-pepper-bunch-dill-tomato-cucumber-around-cutting-board-wooden-surface_141793-16462.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_authors_boost",
         },
         {
           id: "hk12",
@@ -379,7 +379,7 @@ export default {
           discount: 15,
           rating: 4,
           description: "Elegant ceramic vase to enhance your home decor.",
-          img: "https://img.freepik.com/free-photo/ceramic-vase-isolated_93675-130813.jpg",
+          img: "https://img.freepik.com/free-photo/still-life-with-plants-deco_23-2149192255.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_authors_boost",
         },
         {
           id: "hk13",
@@ -389,7 +389,7 @@ export default {
           discount: 10,
           rating: 5,
           description: "Warm LED string lights to add a cozy ambiance.",
-          img: "https://img.freepik.com/free-photo/led-string-lights_93675-130812.jpg",
+          img: "https://img.freepik.com/free-photo/glowing-christmas-yellow-fairy-light-against-black-backdrop_23-2148055528.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_authors_boost",
         },
         {
           id: "hk14",
@@ -400,7 +400,7 @@ export default {
           rating: 4,
           description:
             "Space-saving spice rack to keep your kitchen organized.",
-          img: "https://img.freepik.com/free-photo/spice-rack-organizer_93675-130811.jpg",
+          img: "https://img.freepik.com/free-photo/organised-filled-spice-jars_52683-86281.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_authors_boost",
         },
         {
           id: "hk15",
@@ -411,7 +411,7 @@ export default {
           rating: 5,
           description:
             "Soft and luxurious bed sheets for a perfect night's sleep.",
-          img: "https://img.freepik.com/free-photo/bed-sheets_93675-130810.jpg",
+          img: "https://img.freepik.com/free-photo/tidy-room-with-lit-lamps_1203-635.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_authors_boost",
         },
       ],
 

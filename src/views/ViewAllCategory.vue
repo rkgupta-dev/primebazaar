@@ -85,30 +85,55 @@ export default {
       searchQuery: "",
       categories: [
         {
-          name: "Electronics",
+          name: "Men's Collection",
           description:
-            "Discover the latest gadgets and electronic devices for your home and office.",
-          image: "https://placehold.co/600x400/e9ecef/495057?text=Electronics",
-          url: "/category/electronics",
-          icon: "fas fa-laptop",
+            "Explore the latest trends in men's fashion, from casual wear to formal attire.",
+          image:
+            "https://img.freepik.com/free-photo/portrait-siblings-outdoors-brothers-day-celebration_23-2150266817.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_authors_boost",
+          url: "/mens-collection",
+          icon: "fas fa-tshirt",
           popular: true,
           itemCount: 243,
         },
         {
-          name: "Clothing",
+          name: "Women's Collection",
           description:
-            "Browse our collection of trendy clothing for men, women, and children.",
-          image: "https://placehold.co/600x400/e9ecef/495057?text=Clothing",
-          url: "/category/clothing",
-          icon: "fas fa-tshirt",
+            "Discover stylish outfits and accessories for every occasion in women's fashion.",
+          image:
+            "https://img.freepik.com/free-photo/elegant-girls-celebrate-studio_1157-29172.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_authors_boost",
+          url: "/womens-collection",
+          icon: "fas fa-female",
           popular: true,
-          itemCount: 518,
+          itemCount: 320,
         },
+        {
+          name: "Accessories",
+          description:
+            "Find the perfect accessories to complement your outfit and express your style.",
+          image:
+            "https://img.freepik.com/free-photo/model-career-kit-still-life_23-2150229756.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_authors_boost",
+          url: "/accessories",
+          icon: "fas fa-gem",
+          popular: false,
+          itemCount: 150,
+        },
+        {
+          name: "Footwear",
+          description:
+            "Step into comfort and style with our latest collection of shoes and sandals.",
+          image:
+            "https://img.freepik.com/free-photo/woman-posing-with-stylish-footwear-summer-fashion-bag-long-legs-shopping_285396-497.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_authors_boost",
+          url: "/footwear",
+          icon: "fas fa-shoe-prints",
+          popular: true,
+          itemCount: 180,
+        },
+
         {
           name: "Home & Kitchen",
           description: "Find everything you need to make your house a home.",
           image:
-            "https://placehold.co/600x400/e9ecef/495057?text=Home+%26+Kitchen",
+            "https://img.freepik.com/free-photo/room-interior-design_23-2148899451.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_authors_boost",
           url: "/home-&-kitchen",
           icon: "fas fa-home",
           popular: false,
@@ -118,7 +143,8 @@ export default {
           name: "Beauty & Personal Care",
           description:
             "Shop premium beauty products and personal care essentials.",
-          image: "https://placehold.co/600x400/e9ecef/495057?text=Beauty",
+          image:
+            "https://img.freepik.com/free-photo/pink-cosmetic-containers-flowers-arrangement_23-2149270052.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_authors_boost",
           url: "/category/beauty",
           icon: "fas fa-spa",
           popular: true,
@@ -128,7 +154,8 @@ export default {
           name: "Sports & Outdoors",
           description:
             "Gear up for your next adventure with our sports and outdoor equipment.",
-          image: "https://placehold.co/600x400/e9ecef/495057?text=Sports",
+          image:
+            "https://img.freepik.com/free-photo/top-view-composition-with-neatly-arranged-organized-sport-items_23-2150275276.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_authors_boost",
           url: "/category/sports",
           icon: "fas fa-running",
           popular: false,
@@ -139,7 +166,7 @@ export default {
           description:
             "Explore our vast collection of books, movies, music, and more.",
           image:
-            "https://placehold.co/600x400/e9ecef/495057?text=Books+%26+Media",
+            "https://img.freepik.com/free-photo/english-book-resting-table-working-space_23-2149429596.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_authors_boost",
           url: "/category/books-media",
           icon: "fas fa-book",
           popular: false,
