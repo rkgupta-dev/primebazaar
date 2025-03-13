@@ -162,7 +162,7 @@ export default {
           discount: 12,
           rating: 4,
           description: "Sleek ultrabook with a stunning InfinityEdge display.",
-          img: "https://m.media-amazon.com/images/I/71f5Eu5lJSL._AC_SX679_.jpg",
+          img: "https://img.freepik.com/free-photo/laptop-device-with-minimalist-monochrome-background_23-2150763336.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_authors_boost",
         },
         {
           id: "ele3",
@@ -173,7 +173,7 @@ export default {
           rating: 5,
           description:
             "Apple's latest smartphone with Dynamic Island and ProMotion.",
-          img: "https://m.media-amazon.com/images/I/71d3fs8rHQL._AC_SX679_.jpg",
+          img: "https://img.freepik.com/free-photo/elegant-smartphone-composition_23-2149437073.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_authors_boost",
         },
         {
           id: "ele4",
@@ -184,7 +184,7 @@ export default {
           rating: 5,
           description:
             "Samsung's flagship phone with a powerful camera system.",
-          img: "https://m.media-amazon.com/images/I/71Sa3dqXvZL._AC_SX679_.jpg",
+          img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9vXiqTZoR8lykhTwyScB2dVyj6TyPWACwug&s",
         },
         {
           id: "ele5",
@@ -195,7 +195,7 @@ export default {
           rating: 5,
           description:
             "Apple's most advanced tablet with a Liquid Retina XDR display.",
-          img: "https://m.media-amazon.com/images/I/81gC7frRJyL._AC_SX679_.jpg",
+          img: "https://images.pexels.com/photos/6849081/pexels-photo-6849081.jpeg?auto=compress&cs=tinysrgb&w=600",
         },
         {
           id: "ele6",
@@ -205,7 +205,7 @@ export default {
           discount: 15,
           rating: 4,
           description: "High-performance tablet with AMOLED display.",
-          img: "https://m.media-amazon.com/images/I/71zjbDpEN0L._AC_SX679_.jpg",
+          img: "https://img.freepik.com/premium-photo/modern-smartphones-with-blank-screens-hand-isolated-colorful-backgrounds_950414-137978.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_authors_boost",
         },
         {
           id: "ele7",
@@ -215,7 +215,7 @@ export default {
           discount: 12,
           rating: 5,
           description: "High-performance gaming laptop with RGB lighting.",
-          img: "https://m.media-amazon.com/images/I/81P+CkK0vLL._AC_SX679_.jpg",
+          img: "https://img.freepik.com/free-photo/high-angle-gamer-playing-laptop_23-2149829167.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_authors_boost",
         },
         {
           id: "ele8",
@@ -225,7 +225,7 @@ export default {
           discount: 10,
           rating: 4,
           description: "Lightweight business laptop with exceptional keyboard.",
-          img: "https://m.media-amazon.com/images/I/71dL9TcoL7L._AC_SX679_.jpg",
+          img: "https://img.freepik.com/free-photo/desk-arrangement-with-ssd-laptop-flat-lay_23-2149328279.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_authors_boost",
         },
         {
           id: "ele9",
@@ -235,7 +235,7 @@ export default {
           discount: 10,
           rating: 5,
           description: "Industry-leading noise-canceling wireless headphones.",
-          img: "https://m.media-amazon.com/images/I/51SKmuUD8xL._AC_SX679_.jpg",
+          img: "https://img.freepik.com/free-photo/pink-headphones-wireless-digital-device_53876-96804.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_authors_boost",
         },
         {
           id: "ele10",
@@ -245,7 +245,7 @@ export default {
           discount: 8,
           rating: 5,
           description: "Advanced health tracking with always-on display.",
-          img: "https://m.media-amazon.com/images/I/71SAFQdF2ML._AC_SX679_.jpg",
+          img: "https://img.freepik.com/free-photo/rendering-smart-home-device_23-2151039302.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_authors_boost",
         },
         {
           id: "ele11",
@@ -256,7 +256,7 @@ export default {
           rating: 4,
           description:
             "Fitness tracker with health metrics and sleep monitoring.",
-          img: "https://m.media-amazon.com/images/I/61ZXwnw+HRL._AC_SX679_.jpg",
+          img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHGIk6gaiWF1gsG3IS399LejVFN1SNRXdXsw&s",
         },
         {
           id: "ele12",
@@ -266,7 +266,7 @@ export default {
           discount: 5,
           rating: 5,
           description: "High-resolution mirrorless camera for professionals.",
-          img: "https://m.media-amazon.com/images/I/81sa3g8FrxL._AC_SX679_.jpg",
+          img: "https://img.freepik.com/free-photo/top-view-photo-camera-indoors-still-life_23-2150630663.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_authors_boost",
         },
         {
           id: "ele13",
@@ -276,7 +276,7 @@ export default {
           discount: 10,
           rating: 5,
           description: "Next-gen console with immersive gaming experience.",
-          img: "https://m.media-amazon.com/images/I/71vPCX0bA0L._AC_SX679_.jpg",
+          img: "https://img.freepik.com/free-photo/view-3d-video-game-controller_23-2151005826.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_authors_boost",
         },
         {
           id: "ele14",
@@ -286,7 +286,7 @@ export default {
           discount: 8,
           rating: 5,
           description: "Microsoft's most powerful gaming console.",
-          img: "https://m.media-amazon.com/images/I/61JGKhqxHxL._AC_SX679_.jpg",
+          img: "https://img.freepik.com/free-photo/high-angle-controller-vr-glasses_23-2149829130.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_authors_boost",
         },
         {
           id: "ele15",
@@ -296,7 +296,7 @@ export default {
           discount: 20,
           rating: 4,
           description: "Ergonomic gaming mouse with precision sensors.",
-          img: "https://m.media-amazon.com/images/I/51F+48Ae1HL._AC_SX679_.jpg",
+          img: "https://img.freepik.com/free-photo/view-neon-illuminated-gaming-desk-setup-with-keyboard_23-2149529380.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_authors_boost",
         },
         {
           id: "ele16",
@@ -306,7 +306,7 @@ export default {
           discount: 15,
           rating: 5,
           description: "Mechanical gaming keyboard with customizable lighting.",
-          img: "https://m.media-amazon.com/images/I/81u5cMLnEEL._AC_SX679_.jpg",
+          img: "https://img.freepik.com/free-photo/high-angle-blue-keyboard-with-lights_23-2149680224.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_authors_boost",
         },
       ],
 

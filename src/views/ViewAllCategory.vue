@@ -48,7 +48,7 @@
               <div class="card-img-overlay">
                 <b-badge
                   v-if="category.popular"
-                  variant="danger"
+                  variant="warning"
                   class="position-absolute badge-popular"
                   >Popular</b-badge
                 >
@@ -157,7 +157,7 @@ export default {
             "https://img.freepik.com/free-photo/room-interior-design_23-2148899451.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_authors_boost",
           url: "/home-&-kitchen",
           icon: "fas fa-home",
-          popular: false,
+          popular: true,
           itemCount: 327,
         },
         {
