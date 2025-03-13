@@ -156,7 +156,7 @@ export default {
             "Gear up for your next adventure with our sports and outdoor equipment.",
           image:
             "https://img.freepik.com/free-photo/top-view-composition-with-neatly-arranged-organized-sport-items_23-2150275276.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_authors_boost",
-          url: "/category/sports",
+          url: "/sports-&-outdoors",
           icon: "fas fa-running",
           popular: false,
           itemCount: 156,
