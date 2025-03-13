@@ -27,6 +27,7 @@ import ViewAllCategory from "./views/ViewAllCategory.vue";
 import HomeAndKitchen from "./views/collections/HomeAndKitchen.vue";
 import BeautyAndCare from "./views/collections/BeautyAndCare.vue";
 import SportsAndOutdoors from "./views/collections/SportsAndOutdoors.vue";
+import BooksAndMedia from "./views/collections/BooksAndMedia.vue";
 
 Vue.use(Router);
 
@@ -77,6 +78,11 @@ const router = new Router({
       path: "/sports-&-outdoors",
       name: "sports-&-outdoors",
       component: SportsAndOutdoors,
+    },
+    {
+      path: "/books-&-media",
+      name: "books-&-media",
+      component: BooksAndMedia,
     },
     {
       path: "/all-categories",

@@ -151,7 +151,7 @@
             <b-icon icon="cart" variant="muted" font-scale="2"></b-icon>
             <h4 class="text-muted">Your cart is empty</h4>
             <p>Browse our collection and add items to your cart.</p>
-            <b-button to="/mens-collection">Shop Now</b-button>
+            <b-button to="/all-categories">Shop Now</b-button>
           </b-card>
         </b-col>
         <b-col md="4" class="my-2 d-none d-md-block">

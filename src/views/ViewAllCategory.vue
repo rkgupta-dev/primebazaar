@@ -128,17 +128,6 @@ export default {
           popular: true,
           itemCount: 180,
         },
-
-        {
-          name: "Home & Kitchen",
-          description: "Find everything you need to make your house a home.",
-          image:
-            "https://img.freepik.com/free-photo/room-interior-design_23-2148899451.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_authors_boost",
-          url: "/home-&-kitchen",
-          icon: "fas fa-home",
-          popular: false,
-          itemCount: 327,
-        },
         {
           name: "Beauty & Personal Care",
           description:
@@ -149,6 +138,27 @@ export default {
           icon: "fas fa-spa",
           popular: true,
           itemCount: 184,
+        },
+        {
+          name: "Electronics",
+          description:
+            "Discover the latest gadgets and electronic devices for your home and office.",
+          image:
+            "https://img.freepik.com/free-photo/modern-stationary-collection-arrangement_23-2149309643.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_authors_boost",
+          url: "/electronics",
+          icon: "fas fa-tv",
+          popular: true,
+          itemCount: 275,
+        },
+        {
+          name: "Home & Kitchen",
+          description: "Find everything you need to make your house a home.",
+          image:
+            "https://img.freepik.com/free-photo/room-interior-design_23-2148899451.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_authors_boost",
+          url: "/home-&-kitchen",
+          icon: "fas fa-home",
+          popular: false,
+          itemCount: 327,
         },
         {
           name: "Sports & Outdoors",
@@ -167,7 +177,7 @@ export default {
             "Explore our vast collection of books, movies, music, and more.",
           image:
             "https://img.freepik.com/free-photo/english-book-resting-table-working-space_23-2149429596.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_authors_boost",
-          url: "/category/books-media",
+          url: "/books-&-media",
           icon: "fas fa-book",
           popular: false,
           itemCount: 412,
