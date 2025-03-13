@@ -145,7 +145,7 @@ export default {
             "Shop premium beauty products and personal care essentials.",
           image:
             "https://img.freepik.com/free-photo/pink-cosmetic-containers-flowers-arrangement_23-2149270052.jpg?ga=GA1.1.1001727922.1730456661&semt=ais_authors_boost",
-          url: "/category/beauty",
+          url: "/beauty-&-personal-care",
           icon: "fas fa-spa",
           popular: true,
           itemCount: 184,

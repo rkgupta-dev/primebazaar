@@ -25,6 +25,7 @@ import AccessoriesCollection from "./views/collections/AccessoriesCollection.vue
 import FootwearCollection from "./views/collections/FootwearCollection.vue";
 import ViewAllCategory from "./views/ViewAllCategory.vue";
 import HomeAndKitchen from "./views/collections/HomeAndKitchen.vue";
+import BeautyAndCare from "./views/collections/BeautyAndCare.vue";
 
 Vue.use(Router);
 
@@ -65,6 +66,11 @@ const router = new Router({
       path: "/home-&-kitchen",
       name: "home-&-kitchen",
       component: HomeAndKitchen,
+    },
+    {
+      path: "/beauty-&-personal-care",
+      name: "beauty-&-personal-care",
+      component: BeautyAndCare,
     },
     {
       path: "/all-categories",
