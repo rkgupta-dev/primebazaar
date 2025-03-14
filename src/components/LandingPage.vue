@@ -6,7 +6,9 @@
         class="d-flex justify-content-between align-items-center"
       >
         <b-navbar-nav>
-          <b-nav-text>Free shipping on orders over ₹2000</b-nav-text>
+          <b-nav-text class="text-danger"
+            >Free shipping on orders over ₹2000</b-nav-text
+          >
         </b-navbar-nav>
 
         <b-navbar-nav class="ml-auto small d-flex">
@@ -96,49 +98,8 @@
     </b-navbar>
 
     <!-- Home Section -->
-    <b-container
-      fluid
-      style="padding-top: 50px; height: 700px; background-color: #0b192c"
-    >
-      <b-row>
-        <b-col md="6" class="d-flex justify-content-center">
-          <b-img
-            :src="require('@/assets/shopping.png')"
-            alt="PrimeBazzar"
-            style="max-width: 90%; height: auto"
-            class="hover-effect"
-          ></b-img>
-        </b-col>
+    <home-page></home-page>
 
-        <!-- <b-col md="6" class="d-flex justify-content-center">
-          <video
-            src="@/assets/SaleVideo.mp4"
-            autoplay
-            muted
-            loop
-            style="max-width: 100%; height: 100%"
-            class="show-controls-on-hover"
-          ></video>
-        </b-col> -->
-
-        <b-col md="6" class="d-flex align-items-center">
-          <div
-            img-src="https://via.placeholder.com/1500x400"
-            img-alt="Hero Image"
-            img-top
-            class="text-center"
-          >
-            <h1 class="display-4 text-light">Welcome to Our Shop!</h1>
-            <p class="lead text-light">
-              Discover amazing products at unbeatable prices!
-            </p>
-            <b-button variant="success" href="#categories" size="lg"
-              >Shop Now</b-button
-            >
-          </div>
-        </b-col>
-      </b-row>
-    </b-container>
     <div>
       <b-card no-body class="text-center p-0 m-0">
         <div class="bg-primary text-light">
@@ -299,6 +260,7 @@
 </template>
 
 <script>
+import HomePage from "./HomePage.vue";
 import BestSellerSection from "@/views/BestSellerSection.vue";
 import NewArrival from "@/views/NewArrival.vue";
 import ShopByCategory from "@/views/ShopByCategory.vue";
@@ -307,6 +269,7 @@ import SpecialOffer from "@/views/SpecialOffer.vue";
 export default {
   name: "LandingPage",
   components: {
+    HomePage,
     ShopByCategory,
     NewArrival,
     BestSellerSection,
